@@ -1,0 +1,14 @@
+We would to have email response feed directly into SalesForce within the specific case. 
+
+ACCEPTANCE CRITERIA:
+•customer_zoom@manulife.com flows into the Zoom Customer Support Team queue
+•emails into customer_zoom@manulife.com should create Zoom cases
+•customer_zoom email responses should link to the original zoom case (if the case number is referenced in the subject line)
+•Auto response created to email sender outlining case number using a TBD template
+•Zoom Agents can view email items in queue so that they know which items need to be responded to
+•Existing Zoom reporting to include email cases
+
+
+Yes we would like emails into customer_zoom@manulife.com flows into the Zoom Customer Support Team queue however they do not need to create a new ZOOM case we can manually do that. Denyse - I believe that is your expectation?
+
+Yes we would like customer_zoom email responses to be link to the original zoom case (if the case number is referenced in the subject line)
