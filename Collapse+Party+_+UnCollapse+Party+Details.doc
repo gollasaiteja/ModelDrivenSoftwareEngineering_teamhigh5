@@ -1,0 +1,555 @@
+Message-ID: <593158282.23381.1525140930895.JavaMail.IMIT_ATLASSIAN_SVC_P@AZUWVDSSTMCD02>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_23380_1725735397.1525140930895"
+
+------=_Part_23380_1725735397.1525140930895
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Collapse Party / UnCollapse Party Details</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Collapse Party / UnCollapse Party Details</h1>
+    <div class=3D"Section1">
+        <p>Collapse Party is the process used by MDM when it combines two c=
+ustomer records into a single customer record. Instead of merging one of th=
+e records into the other, the two existing records are logically removed (m=
+eaning they are given an end date, effectively making them inactive) and a =
+new, consolidated record is created (with a new party Id). Critically impor=
+tant is that all related child records (e.g. Alerts, Memberships, Contact M=
+ethods, Indentification Methods, Addresses, etc) with the new party record =
+are also recreated (i.e. they all have&nbsp;<em>new</em> MDM Ids).</p>
+<p><br></p>
+<p> <map id=3D"gliffy-map-46698349-6704" name=3D"gliffy-map-46698349-6704">=
+</map> </p>
+<table width=3D"100%" class=3D"gliffy-macro-table">=20
+<tbody>
+<tr>=20
+<td>=20
+<table class=3D"gliffy-macro-inner-table">=20
+<caption align=3D"bottom">=20
+</caption>=20
+<tbody>
+<tr>=20
+<td> <img style=3D"border: none; width: 430px;" usemap=3D"#gliffy-map-46698=
+349-6704" src=3D"ecb33fad2479b3119f995612d6809623" alt=3D"" class=3D"gliffy=
+-macro-image" width=3D"430" height=3D"300"> </td>=20
+</tr>=20
+</tbody>
+</table> </td>=20
+</tr>=20
+</tbody>
+</table>=20
+<p></p>
+<h2 id=3D"CollapseParty/UnCollapsePartyDetails-Problem">Problem</h2>
+<p>The move to Collapse Party as opposed to Merge party brought with it the=
+ critical difference in how child records are handled. Previously existing =
+child records were re-parented to the winning party record of the merge. Th=
+is allowed the Salesforce integration to use a merge DML operation, combine=
+d with updates to all children (using their MDM Primary Keys as the upsert =
+key) to re-parent all children.</p>
+<p>With the change to how child records are handled we now end up in a situ=
+ation where the existing children are neither explicitly updated, nor delet=
+ed, by the integration. Instead, they are implicitly re-parented in Salesfo=
+rce by the merge DML operation. Additionally new child records are also cre=
+ated. The result is that all of the MDM child records of a party are duplic=
+ated after a "successful" Collapse Party event.</p>
+<p><br></p>
+<h2 id=3D"CollapseParty/UnCollapsePartyDetails-Objects">Objects</h2>
+<ul>
+<li>Does the object have records that are not known by MDM?</li>
+<li>Does the object have MDM records that have been edited (modified fields=
+, additional fields) in Salesforce?</li>
+<li>What is the content of the External Id field?</li>
+<li>What combination of fields should be unique across all records?</li>
+</ul>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">&nbsp;</th>
+<th colspan=3D"1" class=3D"confluenceTh">Non MDM Records?</th>
+<th colspan=3D"1" class=3D"confluenceTh">Edited MDM Records?</th>
+<th class=3D"confluenceTh">External Id</th>
+<th class=3D"confluenceTh">Unique Key</th>
+<th colspan=3D"1" class=3D"confluenceTh">Questions / Comments</th>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Contact &amp; Account</th>
+<td colspan=3D"1" class=3D"confluenceTd">Yes</td>
+<td colspan=3D"1" class=3D"confluenceTd">Yes</td>
+<td colspan=3D"1" class=3D"confluenceTd">MDM PK</td>
+<td colspan=3D"1" class=3D"confluenceTd">Enterprise ID</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Alert</th>
+<td colspan=3D"1" class=3D"confluenceTd">Yes</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(0,51,102=
+);">No</span></td>
+<td class=3D"confluenceTd">MDM PK</td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0);">Enterprise =
+ID &amp; Start Date &amp; Severity&nbsp;&amp; Title(20 chars)</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">Contact Centre attaches Alert to A=
+ssets.</td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Membership</th>
+<td colspan=3D"1" class=3D"confluenceTd">Yes</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(0,51,102=
+);">Yes</span></td>
+<td class=3D"confluenceTd"><p><span style=3D"color: rgb(0,0,0);">"MDM" + Me=
+mbershipId or RegistrationId</span></p></td>
+<td class=3D"confluenceTd">Enterprise ID &amp; Membership Id &amp; TypeCode=
+</td>
+<td colspan=3D"1" class=3D"confluenceTd">Are Membership and Registration Id=
+s guaranteed to be distinct sets, or is there overlap?</td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Contact Communication</th>
+<td colspan=3D"1" class=3D"confluenceTd">No</td>
+<td colspan=3D"1" class=3D"confluenceTd"><span style=3D"color: rgb(0,51,102=
+);">No</span></td>
+<td class=3D"confluenceTd">MDM PK</td>
+<td class=3D"confluenceTd">Enterprise ID &amp; Method &amp; TypeCode</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Source System Identifier</th>
+<td colspan=3D"1" class=3D"confluenceTd">No</td>
+<td colspan=3D"1" class=3D"confluenceTd">No</td>
+<td class=3D"confluenceTd">MDM PK</td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(255,0,0);">EnterpriseI=
+D &amp; Name &amp; System of Record &amp; SubSystem</span></td>
+<td colspan=3D"1" class=3D"confluenceTd">Has a validation rule preventing c=
+hanging the account or contact.</td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Asset Contact Role</th>
+<td colspan=3D"1" class=3D"confluenceTd">No</td>
+<td colspan=3D"1" class=3D"confluenceTd">No</td>
+<td class=3D"confluenceTd">MDM PK</td>
+<td class=3D"confluenceTd">Enterprise ID &amp; Asset Name &amp; Asset Syste=
+m of Record&nbsp;&amp; Role</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Portal Registration&nbsp;</th>
+<td colspan=3D"1" class=3D"confluenceTd">Yes</td>
+<td colspan=3D"1" class=3D"confluenceTd">Yes&nbsp;</td>
+<td colspan=3D"1" class=3D"confluenceTd">--</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Benefit Offering Detail&nbsp;</th>
+<td colspan=3D"1" class=3D"confluenceTd">No&nbsp;</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;No</td>
+<td colspan=3D"1" class=3D"confluenceTd">MDM PK&nbsp;</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;</td>
+<td colspan=3D"1" class=3D"confluenceTd">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Note: Composite Keys involving a contact lookup are problematic for the =
+collapse/merge scenarios since they wouldn't prevent duplicates from enteri=
+ng the system and might cause merges to fail, if they are enforced as uniqu=
+e.</p>
+<h2 id=3D"CollapseParty/UnCollapsePartyDetails-ProposalA">Proposal A</h2>
+<ol>
+<li>Handle Child records of existing contacts
+<ol>
+<li>Alert
+<ul>
+<li>Delete all MDM owned records associated with the existing contacts</li>
+</ul></li>
+<li>Membership
+<ul>
+<li>Nothing needed, since the MDM PK is not used</li>
+<li>Records will be re-parented when the new contact is created and possibl=
+y when contact records are being merged.</li>
+</ul></li>
+<li>Contact Communication
+<ul>
+<li>Delete all MDM owned records associated with the existing contacts</li>
+</ul></li>
+<li>Source System Identifier
+<ul>
+<li>Delete all MDM owned records associated with the existing contacts</li>
+</ul></li>
+<li>Asset Contact Role
+<ul>
+<li>Delete all MDM owned records associated with the existing contacts</li>
+</ul></li>
+</ol></li>
+<li>Create new contact, and related children.</li>
+<li>Determine surviving contact record
+<ol>
+<li>If exactly one of the pre-existing contact records is associated with a=
+ portal user, it will be the surviving record.</li>
+<li>if both of the pre-existing contact records are associated with portal =
+users, the merge fails. An error is returned.
+<ol>
+<li>What follow-up would be required and what kind of manual process would =
+be able to solve this problem?</li>
+</ol></li>
+<li>if none of the pre-existing records has community users, then the new c=
+ontact record will be the surviving record</li>
+</ol></li>
+<li>Merge contact records
+<ol>
+<li>For all MDM fields, the values of the new contact will be preserved on =
+the surviving contact record</li>
+<li>For non MDM-fields, the default heuristic will be as follows:
+<ol>
+<li>Compare field values for pre-existing contacts
+<ol>
+<li>If one value is null and the other is not, preserve the value on the wi=
+nning record</li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<h2 id=3D"CollapseParty/UnCollapsePartyDetails-ProposalB"><s>Proposal B</s>=
+</h2>
+<p><s>This requires that the MDM collapse party notification includes an ad=
+ditional field on each of the child records indicating what the prior MDM P=
+K is for each new record.</s></p>
+<ol>
+<li><s>Update external Ids for child records</s></li>
+<li><s>Create new contact, with child records</s>
+<ol>
+<li><s>This will re-parent the child records</s></li>
+</ol></li>
+<li><s>Determine surviving contact record</s>
+<ol>
+<li><s>If exactly one of the pre-existing contact records is associated wit=
+h a portal user, it will be the surviving record.</s></li>
+<li style=3D"list-style-type: none;"><s>if both of the pre-existing contact=
+ records are associated with portal users, the merge fails. An error is ret=
+urned.</s>
+<ol>
+<li><s>What follow-up would be required and what kind of manual process wou=
+ld be able to solve this problem?</s></li>
+</ol></li>
+<li><s>if none of the pre-existing records has community users, then the ne=
+w contact record will be the surviving record</s></li>
+</ol></li>
+<li><s>Merge contact records</s>
+<ol>
+<li><s>In all cases, the field values of the new contact will be preserved.=
+</s></li>
+</ol></li>
+</ol>
+<p>&nbsp;</p>
+    </div>
+</body>
+</html>
+------=_Part_23380_1725735397.1525140930895
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/ecb33fad2479b3119f995612d6809623
+
+iVBORw0KGgoAAAANSUhEUgAAAa4AAAEsCAYAAACbjVdJAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAABGCSURBVHhe7d2/a1X3/8Dxt18U/AMcHKSICSiIoKCCxVrooBkdMsQWQcEfKG5qi+gi
+dlEcBFGhOASkjUMGBwctIrQRRFcFFRKJJYODu4uQb1+n54aYapsm14/nde7jAYfce+6NkR57nvf9
+Pu/cu2T6TwUAkvi/+isApCBcAKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQi
+XACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwApCJc
+AKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwA
+pCJcAKQiXACkIlwApCJcAKQiXACkIlwApCJcAKQiXACkIlwApLJk+k/1bRrqzZs35datW+XFixdl
+fHy8PH/+vPr67t27+hl8bkuXLi39/f3Vtm7dutLX11d2795dVq5cWT8D6BbharAI0/Xr18vZs2fL
+wMBAWb9+fXVS7Jwg42RJM8SxihcTnS1eZNy+fbscP368HDt2zLGCLhKuhnr69GnZv39/WbFiRbl8
++XIVKnKZmpoqJ0+erI7ljRs3ysaNG+tHgMUQrgaKV+/btm0rhw8fLgcOHKj3klVM8546dao8efLE
+yAu6wOKMBorpwRhpiVY7xLWuzZs3l4sXL9Z7gMUw4mqYWIixYcOGMjY2ZnqwRV6/fl22bNlSHj58
+WFatWlXvBRbCiKthYlopFmKIVrvE6sLBwcEyOjpa7wEWSrgaJlajxepB2mft2rVlYmKivgcslHA1
+TCyljiXvtE+MouP4AosjXA0Tv1xsmrCdVq9eLVzQBRZnNMyyZcvK27dvLZtuqSVLlhT/y8HiCFfD
+OLG1m+MLi2eqEIBUhAuAVIQLgFSEC4BUhAuAVIQLgFSEC4BUhAuAVIQLgFSEC4BUhAuAVIQLgFSE
+C4BUhAuAVIQLgFSEC4BUhAuAVIQLgFSEC4BUhAuAVIQLgFSEC4BUhAuAVIQLgFSEC4BUhAuAVIQL
+gFSEC4BUhIv/7OXLl2XJkiV/2y5cuFA/Y/7ie44ePVrf+2/ie+PnAr1FuFiw6enp97YffvihPHjw
+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
+EXWiMjAwMPPYd999V8Xu2rVr1b4YSc2OT+ybz0hq+/btpa+vr74HtJ1w0TV3794tW7durWITAeqM
+iI4cOfLedGDnsZ9//rmcP3++evzq1avl0KFDZXR0tH5WqYI2NDRU3/u4+PMiemvWrKn3AG0mXCzY
+7BFVbCMjI1U8IjZ37typn1XKjh076lt/2bdvX33rfYODg+X+/fvV7ZhyjKB9zFdffTXzc2O0NT4+
+Xj8CtJ1wsWCdEVVnmz06ilFQJyxx/Wk+OiOm+N5ffvnlb8GbbfY1rtiCBRrQG4SLrouVgjEK6kQl
+RmLzFaOxx48fl19//XVe04QdO3fuLH/88Ud9D2gz4aLrJicnq2tXHfMdcYW4RnbmzJnqmtV/EaH7
+8ssv63tAmwkXXXfixIlqtWBnqjBGXLFw40MiNrEII1YbhpgujGh97DpYx+xrXLHFwo5YXQi035Lp
+zgUCGiFOwr18SOL6VmeasY16/fhCNxhx0RixuCKiNXuaEWAuI66G8Yq83RxfWDwjLgBSES4AUhEu
+AFIRLgBSES4AUhEuAFIRLgBSES4AUhEuAFIRLgBSES4AUhEuAFIRLgBSES4AUhEuAFIRLgBSES4A
+UhEuAFIRLgBSES4AUhEuAFIRLgBSES4AUhEuAFIRLgBSES4AUhEuAFIRLgBSEa6GWbp0aXn37l19
+D4C5hKth+vv7y/j4eH2PNonjGscXWBzhahjhaq/JyUnhgi4QroZZt26dcLVUHNfVq1fX94CFEq6G
+6evrKy9evKjv0SavXr2qji+wOEum/1TfpgGmpqbKtm3bysOHD8uqVavqvWT35s2bsmHDhjI2Nma6
+EBZJuBro0qVL5dGjR2VkZKTeQ3YHDx4sK1euLOfOnav3AAslXA0Uy+E3bdpUneR2795d7yWre/fu
+VeF69uxZWb58eb0XWCjXuBoofpfrxo0b5dSpU2Xv3r3l9evX9SNkEtODEazY4niKFnSHEVeDxcjr
+4sWL5cqVK2VoaKi6sB/XR2JlmuskzROrBmPJe3yNhRjDw8PlwIED5fTp06IFXSRcCcSCjdHR0TIx
+MVGdFDsbzRIvJjovLOJFRkzzeoEB3SdcAKTiGhcAqQgXAKkIFwCpCBcAqQgXAKkIFwCpCBcAqQgX
+AKkIFwCpCBcAqQgXAKkIFwCpCBcAqQgXAKkIFwCpCBcAqQgXAKkIFwCJlPL/rwrfbvOHiccAAAAA
+SUVORK5CYII=
+------=_Part_23380_1725735397.1525140930895--
