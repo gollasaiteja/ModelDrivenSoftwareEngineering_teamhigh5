@@ -1,0 +1,647 @@
+{
+	"info": {
+		"_postman_id": "50d3f1ab-70e6-4a51-945b-53b1b3543319",
+		"name": "ML copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "updateContacts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": [\n    {\n      \"action\":\"add\", \n      \"type\":\"P\",\n      \"partyId\":\"MDM20180227-1\",\n      \"names\":[\n        {\n          \"contactName\":{\n            \"lastname\":\"Doey\",\n            \"givenNames\":[\"Johnny\"]\n          }\n        }\n      ],\n      \"alerts\":[\n      ]\n    },\n    {\n      \"action\":\"add\", \n      \"type\":\"P\",\n      \"partyId\":\"MDM20180227-2\",\n      \"names\":[\n        {\n          \"contactName\":{\n            \"lastname\":\"Doe\",\n            \"givenNames\":[\"Jane\"]\n          }\n        }\n      ],\n      \"alerts\":[\n      ]\n    },\n    {\n      \"action\":\"add\", \n      \"type\":\"P\",\n      \"partyId\":\"MDM20180227-3\",\n      \"names\":[\n        {\n          \"contactName\":{\n            \"lastname\":\"Doe\",\n            \"givenNames\":[\"Jeff\"]\n          }\n        }\n      ],\n      \"alerts\":[\n      ]\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-248 set DOB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": [\n    {\n      \"action\":\"add\", \n      \"type\":\"P\",\n      \"partyId\":\"MDM20180227-1\",\n      \"names\":[\n        {\n          \"contactName\":{\n            \"lastname\":\"Doe\",\n            \"givenNames\":[\"Johnny\"]\n          }\n        }\n      ],\n      \"gender\":\"M\",\n      \"birthdate\":\"1974-07-03T00:00:00.0Z\",\n      \"identificationMethods\":[\n      {\n        \"type\":{\n          \"code\":\"10\",\n          \"value\":\"495000000\"\n        },\n        \"value\":\"495000000\"\n      }\n      ]\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-228 - #1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [   {\r\n      \"action\": \"add\",\r\n      \"partyId\": \"708951841763641102\",\r\n      \"LanguageWritten\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"LanguageSpoken\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"type\": \"P\",\r\n      \"clientStatus\":       {\r\n         \"code\": \"0\",\r\n         \"value\": \"UNKNOWN\"\r\n      },\r\n      \"gender\": \"F\",\r\n      \"maritalStatus\":       {\r\n         \"code\": \"1\",\r\n         \"value\": \"Married\"\r\n      },\r\n      \"source\":       {\r\n         \"code\": \"43\",\r\n         \"value\": \"Manulife Vitality Admin\"\r\n      },\r\n      \"birthdate\": \"1994-01-04T00:00:00.0Z\",\r\n      \"addresses\": [      {\r\n         \"action\": \"add\",\r\n         \"type\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"addressLines\":          [\r\n            \"110 Wellesley St E Toronto\",\r\n            null,\r\n            null\r\n         ],\r\n         \"city\": \"Ontario\",\r\n         \"postalCode\": \"M4Y 1J1\",\r\n         \"state\":          {\r\n            \"code\": \"ON\",\r\n            \"value\": \"Ontario\"\r\n         },\r\n         \"country\":          {\r\n            \"code\": \"CA\",\r\n            \"value\": \"Canada\"\r\n         }\r\n      }],\r\n      \"sourceSystemIdentifiers\": [      {\r\n         \"action\": \"add\",\r\n         \"recordId\": \"80817440\",\r\n         \"uniqueKey\": \"703851841763687402\",\r\n         \"systemType\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         }\r\n      }],\r\n      \"names\": [      {\r\n         \"type\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Legal\"\r\n         },\r\n         \"contactName\":          {\r\n            \"action\": \"add\",\r\n            \"prefix\":             {\r\n               \"code\": \"15\",\r\n               \"value\": \"Mrs.\"\r\n            },\r\n            \"givenNames\":             [\r\n               \"GEONINA\",\r\n               null,\r\n               null,\r\n               null\r\n            ],\r\n            \"lastName\": \"BARNETT\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"15\",\r\n            \"value\": \"Mrs.\"\r\n         }\r\n      }],\r\n      \"contactMethods\": [      {\r\n         \"action\": \"add\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"usage\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Home Telephone\"\r\n         },\r\n         \"status\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"ACTIVE\"\r\n         },\r\n         \"startDate\": \"2018-02-11T20:40:36.371Z\",\r\n         \"referenceId\": \"701351841763680102\",\r\n         \"value\": \"1-774-741-3889\",\r\n         \"method\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Telephone Number\"\r\n         },\r\n         \"phoneNumber\":          {\r\n            \"countryCode\": \"1\",\r\n            \"areaCode\": \"774\",\r\n            \"exchange\": \"741\",\r\n            \"main\": \"3889\"\r\n         }\r\n      }],\r\n      \"memberships\": [      {\r\n         \"action\": \"add\",\r\n         \"membershipId\": \"80817440\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"10\",\r\n            \"value\": \"Owner\"\r\n         },\r\n         \"status\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Active\"\r\n         },\r\n         \"registrationId\": \"VKX1149796\",\r\n         \"type\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Vitality\"\r\n         },\r\n         \"entityNumber\": \"5688459\",\r\n         \"cardNumber\": \"RP-1XEX07\",\r\n         \"sinceDate\": \"2015-08-06T00:00:00.0Z\",\r\n         \"statusEffectiveDate\": \"2015-08-06T00:00:00.0Z\",\r\n         \"startDate\": \"2018-02-11T20:40:36.371Z\"\r\n      }],\r\n      \"classifications\": [      {\r\n         \"action\": \"add\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"type\":          {\r\n            \"code\": \"4\",\r\n            \"value\": \"Vitality Member\"\r\n         },\r\n         \"startDate\": \"2018-02-11T20:40:36.371Z\"\r\n      }],\r\n      \"identificationMethods\": [],\r\n      \"alerts\": []\r\n   }]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-228 - #2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [   {\r\n      \"action\": \"add\",\r\n      \"partyId\": \"629551841916252102\",\r\n      \"LanguageWritten\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"LanguageSpoken\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"type\": \"P\",\r\n      \"clientStatus\":       {\r\n         \"code\": \"0\",\r\n         \"value\": \"UNKNOWN\"\r\n      },\r\n      \"gender\": \"F\",\r\n      \"maritalStatus\":       {\r\n         \"code\": \"1\",\r\n         \"value\": \"Married\"\r\n      },\r\n      \"source\":       {\r\n         \"code\": \"20\",\r\n         \"value\": \"PPLUS GIC\"\r\n      },\r\n      \"birthdate\": \"1994-01-04T00:00:00.0Z\",\r\n      \"addresses\": [      {\r\n         \"action\": \"add\",\r\n         \"type\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"addressLines\":          [\r\n            \"110 Wellesley St E Toronto\",\r\n            null,\r\n            null\r\n         ],\r\n         \"city\": \"Ontario\",\r\n         \"postalCode\": \"M4Y 1J1\",\r\n         \"state\":          {\r\n            \"code\": \"ON\",\r\n            \"value\": \"Ontario\"\r\n         },\r\n         \"country\":          {\r\n            \"code\": \"CA\",\r\n            \"value\": \"Canada\"\r\n         }\r\n      }],\r\n      \"identificationMethods\": [      {\r\n         \"action\": \"add\",\r\n         \"type\":          {\r\n            \"code\": \"10\",\r\n            \"value\": \"Social Insurance Number\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"20\",\r\n            \"value\": \"PPLUS GIC\"\r\n         },\r\n         \"status\": {},\r\n         \"value\": \"7092098\",\r\n         \"startDate\": \"2018-02-11T21:06:02.495Z\"\r\n      }],\r\n      \"sourceSystemIdentifiers\": [      {\r\n         \"action\": \"add\",\r\n         \"recordId\": \"70969777\",\r\n         \"uniqueKey\": \"627151841916292202\",\r\n         \"systemType\":          {\r\n            \"code\": \"20\",\r\n            \"value\": \"PPLUS GIC\"\r\n         }\r\n      }],\r\n      \"names\": [      {\r\n         \"type\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Legal\"\r\n         },\r\n         \"contactName\":          {\r\n            \"action\": \"add\",\r\n            \"prefix\":             {\r\n               \"code\": \"15\",\r\n               \"value\": \"Mrs.\"\r\n            },\r\n            \"givenNames\":             [\r\n               \"GEONINA\",\r\n               null,\r\n               null,\r\n               null\r\n            ],\r\n            \"lastName\": \"BARNETT\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"15\",\r\n            \"value\": \"Mrs.\"\r\n         }\r\n      }],\r\n      \"contactMethods\": [      {\r\n         \"action\": \"add\",\r\n         \"source\":          {\r\n            \"code\": \"20\",\r\n            \"value\": \"PPLUS GIC\"\r\n         },\r\n         \"usage\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Home Telephone\"\r\n         },\r\n         \"status\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"ACTIVE\"\r\n         },\r\n         \"startDate\": \"2018-02-11T21:06:02.495Z\",\r\n         \"referenceId\": \"627351841916285502\",\r\n         \"value\": \"1-774-741-3889\",\r\n         \"method\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Telephone Number\"\r\n         },\r\n         \"phoneNumber\":          {\r\n            \"countryCode\": \"1\",\r\n            \"areaCode\": \"774\",\r\n            \"exchange\": \"741\",\r\n            \"main\": \"3889\"\r\n         }\r\n      }],\r\n      \"memberships\": [],\r\n      \"classifications\": [],\r\n      \"alerts\": []\r\n   }]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-228 - #4",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [   {\r\n      \"action\": \"add\",\r\n      \"assetRef\":       {\r\n         \"action\": \"add\",\r\n         \"recordId\": \"589051841860989602\"\r\n      },\r\n      \"role\":       {\r\n         \"code\": \"12\",\r\n         \"value\": \"Power of Attorney\"\r\n      },\r\n      \"startDate\": \"2018-02-11T21:06:03.071Z\",\r\n      \"referenceId\": \"628451841916309702\",\r\n      \"benefitRef\": {\"recordId\": \"582351841860992502\"},\r\n      \"contactRef\": {\"recordId\": \"629551841916252102\"}\r\n   }]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateAssetContactRoles",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateAssetContactRoles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-228 - #5 - collapse",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [{\r\n   \"sources\":    [\r\n      {\"recordId\": \"708951841763641102\"},\r\n      {\"recordId\": \"538851841688187702\"}\r\n   ],\r\n   \"targetRoles\": [   {\r\n      \"action\": \"add\",\r\n      \"assetRef\":       {\r\n         \"action\": \"add\",\r\n         \"recordId\": \"858451841673898002\"\r\n      },\r\n      \"role\":       {\r\n         \"code\": \"12\",\r\n         \"value\": \"Power of Attorney\"\r\n      },\r\n      \"startDate\": \"2018-02-12T01:28:22.338Z\",\r\n      \"referenceId\": \"534151841690305402\",\r\n      \"endReason\": null,\r\n      \"benefitRef\": {\"recordId\": \"851051841673904702\"},\r\n      \"contactRef\": {\"recordId\": \"705051841764508002\"}\r\n   }],\r\n   \"target\":    {\r\n      \"action\": \"add\",\r\n      \"partyId\": \"705051841764508002\",\r\n      \"LanguageWritten\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"LanguageSpoken\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"type\": \"P\",\r\n      \"clientStatus\":       {\r\n         \"code\": \"0\",\r\n         \"value\": \"UNKNOWN\"\r\n      },\r\n      \"gender\": \"F\",\r\n      \"maritalStatus\":       {\r\n         \"code\": \"1\",\r\n         \"value\": \"Married\"\r\n      },\r\n      \"source\":       {\r\n         \"code\": \"43\",\r\n         \"value\": \"Manulife Vitality Admin\"\r\n      },\r\n      \"birthdate\": \"1994-01-04T00:00:00.0Z\",\r\n      \"alerts\": [      {\r\n         \"action\": \"add\",\r\n         \"identifier\": {\"recordId\": \"701651841764541002\"},\r\n         \"type\":          {\r\n            \"code\": \"9\",\r\n            \"value\": \"Task Comment\"\r\n         },\r\n         \"severity\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"High\"\r\n         },\r\n         \"description\": \"Premium Defaulter\",\r\n         \"validFrom\": \"2018-02-12T01:28:01.246Z\"\r\n      }],\r\n      \"addresses\": [      {\r\n         \"action\": \"add\",\r\n         \"type\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"addressLines\":          [\r\n            \"110 Wellesley St E Toronto\",\r\n            null,\r\n            null\r\n         ],\r\n         \"city\": \"Ontario\",\r\n         \"postalCode\": \"M4Y 1J1\",\r\n         \"state\":          {\r\n            \"code\": \"ON\",\r\n            \"value\": \"Ontario\"\r\n         },\r\n         \"country\":          {\r\n            \"code\": \"CA\",\r\n            \"value\": \"Canada\"\r\n         }\r\n      }],\r\n      \"identificationMethods\": [      {\r\n         \"action\": \"add\",\r\n         \"type\":          {\r\n            \"code\": \"10\",\r\n            \"value\": \"Social Insurance Number\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"27\",\r\n            \"value\": \"Manulife Bank\"\r\n         },\r\n         \"status\": {},\r\n         \"value\": \"7092098\",\r\n         \"startDate\": \"2018-02-12T01:28:01.246Z\"\r\n      }],\r\n      \"sourceSystemIdentifiers\":       [\r\n                  {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"70969677\",\r\n            \"uniqueKey\": \"708051841764544402\",\r\n            \"systemType\":             {\r\n               \"code\": \"27\",\r\n               \"value\": \"Manulife Bank\"\r\n            }\r\n         },\r\n                  {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"80817440\",\r\n            \"uniqueKey\": \"705451841764549002\",\r\n            \"systemType\":             {\r\n               \"code\": \"43\",\r\n               \"value\": \"Manulife Vitality Admin\"\r\n            }\r\n         }\r\n      ],\r\n      \"names\": [      {\r\n         \"type\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Legal\"\r\n         },\r\n         \"contactName\":          {\r\n            \"action\": \"add\",\r\n            \"prefix\":             {\r\n               \"code\": \"15\",\r\n               \"value\": \"Mrs.\"\r\n            },\r\n            \"givenNames\":             [\r\n               \"GEONINA\",\r\n               null,\r\n               null,\r\n               null\r\n            ],\r\n            \"lastName\": \"BARNETT\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"15\",\r\n            \"value\": \"Mrs.\"\r\n         }\r\n      }],\r\n      \"contactMethods\": [      {\r\n         \"action\": \"add\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"usage\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Home Telephone\"\r\n         },\r\n         \"status\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"ACTIVE\"\r\n         },\r\n         \"startDate\": \"2018-02-12T01:40:36.371Z\",\r\n         \"referenceId\": \"706651841764528602\",\r\n         \"value\": \"1-774-741-3889\",\r\n         \"method\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Telephone Number\"\r\n         },\r\n         \"phoneNumber\":          {\r\n            \"countryCode\": \"1\",\r\n            \"areaCode\": \"774\",\r\n            \"exchange\": \"741\",\r\n            \"main\": \"3889\"\r\n         }\r\n      }],\r\n      \"memberships\": [      {\r\n         \"action\": \"add\",\r\n         \"membershipId\": \"80817440\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"10\",\r\n            \"value\": \"Owner\"\r\n         },\r\n         \"status\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Active\"\r\n         },\r\n         \"registrationId\": \"VKX1149796\",\r\n         \"type\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Vitality\"\r\n         },\r\n         \"entityNumber\": \"5688459\",\r\n         \"cardNumber\": \"RP-1XEX07\",\r\n         \"sinceDate\": \"2015-08-06T00:00:00.0Z\",\r\n         \"statusEffectiveDate\": \"2015-08-06T00:00:00.0Z\",\r\n         \"startDate\": \"2018-02-11T20:40:36.371Z\"\r\n      }],\r\n      \"classifications\":       [\r\n                  {\r\n            \"action\": \"add\",\r\n            \"source\":             {\r\n               \"code\": \"43\",\r\n               \"value\": \"Manulife Vitality Admin\"\r\n            },\r\n            \"type\":             {\r\n               \"code\": \"4\",\r\n               \"value\": \"Vitality Member\"\r\n            },\r\n            \"startDate\": \"2018-02-11T20:40:36.371Z\"\r\n         },\r\n                  {\r\n            \"action\": \"add\",\r\n            \"source\":             {\r\n               \"code\": \"27\",\r\n               \"value\": \"Manulife Bank\"\r\n            },\r\n            \"type\":             {\r\n               \"code\": \"2\",\r\n               \"value\": \"Bank Customer\"\r\n            },\r\n            \"startDate\": \"2018-02-11T20:28:01.246Z\"\r\n         }\r\n      ]\r\n   }\r\n}]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/mergeContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"mergeContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-228 - #3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [   {\r\n      \"action\": \"add\",\r\n      \"contractId\":\"589051841860989602\",\r\n      \"benefits\":[\r\n      \t{\r\n      \t\t\"action\":\"add\",\r\n      \t\t\"uniqueKey\":\"582351841860992502\",\r\n      \t\t\"product\":{\r\n      \t\t\t\"type\":{\r\n      \t\t\t\t\"code\":\"1\",\r\n      \t\t\t\t\"value\":\"1\"\r\n      \t\t\t}\r\n      \t\t},\r\n      \t\t\"status\":{\r\n      \t\t\t\"code\":\"1\",\r\n      \t\t\t\"value\":\"1\"\r\n      \t\t}\r\n      \t}\r\n      ],\r\n      \"source\":{\r\n    \t\"systemType\": {\r\n    \t\t\"code\":\"1\",\r\n    \t\t\"value\":\"1\"\r\n    \t},\r\n    \t\"recordId\":\"589051841860989602\"\r\n      }\r\n   }]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateAssets",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateAssets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-227 set",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": [\n    {\n      \"action\":\"add\", \n      \"type\":\"P\",\n      \"partyId\":\"MDM20180227-1\",\n      \"addresses\": [\n      {\n        \"action\": \"add\",\n        \"type\": {\n          \"code\": \"13\",\n          \"value\": \"Other\"                                    \n          },\n        \"source\": {\n          \"code\": 0,\n          \"value\": null                                                             \n        },\n        \"addressLines\": [\n          \"1788 TEST_AD, TEST\", \"Ontario, M4P 1A6, Canada\"\n        ],\n        \"city\": \"TEST\",\n        \"postalCode\": \"M4P 1A6\",\n        \"state\": \n        {\"Code\":\"ON\",\n          \"Value\":\"Ontario\"\n        },\n        \"country\": {\n          \"code\": \"CA\",\n          \"value\": \"Canada\"\n        },\n        \"residenceType\": {\n          \"code\": 0,                                                 \n          \"value\": \"\"                                                                \n        },\n        \"startDate\": \"2017-08-16T06:03:21.527Z\",\n        \"endDate\": \"2019-08-16T06:03:21.527Z\"\n      }\n    ],\n      \"names\":[\n        {\n          \"contactName\":{\n            \"lastname\":\"Doe\",\n            \"givenNames\":[\"Johnny\"]\n          }\n        }\n      ],\n      \"birthdate\":\"1974-07-02T00:00:00.0Z\",\n      \"identificationMethods\":[\n    \t{\n    \t\t\"type\":{\n    \t\t\t\"code\":\"10\",\n    \t\t\t\"value\":\"495000000\"\n    \t\t},\n    \t\t\"value\":\"495000000\"\n    \t}\n      ]\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-235",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [{\r\n \"lineOfBusiness\": \"Insert Test Product Data 9999\",\r\n \"businessUnit\": \"20007\",\r\n \"family\": \"Test Data\",\r\n \"endDate\": \"2019-12-22T01:45:38.063Z\",\r\n \"translations\": [\r\n {\r\n \"name\": \"Temporaire de lavenir 200\",\r\n \"language\": \r\n{ \"code\": \"200\", \"value\": \"Francais\" } \r\n},\r\n {\r\n \"name\": \"Insert Test Product Data 9999\",\r\n \"language\": \r\n{ \"code\": \"100\", \"value\": \"English\" } \r\n}\r\n ],\r\n \"code\": \"9999\"\r\n }]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateProducts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-248 update name",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": [\n    {\n      \"action\":\"add\", \n      \"type\":\"P\",\n      \"partyId\":\"MDM20180227-1\",\n      \"names\":[\n        {\n          \"contactName\":{\n            \"lastname\":\"Doe\",\n            \"givenNames\":[\"John\"]\n          }\n        }\n      ]\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-280 - #2 - create contact",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [   {\r\n      \"action\": \"add\",\r\n      \"partyId\": \"639052041857752798\",\r\n      \"LanguageWritten\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"LanguageSpoken\":       {\r\n         \"Code\": \"100\",\r\n         \"value\": \"English\"\r\n      },\r\n      \"type\": \"P\",\r\n      \"clientStatus\":       {\r\n         \"code\": \"0\",\r\n         \"value\": \"UNKNOWN\"\r\n      },\r\n      \"gender\": \"F\",\r\n      \"maritalStatus\":       {\r\n         \"code\": \"1\",\r\n         \"value\": \"Married\"\r\n      },\r\n      \"source\":       {\r\n         \"code\": \"43\",\r\n         \"value\": \"Manulife Vitality Admin\"\r\n      },\r\n      \"birthdate\": \"1994-01-04T00:00:00.0Z\",\r\n      \"addresses\": [      {\r\n         \"action\": \"add\",\r\n         \"type\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"addressLines\":          [\r\n            \"110 Wellesley St E Toronto\",\r\n            null,\r\n            null\r\n         ],\r\n         \"city\": \"Ontario\",\r\n         \"postalCode\": \"M4Y 1J1\",\r\n         \"state\":          {\r\n            \"code\": \"ON\",\r\n            \"value\": \"Ontario\"\r\n         },\r\n         \"country\":          {\r\n            \"code\": \"CA\",\r\n            \"value\": \"Canada\"\r\n         }\r\n      }],\r\n      \"sourceSystemIdentifiers\": [      {\r\n         \"action\": \"add\",\r\n         \"recordId\": \"80817499\",\r\n         \"uniqueKey\": \"703851841763687498\",\r\n         \"systemType\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         }\r\n      }],\r\n      \"names\": [      {\r\n         \"type\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Legal\"\r\n         },\r\n         \"contactName\":          {\r\n            \"action\": \"add\",\r\n            \"prefix\":             {\r\n               \"code\": \"15\",\r\n               \"value\": \"Mrs.\"\r\n            },\r\n            \"givenNames\":             [\r\n               \"GEONINA\",\r\n               null,\r\n               null,\r\n               null\r\n            ],\r\n            \"lastName\": \"BARNETT\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"15\",\r\n            \"value\": \"Mrs.\"\r\n         }\r\n      }],\r\n      \"contactMethods\": [      {\r\n         \"action\": \"add\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"usage\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Home Telephone\"\r\n         },\r\n         \"status\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"ACTIVE\"\r\n         },\r\n         \"startDate\": \"2018-02-11T20:40:36.371Z\",\r\n         \"referenceId\": \"701351841763680199\",\r\n         \"value\": \"1-774-741-3889\",\r\n         \"method\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Telephone Number\"\r\n         },\r\n         \"phoneNumber\":          {\r\n            \"countryCode\": \"1\",\r\n            \"areaCode\": \"774\",\r\n            \"exchange\": \"741\",\r\n            \"main\": \"3889\"\r\n         }\r\n      }],\r\n      \"memberships\": [      {\r\n         \"action\": \"add\",\r\n         \"membershipId\": \"80817440\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"10\",\r\n            \"value\": \"Owner\"\r\n         },\r\n         \"status\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Active\"\r\n         },\r\n         \"registrationId\": \"VKX1149796\",\r\n         \"type\":          {\r\n            \"code\": \"1\",\r\n            \"value\": \"Vitality\"\r\n         },\r\n         \"entityNumber\": \"5688459\",\r\n         \"cardNumber\": \"RP-1XEX07\",\r\n         \"sinceDate\": \"2015-08-06T00:00:00.0Z\",\r\n         \"statusEffectiveDate\": \"2015-08-06T00:00:00.0Z\",\r\n         \"startDate\": \"2018-02-11T20:40:36.371Z\"\r\n      }],\r\n      \"classifications\": [      {\r\n         \"action\": \"add\",\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"type\":          {\r\n            \"code\": \"4\",\r\n            \"value\": \"Vitality Member\"\r\n         },\r\n         \"startDate\": \"2018-02-11T20:40:36.371Z\"\r\n      }],\r\n      \"identificationMethods\": [],\r\n      \"alerts\": []\r\n   }]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateContacts"
+					]
+				},
+				"description": "testing"
+			},
+			"response": []
+		},
+		{
+			"name": "c360-280 - #1 - create asset",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [   {\r\n      \"action\": \"add\",\r\n      \"contractId\":\"314451556567425998\",\r\n      \"benefits\":[\r\n        {\r\n          \"action\":\"add\",\r\n          \"uniqueKey\":\"315451556567428202\",\r\n          \"product\":{\r\n            \"type\":{\r\n              \"code\":\"1\",\r\n              \"value\":\"1\"\r\n            }\r\n          },\r\n          \"status\":{\r\n            \"code\":\"1\",\r\n            \"value\":\"1\"\r\n          }\r\n        }\r\n      ],\r\n      \"source\":{\r\n      \"systemType\": {\r\n        \"code\":\"1\",\r\n        \"value\":\"1\"\r\n      },\r\n      \"recordId\":\"314451556567425998\"\r\n      }\r\n   }]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateAssets",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateAssets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-280 - #3 - assign roles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": [   {\n      \"action\": \"add\",\n      \"assetRef\":       {\n         \"action\": \"add\",\n         \"recordId\": \"314451556567425998\"\n      },\n      \"role\":       {\n         \"code\": \"91\",\n         \"value\": \"Member\"\n      },\n      \"startDate\": \"2018-03-06T20:46:28.855Z\",\n      \"referenceId\": \"816752040518899102\",\n      \"benefitRef\": {\"recordId\": \"315451556567428202\"},\n      \"contactRef\": {\"recordId\": \"639052041857752798\"}\n   }]\n}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateAssetContactRoles",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateAssetContactRoles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-280 - #3 - assign roles Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": [   {\n      \"action\": \"add\",\n      \"assetRef\":       {\n         \"action\": \"add\",\n         \"recordId\": \"314451556567425998\"\n      },\n      \"role\":       {\n         \"code\": \"91\",\n         \"value\": \"Member\"\n      },\n      \"startDate\": \"2018-03-06T20:46:28.855Z\",\n      \"referenceId\": \"816752040518899102\",\n      \"benefitRef\": {\"recordId\": \"315451556567428202\"},\n      \"contactRef\": {\"recordId\": \"639052041857752799\"}\n   }]\n}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/updateAssetContactRoles",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"updateAssetContactRoles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-283",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [{\r\n   \"targets\":    [\r\n            {\r\n         \"action\": \"add\",\r\n         \"partyId\": \"112652181629895865\",\r\n         \"LanguageWritten\":          {\r\n            \"Code\": \"200\",\r\n            \"value\": \"Fran?ais\"\r\n         },\r\n         \"LanguageSpoken\":          {\r\n            \"Code\": \"200\",\r\n            \"value\": \"Fran?ais\"\r\n         },\r\n         \"type\": \"P\",\r\n         \"clientStatus\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"UNKNOWN\"\r\n         },\r\n         \"gender\": \"F\",\r\n         \"maritalStatus\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"14\",\r\n            \"value\": \"CLAS\"\r\n         },\r\n         \"birthdate\": \"1971-10-01T00:00:00.0Z\",\r\n         \"addresses\": [         {\r\n            \"action\": \"add\",\r\n            \"type\":             {\r\n               \"code\": \"12\",\r\n               \"value\": \"Home\"\r\n            },\r\n            \"addressLines\":             [\r\n               \"249 58e Av\",\r\n               null,\r\n               null\r\n            ],\r\n            \"city\": \"Saint-Zotique\",\r\n            \"postalCode\": \"J0P 1Z0\",\r\n            \"state\":             {\r\n               \"code\": \"QC\",\r\n               \"value\": \"Quebec\"\r\n            },\r\n            \"country\":             {\r\n               \"code\": \"CA\",\r\n               \"value\": \"Canada\"\r\n            }\r\n         }],\r\n         \"sourceSystemIdentifiers\": [         {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"0007491691\",\r\n            \"uniqueKey\": \"115352181629936865\",\r\n            \"systemType\":             {\r\n               \"code\": \"14\",\r\n               \"value\": \"CLAS\"\r\n            }\r\n         }],\r\n         \"names\": [         {\r\n            \"type\":             {\r\n               \"code\": \"1\",\r\n               \"value\": \"Legal\"\r\n            },\r\n            \"contactName\":             {\r\n               \"action\": \"add\",\r\n               \"prefix\":                {\r\n                  \"code\": \"0\",\r\n                  \"value\": \"Unknown\"\r\n               },\r\n               \"givenNames\":                [\r\n                  \"MANON\",\r\n                  null,\r\n                  null,\r\n                  null\r\n               ],\r\n               \"lastName\": \"CLEMENT\"\r\n            },\r\n            \"source\":             {\r\n               \"code\": \"0\",\r\n               \"value\": \"Unknown\"\r\n            }\r\n         }],\r\n         \"identificationMethods\": [],\r\n         \"alerts\": [],\r\n         \"contactMethods\": [],\r\n         \"memberships\": [],\r\n         \"classifications\": []\r\n      },\r\n            {\r\n         \"classifications\": [         {\r\n            \"action\": \"add\",\r\n            \"source\":             {\r\n               \"code\": \"43\",\r\n               \"value\": \"Manulife Vitality Admin\"\r\n            },\r\n            \"type\":             {\r\n               \"code\": \"4\",\r\n               \"value\": \"Vitality Member\"\r\n            },\r\n            \"startDate\": \"2017-03-14T00:00:00.0Z\"\r\n         }],\r\n         \"memberships\": [         {\r\n            \"action\": \"add\",\r\n            \"membershipId\": \"20001380\",\r\n            \"source\":             {\r\n               \"code\": \"43\",\r\n               \"value\": \"Manulife Vitality Admin\"\r\n            },\r\n            \"role\":             {\r\n               \"code\": \"24\",\r\n               \"value\": \"Insured\"\r\n            },\r\n            \"status\":             {\r\n               \"code\": \"1\",\r\n               \"value\": \"Active\"\r\n            },\r\n            \"registrationId\": \"3353691\",\r\n            \"type\":             {\r\n               \"code\": \"1\",\r\n               \"value\": \"Vitality\"\r\n            },\r\n            \"entityNumber\": \"1427333735\",\r\n            \"cardNumber\": \"VS01538780\",\r\n            \"sinceDate\": \"2017-01-13T00:00:00.0Z\",\r\n            \"statusEffectiveDate\": \"2017-03-13T00:00:00.0Z\",\r\n            \"startDate\": \"2017-03-13T21:53:15.68Z\"\r\n         }],\r\n         \"action\": \"add\",\r\n         \"partyId\": \"112352181629939265\",\r\n         \"LanguageWritten\":          {\r\n            \"Code\": \"200\",\r\n            \"value\": \"Fran?ais\"\r\n         },\r\n         \"LanguageSpoken\":          {\r\n            \"Code\": \"200\",\r\n            \"value\": \"Fran?ais\"\r\n         },\r\n         \"type\": \"P\",\r\n         \"clientStatus\": {},\r\n         \"gender\": \"F\",\r\n         \"maritalStatus\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"43\",\r\n            \"value\": \"Manulife Vitality Admin\"\r\n         },\r\n         \"birthdate\": \"1971-10-01T00:00:00.0Z\",\r\n         \"addresses\": [         {\r\n            \"action\": \"add\",\r\n            \"type\":             {\r\n               \"code\": \"12\",\r\n               \"value\": \"Home\"\r\n            },\r\n            \"addressLines\":             [\r\n               \"249 58e Av\",\r\n               null,\r\n               null\r\n            ],\r\n            \"city\": \"Saint-Zotique\",\r\n            \"postalCode\": \"J0P 1Z0\",\r\n            \"state\":             {\r\n               \"code\": \"QC\",\r\n               \"value\": \"Quebec\"\r\n            },\r\n            \"country\":             {\r\n               \"code\": \"CA\",\r\n               \"value\": \"Canada\"\r\n            }\r\n         }],\r\n         \"sourceSystemIdentifiers\": [         {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"20001380\",\r\n            \"uniqueKey\": \"112752181629963265\",\r\n            \"systemType\":             {\r\n               \"code\": \"43\",\r\n               \"value\": \"Manulife Vitality Admin\"\r\n            }\r\n         }],\r\n         \"names\": [         {\r\n            \"type\":             {\r\n               \"code\": \"1\",\r\n               \"value\": \"Legal\"\r\n            },\r\n            \"contactName\":             {\r\n               \"action\": \"add\",\r\n               \"prefix\": {},\r\n               \"givenNames\":                [\r\n                  \"MANON\",\r\n                  null,\r\n                  null,\r\n                  null\r\n               ],\r\n               \"lastName\": \"CL?MENT\"\r\n            },\r\n            \"source\": {}\r\n         }],\r\n         \"contactMethods\": [         {\r\n            \"action\": \"add\",\r\n            \"source\":             {\r\n               \"code\": \"43\",\r\n               \"value\": \"Manulife Vitality Admin\"\r\n            },\r\n            \"usage\":             {\r\n               \"code\": \"13\",\r\n               \"value\": \"Vitality Email\"\r\n            },\r\n            \"status\":             {\r\n               \"code\": \"1\",\r\n               \"value\": \"ACTIVE\"\r\n            },\r\n            \"startDate\": \"2017-03-13T21:53:15.68Z\",\r\n            \"referenceId\": \"119452181629957565\",\r\n            \"value\": \"MANON.CLEMENT@BNC.CA\",\r\n            \"method\":             {\r\n               \"code\": \"2\",\r\n               \"value\": \"Email Address\"\r\n            }\r\n         }],\r\n         \"identificationMethods\": [],\r\n         \"alerts\": []\r\n      }\r\n   ],\r\n   \"source\": {\"recordId\": \"119652172417246965\"},\r\n   \"targetRoles\":    [\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"394149249532672803\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"10\",\r\n            \"value\": \"Owner\"\r\n         },\r\n         \"startDate\": \"2017-04-18T02:06:16.692Z\",\r\n         \"referenceId\": \"118549249557676003\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"393749249532673503\"},\r\n         \"contactRef\": {\"recordId\": \"112652181629895865\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"394149249532672803\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"24\",\r\n            \"value\": \"Insured\"\r\n         },\r\n         \"startDate\": \"2017-04-18T02:06:42.327Z\",\r\n         \"referenceId\": \"116949249560233903\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"393749249532673503\"},\r\n         \"contactRef\": {\"recordId\": \"112652181629895865\"},\r\n         \"addresses\": [{}]\r\n      }\r\n   ]\r\n}]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/unmergeContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"unmergeContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c360-283 #2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{SFDC_SESSION_ID}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Logging",
+						"value": "none"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"request\": [{\r\n   \"targets\":    [\r\n            {\r\n         \"action\": \"add\",\r\n         \"partyId\": \"868952226090607265\",\r\n         \"LanguageWritten\":          {\r\n            \"Code\": \"100\",\r\n            \"value\": \"English\"\r\n         },\r\n         \"LanguageSpoken\":          {\r\n            \"Code\": \"100\",\r\n            \"value\": \"English\"\r\n         },\r\n         \"type\": \"P\",\r\n         \"clientStatus\": {},\r\n         \"gender\": \"M\",\r\n         \"maritalStatus\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"44\",\r\n            \"value\": \"Gipsy\"\r\n         },\r\n         \"birthdate\": \"1997-03-04T00:00:00.0Z\",\r\n         \"isDeceased\": false,\r\n         \"isDisabled\": false,\r\n         \"isStudent\": false,\r\n         \"addresses\": [         {\r\n            \"action\": \"add\",\r\n            \"type\":             {\r\n               \"code\": \"12\",\r\n               \"value\": \"Home\"\r\n            },\r\n            \"addressLines\":             [\r\n               \"PO BOX 464\",\r\n               \"GRANUM AB  T0L 1A0\",\r\n               \"GRANUM AB  T0L 1A0\"\r\n            ],\r\n            \"city\": \"ZZZ\",\r\n            \"state\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            },\r\n            \"country\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            }\r\n         }],\r\n         \"sourceSystemIdentifiers\": [         {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"91071_372_01\",\r\n            \"uniqueKey\": \"866852226090683765\",\r\n            \"systemType\":             {\r\n               \"code\": \"44\",\r\n               \"value\": \"Gipsy\"\r\n            }\r\n         }],\r\n         \"names\": [         {\r\n            \"type\":             {\r\n               \"code\": \"1\",\r\n               \"value\": \"Legal\"\r\n            },\r\n            \"contactName\":             {\r\n               \"action\": \"add\",\r\n               \"prefix\": {},\r\n               \"givenNames\":                [\r\n                  \"COLTON\",\r\n                  null,\r\n                  null,\r\n                  null\r\n               ],\r\n               \"lastName\": \"GUEST\"\r\n            },\r\n            \"source\": {}\r\n         }],\r\n         \"identificationMethods\": [],\r\n         \"alerts\": [],\r\n         \"contactMethods\": [],\r\n         \"memberships\": [],\r\n         \"classifications\": []\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"partyId\": \"862052226090697365\",\r\n         \"LanguageWritten\":          {\r\n            \"Code\": \"100\",\r\n            \"value\": \"English\"\r\n         },\r\n         \"LanguageSpoken\":          {\r\n            \"Code\": \"100\",\r\n            \"value\": \"English\"\r\n         },\r\n         \"type\": \"P\",\r\n         \"clientStatus\": {},\r\n         \"gender\": \"M\",\r\n         \"maritalStatus\":          {\r\n            \"code\": \"0\",\r\n            \"value\": \"Unknown\"\r\n         },\r\n         \"source\":          {\r\n            \"code\": \"44\",\r\n            \"value\": \"Gipsy\"\r\n         },\r\n         \"birthdate\": \"1997-03-04T00:00:00.0Z\",\r\n         \"isDeceased\": false,\r\n         \"isDisabled\": false,\r\n         \"isStudent\": false,\r\n         \"addresses\": [         {\r\n            \"action\": \"add\",\r\n            \"type\":             {\r\n               \"code\": \"12\",\r\n               \"value\": \"Home\"\r\n            },\r\n            \"addressLines\":             [\r\n               \"PO BOX 464\",\r\n               \"GRANUM AB  T0L 1A0\",\r\n               \"GRANUM AB  T0L 1A0\"\r\n            ],\r\n            \"city\": \"ZZZ\",\r\n            \"state\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            },\r\n            \"country\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            }\r\n         }],\r\n         \"sourceSystemIdentifiers\": [         {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"86482_372_01\",\r\n            \"uniqueKey\": \"861852226090715565\",\r\n            \"systemType\":             {\r\n               \"code\": \"44\",\r\n               \"value\": \"Gipsy\"\r\n            }\r\n         }],\r\n         \"names\": [         {\r\n            \"type\":             {\r\n               \"code\": \"1\",\r\n               \"value\": \"Legal\"\r\n            },\r\n            \"contactName\":             {\r\n               \"action\": \"add\",\r\n               \"prefix\": {},\r\n               \"givenNames\":                [\r\n                  \"COLTON\",\r\n                  null,\r\n                  null,\r\n                  null\r\n               ],\r\n               \"lastName\": \"GUEST\"\r\n            },\r\n            \"source\": {}\r\n         }],\r\n         \"identificationMethods\": [],\r\n         \"alerts\": [],\r\n         \"contactMethods\": [],\r\n         \"memberships\": [],\r\n         \"classifications\": []\r\n      }\r\n   ],\r\n   \"source\": {\"recordId\": \"861052216583853166\"},\r\n   \"targetRoles\":    [\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"334551013301022603\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:53.925Z\",\r\n         \"referenceId\": \"866951013303393703\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"331351013301024103\"},\r\n         \"contactRef\": {\"recordId\": \"868952226090607265\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"334551013301022603\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2018-03-27T07:50:35.184Z\",\r\n         \"referenceId\": \"869051013303390003\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"332051013301022903\"},\r\n         \"contactRef\": {\"recordId\": \"868952226090607265\"},\r\n         \"addresses\": [         {\r\n            \"addressLines\":             [\r\n               \"PO BOX 464\",\r\n               \"GRANUM AB  T0L 1A0\",\r\n               null\r\n            ],\r\n            \"city\": \"ZZZ\",\r\n            \"state\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            },\r\n            \"country\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            }\r\n         }]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"334551013301022603\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:53.944Z\",\r\n         \"referenceId\": \"865451013303395503\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"332651013301024503\"},\r\n         \"contactRef\": {\"recordId\": \"868952226090607265\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"334551013301022603\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:54.039Z\",\r\n         \"referenceId\": \"866351013303405203\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"334751013301025503\"},\r\n         \"contactRef\": {\"recordId\": \"868952226090607265\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"334551013301022603\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:54.013Z\",\r\n         \"referenceId\": \"865551013303402903\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"337251013301025203\"},\r\n         \"contactRef\": {\"recordId\": \"868952226090607265\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"334551013301022603\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:53.99Z\",\r\n         \"referenceId\": \"865951013303400203\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"337951013301024903\"},\r\n         \"contactRef\": {\"recordId\": \"868952226090607265\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"334551013301022603\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:53.906Z\",\r\n         \"referenceId\": \"866651013303391803\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"339451013301023703\"},\r\n         \"contactRef\": {\"recordId\": \"868952226090607265\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"934451013300986503\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2018-03-27T07:50:05.175Z\",\r\n         \"referenceId\": \"153451013303302703\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"931151013300986803\"},\r\n         \"contactRef\": {\"recordId\": \"862052226090697365\"},\r\n         \"addresses\": [         {\r\n            \"addressLines\":             [\r\n               \"PO BOX 464\",\r\n               \"GRANUM AB  T0L 1A0\",\r\n               null\r\n            ],\r\n            \"city\": \"ZZZ\",\r\n            \"state\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            },\r\n            \"country\":             {\r\n               \"code\": null,\r\n               \"value\": \"Unexpected\"\r\n            }\r\n         }]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"934451013300986503\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:53.055Z\",\r\n         \"referenceId\": \"152351013303306703\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"935351013300988003\"},\r\n         \"contactRef\": {\"recordId\": \"862052226090697365\"},\r\n         \"addresses\": [{}]\r\n      },\r\n            {\r\n         \"action\": \"add\",\r\n         \"assetRef\":          {\r\n            \"action\": \"add\",\r\n            \"recordId\": \"934451013300986503\"\r\n         },\r\n         \"role\":          {\r\n            \"code\": \"91\",\r\n            \"value\": \"Member\"\r\n         },\r\n         \"startDate\": \"2017-11-08T04:23:53.036Z\",\r\n         \"referenceId\": \"154351013303304503\",\r\n         \"endReason\": null,\r\n         \"benefitRef\": {\"recordId\": \"936951013300987603\"},\r\n         \"contactRef\": {\"recordId\": \"862052226090697365\"},\r\n         \"addresses\": [{}]\r\n      }\r\n   ]\r\n}]}"
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/apexrest/mdm/unmergeContacts",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"apexrest",
+						"mdm",
+						"unmergeContacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Oauth2 Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{SFDC_URL}}/services/oauth2/token?grant_type=password&username={{SFDC_USERNAME}}&password={{SFDC_PASSWORD}}&client_id={{CLIENT_ID}}&client_secret={{CLIENT_SECRET}}",
+					"host": [
+						"{{SFDC_URL}}"
+					],
+					"path": [
+						"services",
+						"oauth2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "username",
+							"value": "{{SFDC_USERNAME}}"
+						},
+						{
+							"key": "password",
+							"value": "{{SFDC_PASSWORD}}"
+						},
+						{
+							"key": "client_id",
+							"value": "{{CLIENT_ID}}"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{CLIENT_SECRET}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
