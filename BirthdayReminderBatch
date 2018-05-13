@@ -1,0 +1,35 @@
+global class BirthdayReminderBatch implements Database.Batchable<sObject> {
+   
+    public string query = 'select Id, Email, Birth_Date__c, Name from User where Birth_Date__c = Today' ;
+    
+    global database.querylocator start(Database.BatchableContext BC)
+    {
+        return Database.getQueryLocator(query);
+    }
+    
+    global void execute(Database.BatchableContext BC, Sobject[] scope)
+    {             
+        
+        List<String> ccAddressList = new List<String>();
+        String emailIds = 'swathi.konatham1807@gmail.com';// 'test1@test.com,test2@test.com';
+        ccAddressList = emailIds.split(',');        
+        List<Messaging.SingleEmailMessage> emailLst = new List<Messaging.SingleEmailMessage>();
+        for (User usr : (List<User>)scope) {        
+            Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+            email.setToAddresses(new String[] {usr.Email});
+            email.setCCAddresses(ccAddressList);
+            email.subject = 'Happy Birthday '+usr.Name;
+            String mailTextBody = email.getPlainTextBody();
+            mailTextBody = 'Wish you happy birthday '+usr.Name;
+            email.setPlainTextBody(mailTextBody);
+            emailLst.add(email);
+        }
+        Messaging.sendEmail(emailLst);
+        
+    }
+    
+    global void finish(Database.BatchableContext BC) {
+        
+    }
+    
+}
