@@ -14,6 +14,18 @@ public with sharing class C360_Services_mergeContacts {
         system.debug('contactMergeMDTLst===='+contactMergeMDTLst);
         List<String> fieldAPINamesLst = new List<String>();
         fieldAPINamesLst = contactMergeMDTLst[0].Field_API_Name__c.split(',');
+		
+		Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
+		Map<String, Schema.SObjectField> fieldMap = schemaMap.get('Contact').getDescribe().fields.getMap();
+		String commaSepratedFields = '';
+		for(String fieldName : fieldMap.keyset()){
+			if(commaSepratedFields == null || commaSepratedFields == ''){
+				commaSepratedFields = fieldName;
+			}else{
+				commaSepratedFields = commaSepratedFields + ', ' + fieldName;
+			}
+		}
+
         //End - Merge Contacts using Custom settings logic
 
         // NOTE: the code below has DML inside loop which is generally a bad approch, but
@@ -40,14 +52,17 @@ public with sharing class C360_Services_mergeContacts {
                 throw new C360_Error.PermanentFailureException('The target contact has been deactivated');
             }
 
-            List<Contact> contacts = [
+            String query = 'Select ' + commaSepratedFields + ' from Contact WHERE External_Id__c IN :' + twoKeys + ' ORDER BY CreatedDate';
+			List<Contact> contacts = new List<Contact>();
+			contacts = Database.query(query);
+			/*List<Contact> contacts = [
                 SELECT 
                     Id, External_Id__c,Email,Contact_Type__c,IVR_Voice_Print_ID__c,Gender__c,Line_of_Business__c 
                 FROM    
                     Contact 
                 WHERE External_Id__c in :twoKeys
                 ORDER BY CreatedDate
-            ];
+            ];*/
 
             if (2!=contacts.size()) throw new C360_Error.TemporaryFailureException('Not all source key provided exist in Saleforce. Provided: ' + twoKeys);
 
