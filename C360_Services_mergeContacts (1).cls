@@ -52,9 +52,9 @@ public with sharing class C360_Services_mergeContacts {
                 throw new C360_Error.PermanentFailureException('The target contact has been deactivated');
             }
 
-            String query = 'Select ' + commaSepratedFields + ' from Contact WHERE External_Id__c IN :' + twoKeys + ' ORDER BY CreatedDate';
-			List<Contact> contacts = new List<Contact>();
-			contacts = Database.query(query);
+            String query = 'Select ' + commaSepratedFields + ' from Contact WHERE External_Id__c IN: twoKeys ORDER BY CreatedDate';
+		List<Contact> contacts = new List<Contact>();
+		contacts = Database.query(query);
 			/*List<Contact> contacts = [
                 SELECT 
                     Id, External_Id__c,Email,Contact_Type__c,IVR_Voice_Print_ID__c,Gender__c,Line_of_Business__c 
