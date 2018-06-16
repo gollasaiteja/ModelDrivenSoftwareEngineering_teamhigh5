@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[#CDP-773] Development</title>
+    <meta http-equiv="Content-Type" Content="application/vnd.ms-word; charset=UTF-8">
+        <style type="text/css">
+
+.tableBorder, .grid
+{
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableBorder td, .grid td
+{
+    vertical-align: top;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.noPadding
+{
+    padding: 0 !important;
+}
+
+h3 .subText
+{
+    font-size: 60%;
+    font-weight: normal;
+}
+
+.tabLabel
+{
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-bottom:none;
+    padding: 2px;
+    display: inline;
+}
+
+td.blank
+{
+    padding: 0;
+    margin: 0;
+}
+
+.blank td
+{
+    border: none;
+}
+
+#descriptionArea
+{
+    margin: 0;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+hr
+{
+    border-top:1px solid #aaa;
+}
+
+hr.fullcontent
+{
+  height: 15px;
+  padding: 10px 0;
+  background: #fff url('https://dsjira.manulife.com:8443/images/icons/hr.gif') no-repeat scroll center;
+}
+
+</style>
+
+</head>
+<body>
+
+<table class="tableBorder" cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#f0f0f0" width="100%" colspan="2" valign="top">
+                            <b><a id="parent_issue_summary" href="https://dsjira.manulife.com:8443/browse/CDP-433">Special Handling Indicator on Account</a></b>
+                <span style="font-size: 9px">(<a id="parent_issue_key" href="https://dsjira.manulife.com:8443/browse/CDP-433">CDP-433</a>)</span>
+                <h3 class="formtitle"><img src="https://dsjira.manulife.com:8443/images/icons/link_out_bot.gif" width="16" height="16" />
+                        [CDP-773]&nbsp;<a href="https://dsjira.manulife.com:8443/browse/CDP-773">Development</a>
+            <span class="subText">
+               Created: 23/Apr/18                   &nbsp;Updated: 14/Jun/18
+
+                                            </span>
+            </h3>
+        </td>
+    </tr>
+    <tr>
+        <td width="20%"><b>Status:</b></td>
+        <td width="80%">Selected for Development</td>
+    </tr>
+    <tr>
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="https://dsjira.manulife.com:8443/secure/BrowseProject.jspa?id=11902">C360 Divisional Project</a></td>
+    </tr>
+
+        <tr>
+            <td><b>Component/s:</b></td>
+            <td>
+                            None
+                </td>
+    </tr>
+    
+
+        <tr>
+            <td><b>Affects Version/s:</b></td>
+            <td>
+                            None
+                </td>
+    </tr>
+    
+
+        <tr>
+            <td><b>Fix Version/s:</b></td>
+            <td>
+                            None
+                </td>
+    </tr>
+    
+    </table>
+
+<br />
+<table class="grid" cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type:</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top"  width="30%" >
+            Sub-task
+        </td>
+
+                    <td bgcolor="#f0f0f0">
+                <b>Priority:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" nowrap>
+                Medium
+            </td>
+            </tr>
+    <tr>
+                        <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top"  width="30%" >
+                                            <a class="user-hover" rel="sinshae" id="word_reporter_sinshae" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sinshae">Shaena Bansal</a>
+                            </td>
+        
+                    <td bgcolor="#f0f0f0" width="20%">
+                <b>Assignee:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" nowrap  width="30%" >
+                                            <a class="user-hover" rel="gollasa" id="word_assignee_gollasa" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=gollasa">Sai Teja Golla</a>
+                            </td>
+            </tr>
+    	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution:</b>
+		</td>
+		<td bgcolor="#ffffff" valign="top" width="30%" nowrap>
+            				Unresolved
+                    </td>
+                    <td bgcolor="#f0f0f0" width="20%">
+                <b>Votes:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%" nowrap>
+                0
+            </td>
+        
+    </tr>
+    
+        <tr>
+        <td bgcolor="#f0f0f0" width="20%">
+            <b>Labels:</b>
+        </td>
+        <td id="labels-79955-value" class="value" bgcolor="#ffffff" valign="top" colspan="3" nowrap>
+                            C360Phase3                    </td>
+    </tr>
+    
+    	<tr>
+        		<td bgcolor="#f0f0f0" width="20%"><b>Remaining Estimate:</b></td>
+        <td bgcolor="#ffffff" valign="top" nowrap width="80%" colspan="3">
+                            Not Specified
+            		</td>
+    </tr>
+    <tr>
+                <td bgcolor="#f0f0f0" width="20%"><b>Time Spent:</b></td>
+		<td bgcolor="#ffffff" valign="top" nowrap width="80%" colspan="3">
+                            Not Specified
+            		</td>
+	</tr>
+    <tr>
+                <td bgcolor="#f0f0f0" width="20%"><b>Original Estimate:</b></td>
+		<td bgcolor="#ffffff" valign="top" nowrap width="80%" colspan="3">
+                            Not Specified
+            		</td>
+    </tr>
+    
+    </table>
+
+
+
+    <br />
+
+    	<table class="grid" cellpadding="0" cellspacing="0" border="0" width="100%">
+            
+
+        
+    
+
+
+
+</table>
+
+    <br/>
+
+    <table cellpadding="2" cellspacing="0" border="0" width="100%" align="center">
+    <tr>
+        <td bgcolor="#bbbbbb" width="1%" nowrap align="center">
+            &nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td id="descriptionArea">
+            <p>We will need triggers:</p>
+
+<p>Account, for Record Type = "Sponsor Customer" only:</p>
+<ul>
+	<li>On after update, if any of the 4 checkbox fields are modified, then propagate those changes to all related Assets' Contacts and Customer accounts.  Due to the large number of Assets a sponsor can have, this should be done by initiating a batch job (Queueable interface).  The Queueable job should take a list of Account ID's as a parameter.</li>
+	<li>This batch job should:
+	<ul>
+		<li>Query for all Assets related to the Sponsor account(s) via the Sponsor_<em>c field.  For each Asset, find the related customer accounts via the standard Account field - be sure to filter out he "Sponsor Customer" record type, these shouldn't exist but if they do then ignore so we don't have a circular update happening.  Also find the related AssetContactRoles</em>_c records to find the related Contacts.</li>
+		<li>Update the related Contact's 4 checkbox fields</li>
+		<li>Update the customer Account's 4 checkbox fields</li>
+		<li>Note that for any Account, Contact, the 4 checkbox fields should be TRUE if there is a TRUE on any related Sponsor, and should be FALSE if and only if there is NO true value found for that record's Sponsors.  Therefore, once you have found the related accounts and contacts, you will probably have to re-query for ALL related Assets for those (i.e. include the related Assets that were not modified)</li>
+	</ul>
+	</li>
+</ul>
+
+
+<p>AssetContactRoles__c, on after insert, after delete, after undelete</p>
+<ul>
+	<li>Find all related Accounts and Contacts, via the same relationships mentioned above
+	<ul>
+		<li>Update the related Contact's 4 checkbox fields</li>
+		<li>Update the customer Account's 4 checkbox fields</li>
+	</ul>
+	</li>
+</ul>
+
+
+<p>C360_SponsorIndicatorsUtil</p>
+<ul>
+	<li>findRelatedCustomerAccountsBySponsor(Set&lt;Id&gt; sponsorAccountIds) :: List&lt;Account&gt;
+	<ul>
+		<li>Query for all related customer accounts by querying for Assets where Asset.Sponsor__c in :sponsorAccountIds and then collecting the AccountId from those assets</li>
+	</ul>
+	</li>
+	<li>findRelatedContactsBySponsor(Set&lt;Id&gt; sponsorAccountIds) :: List&lt;Contact&gt;
+	<ul>
+		<li>Query for all related contacts by querying for AssetContactRoles_<em>c where Asset</em><em>r.Sponsor</em><em>c in :sponsorAccountIds and then collecting the Contact</em><em>c from those AssetContactRoles</em>_c</li>
+	</ul>
+	</li>
+	<li>findRelatedCustomerAccounts(Set&lt;Id&gt; assetContactRoleIds) :: List&lt;Account&gt;</li>
+	<li>findRelatedContacts(Set&lt;Id&gt; assetContactRoleIds) :: List&lt;Contact&gt;</li>
+	<li>getSponsorIndicators(List&lt;Contact&gt; contacts) :: Map&lt;Id, C360.SponsorIndicators&gt;
+	<ul>
+		<li>Query for all related AssetContactRoles_<em>c via the AssetContactRoles</em><em>c.Contact</em><em>c field, collect the related assets via the AssetContactRoles</em><em>c.Asset</em>_c field</li>
+		<li>Query for all related Sponsor Accounts via the Asset.Sponsor__c field</li>
+		<li>for each indicator, If any Sponsor Account has the indicator = true, then return true (collect in map)</li>
+	</ul>
+	</li>
+	<li>getSponsorIndicators(List&lt;Account&gt; customerAccounts) :: Map&lt;Id, C360.SponsorIndicators&gt;
+	<ul>
+		<li>Query for all related Assets via the Asset.AccountId field</li>
+		<li>Query for all related Sponsor Accounts via the Asset.Sponsor__c field</li>
+		<li>for each indicator, If any Sponsor Account has the indicator = true, then return true (collect in map)</li>
+	</ul>
+	</li>
+</ul>
+
+
+<p>C360.SponsorIndicators</p>
+<ul>
+	<li>4 checkbox fields (Booleans)</li>
+</ul>
+
+
+<p>I have created these classes with TODO markers:<br/>
+C360_AccountTriggerHandler<br/>
+C360_AssetContactRolesTriggerHandler<br/>
+C360_AccountSponsorsIndicatorsQueueable<br/>
+C360_SponsorIndicatorsUtil</p>
+
+            <br/>
+        </td>
+    </tr>
+    </table>
+
+    <br/>
+
+    <table cellpadding="2" cellspacing="0" border="0" width="100%" align="center">
+    <tr>
+        <td bgcolor="#bbbbbb" width="1%" nowrap align="center">
+            &nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="grid" style="margin: 0;">
+                <tr id="comment-header-111608"><td bgcolor="#f0f0f0">
+            Comment by  
+                                                        <a class="user-hover" rel="sesandi" id="word_commented_sesandi" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sesandi">Sandip Sen</a>
+                                        <font size="-2">
+            [
+                <font color="#336699">29/May/18</font>
+
+                            ]
+            </font>
+
+        </td></tr>
+        <tr id="comment-body-111608"><td bgcolor="#ffffff">
+            <p>Hi <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=kartik_morjaria" class="user-hover" rel="kartik_morjaria">Kartik Morjaria</a>,  </p>
+
+<p>Is there any update for the parent story?</p>
+
+<p>cc: <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sinshae" class="user-hover" rel="sinshae">Shaena Bansal</a></p>
+        </td></tr>
+                <tr id="comment-header-117010"><td bgcolor="#f0f0f0">
+            Comment by  
+                                                        <a class="user-hover" rel="beckere" id="word_commented_beckere" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=beckere">Reid Beckett</a>
+                                        <font size="-2">
+            [
+                <font color="#336699">12/Jun/18</font>
+
+                            ]
+            </font>
+
+        </td></tr>
+        <tr id="comment-body-117010"><td bgcolor="#ffffff">
+            <p><a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=gollasa" class="user-hover" rel="gollasa">Sai Teja Golla</a> See the description - I have described in detail and also added some placeholder code in dev53.  Please let me know if you have any further questions.</p>
+        </td></tr>
+                <tr id="comment-header-117441"><td bgcolor="#f0f0f0">
+            Comment by  
+                                                        <a class="user-hover" rel="sinshae" id="word_commented_sinshae" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sinshae">Shaena Bansal</a>
+                                        <font size="-2">
+            [
+                <font color="#336699">13/Jun/18</font>
+
+                            ]
+            </font>
+
+        </td></tr>
+        <tr id="comment-body-117441"><td bgcolor="#ffffff">
+            <p><a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=beckere" class="user-hover" rel="beckere">Reid Beckett</a> - we had assigned this one to <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sesandi" class="user-hover" rel="sesandi">Sandip Sen</a><br/>
+I don't think <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=gollasa" class="user-hover" rel="gollasa">Sai Teja Golla</a> is working on this one. </p>
+
+<p><a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sesandi" class="user-hover" rel="sesandi">Sandip Sen</a> - all yours! Let Reid know if you have any questions</p>
+        </td></tr>
+                <tr id="comment-header-117658"><td bgcolor="#f0f0f0">
+            Comment by  
+                                                        <a class="user-hover" rel="sesandi" id="word_commented_sesandi" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sesandi">Sandip Sen</a>
+                                        <font size="-2">
+            [
+                <font color="#336699">14/Jun/18</font>
+
+                            ]
+            </font>
+
+        </td></tr>
+        <tr id="comment-body-117658"><td bgcolor="#ffffff">
+            <p>Hi <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=beckere" class="user-hover" rel="beckere">Reid Beckett</a>,</p>
+
+<p>Why we are introducing the multiple triggers in Account object? As it is not adhere to the best practice for salesforce.<br/>
+Salesforce will not able to recognize which trigger will run first during run time.</p>
+
+<p>cc: <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=gollasa" class="user-hover" rel="gollasa">Sai Teja Golla</a></p>
+
+        </td></tr>
+                <tr id="comment-header-117714"><td bgcolor="#f0f0f0">
+            Comment by  
+                                                        <a class="user-hover" rel="beckere" id="word_commented_beckere" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=beckere">Reid Beckett</a>
+                                        <font size="-2">
+            [
+                <font color="#336699">14/Jun/18</font>
+
+                            ]
+            </font>
+
+        </td></tr>
+        <tr id="comment-body-117714"><td bgcolor="#ffffff">
+            <p><a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=gollasa" class="user-hover" rel="gollasa">Sai Teja Golla</a> <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sesandi" class="user-hover" rel="sesandi">Sandip Sen</a> <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=sinshae" class="user-hover" rel="sinshae">Shaena Bansal</a><br/>
+I believe that Sai is working on this one Sandip.<br/>
+To answer your question, <br/>
+1) Manulife doesn't have a centralized owner of SFDC custom code, and we have releases and parallel development with different groups, so the approach is to keep C360 code as isolated as possible.  We don't own the Account trigger - and we already have multiple triggers on Account so there is no 1 account trigger anyways - so it's the only practical thing to do<br/>
+2) The order should not matter in this case</p>
+        </td></tr>
+            </table>
+Generated at Fri Jun 15 23:46:31 EDT 2018 by Sai Teja Golla using JIRA 7.1.7#71011-sha1:2526d7c13af2ab43673b0a163ceecff6fe735c9c.
+
+</body>
+</html>
