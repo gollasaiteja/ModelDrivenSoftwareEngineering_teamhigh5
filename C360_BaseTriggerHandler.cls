@@ -13,7 +13,7 @@ public abstract class C360_BaseTriggerHandler {
                 onBeforeUpdate();
             }
             if(Trigger.isDelete){
-                onBeforeDelete();
+                onBeforeDelete(trigger.new, trigger.newmap, trigger.old, trigger.oldMap);
             }
             if(Trigger.isUndelete){
                 onBeforeUndelete();
@@ -53,7 +53,7 @@ public abstract class C360_BaseTriggerHandler {
     public abstract String getTriggerID();
     public virtual void onBeforeInsert () {}
     public virtual void onBeforeUpdate() {}
-    public virtual void onBeforeDelete() {}
+    public virtual void onBeforeDelete(List<SObject> newSObjectList, Map<Id,SObject> newSObjectMap,List<SObject> oldSObjectList, Map<Id,SObject> oldSObjectMap) {}
     public virtual void onBeforeUndelete() {}
 
     public virtual void onAfterInsert(List<SObject> newSObjectList, Map<Id,SObject> newSObjectMap,List<SObject> oldSObjectList, Map<Id,SObject> oldSObjectMap) {}
