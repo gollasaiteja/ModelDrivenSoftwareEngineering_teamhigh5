@@ -1,0 +1,6 @@
+/**
+ * Created by Reid Beckett, Jun 12/2018
+ */
+trigger C360_AssetContactRolesTrigger on AssetContactRoles__c (after insert, after update, after delete, after undelete) {
+	new C360_AssetContactRolesTriggerHandler().run();
+}

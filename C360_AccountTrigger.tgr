@@ -1,0 +1,38 @@
+/**
+ * Created by Reid Beckett, Jun 12/2018
+ */
+trigger C360_AccountTrigger on Account (after update) {
+    C360_AccountTriggerHandler handler = new C360_AccountTriggerHandler(trigger.isUpdate, trigger.New, trigger.Old, trigger.newMap, trigger.OldMap);
+    //new C360_AccountTriggerHandler().run();
+    Id recordTypeIdValue = Schema.SobjectType.Account.getRecordtypeInfosByname().get('Sponsor Customer').getRecordTypeId();
+    Map<Id,Account> oldObjectMap = trigger.OldMap;
+    Set<Id> accountIdSet = new Set<Id>();
+    Map<Id,Account> accountMap = new Map<Id,Account>();
+    for(Account accnt : trigger.new){
+       system.debug('record type==='+accnt.recordType.Name);
+        if(accnt.recordTypeId == recordTypeIdValue){
+            if(accnt.GB_Canada_Only_Indicator__c != oldObjectMap.get(accnt.Id).GB_Canada_Only_Indicator__c ||
+                accnt.GB_Data_Constraint_Indicator__c != oldObjectMap.get(accnt.Id).GB_Data_Constraint_Indicator__c ||
+                accnt.GB_OTIP_Indicator__c != oldObjectMap.get(accnt.Id).GB_OTIP_Indicator__c ||
+                accnt.Manulife_Staff_Indicator__c!= oldObjectMap.get(accnt.Id).Manulife_Staff_Indicator__c){
+                    accountIdSet.add(accnt.Id);
+                    accountMap.put(accnt.Id,accnt);
+                }
+        }
+    }
+    system.debug('accountIdLst====='+accountIdSet);
+    if(!system.isBatch() && !accountIdSet.isEmpty()){
+    database.ExecuteBatch(new C360_handleAccountIndicators(accountMap,accountIdSet),200);
+    }
+    List<Asset> assetList = new List<Asset>();
+     List<Asset> assetUpdateLst = new List<Asset>();
+    assetList = [Select GB_Canada_Only_Indicator__c, Id, GB_Data_Constraint_Indicator__c,GB_OTIP_Indicator__c,Manulife_Staff_Indicator__c from Asset Where Sponsor__c = : accountMap.keyset()];
+    for(Asset asst : assetList){
+       /* asst.GB_Canada_Only_Indicator__c = accountMap.get(asst.AccountId).GB_Canada_Only_Indicator__c;
+        asst.GB_Data_Constraint_Indicator__c = accountMap.get(asst.AccountId).GB_Data_Constraint_Indicator__c;
+        asst.GB_OTIP_Indicator__c = accountMap.get(asst.AccountId).GB_OTIP_Indicator__c;
+        asst.Manulife_Staff_Indicator__c  = accountMap.get(asst.AccountId).Manulife_Staff_Indicator__c ;*/
+        assetUpdateLst.add(asst);
+    }
+    update assetUpdateLst;
+}
