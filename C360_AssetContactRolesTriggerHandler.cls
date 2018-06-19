@@ -11,10 +11,15 @@ public class C360_AssetContactRolesTriggerHandler  extends C360_BaseTriggerHandl
 
     public override void onAfterUpdate(List<SObject> newSObjectList, Map<Id,SObject> newSObjectMap,List<SObject> oldSObjectList, Map<Id,SObject> oldSObjectMap){
         //TODO
+		getContactIds(newSObjectList);
     }
 
     public override void onAfterDelete(List<SObject> newSObjectList, Map<Id,SObject> newSObjectMap,List<SObject> oldSObjectList, Map<Id,SObject> oldSObjectMap){
         //TODO
+    }
+	public override void onBeforeDelete(List<SObject> newSObjectList, Map<Id,SObject> newSObjectMap,List<SObject> oldSObjectList, Map<Id,SObject> oldSObjectMap){
+        //TODO
+		getContactIds(newSObjectList);
     }
 
     public override void onAfterUndelete(){
@@ -29,7 +34,7 @@ public class C360_AssetContactRolesTriggerHandler  extends C360_BaseTriggerHandl
             assetIdSet.add(acr.Asset__c);
         }
         if(!System.isbatch()){
-            Database.executeBatch(new C360_handleAssetContactIndicators(assetIdSet,null),200);
+            Database.executeBatch(new C360_handleAccountIndicators(null,null,assetIdSet),200);
         }
     }
 
