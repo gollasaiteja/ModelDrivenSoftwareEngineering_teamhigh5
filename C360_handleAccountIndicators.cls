@@ -3,14 +3,14 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
     Map<Id,Account> sponsorAccountsMap = new Map<Id,Account>();
     Set<ID> sponsorIdSet = new Set<ID>();
     Set<ID> assetIdSet = new Set<ID>();
-	Boolean isDelete = false;
+	Boolean isToDelete = false;
     global String whereCondition;
     global String assetQuery;
-    global C360_handleAccountIndicators(Map<Id,Account> sponsorMap,Set<Id> sponsorIds,Set<Id> assetIds){
+    global C360_handleAccountIndicators(Map<Id,Account> sponsorMap,Set<Id> sponsorIds,Set<Id> assetIds, Boolean isDeleteVal){
         sponsorAccountsMap = sponsorMap;
         sponsorIdSet = sponsorIds;
         assetIdSet = assetIds;
-		//isDelete = isDeleteVal;
+		isToDelete = isDeleteVal;
         system.debug('assetIdSet==='+assetIdSet);
         if(assetIdSet != null){
             whereCondition = 'Id =: assetIdSet';
@@ -67,13 +67,22 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
         }
         system.debug('contactIdSet===='+contactIdSet+'assetContactMap====='+assetContactMap);
         for(Contact cntct : C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet)){
-            if(!assetContactMap.isEmpty() && assetContactMap.get(cntct.Id) != null){
-                cntct.GB_Canada_Only_Indicator__c = assetContactMap.get(cntct.Id).GB_Canada_Only_Indicator__c;
-                cntct.GB_Data_Constraint_Indicator__c = assetContactMap.get(cntct.Id).GB_Data_Constraint_Indicator__c;
-                cntct.GB_OTIP_Indicator__c = assetContactMap.get(cntct.Id).GB_OTIP_Indicator__c;
-                cntct.Manulife_Staff_Indicator__c  = assetContactMap.get(cntct.Id).Manulife_Staff_Indicator__c;
-                contactUpdateLst.add(cntct);
-            }            
+            if(!isToDelete){
+				if(!assetContactMap.isEmpty() && assetContactMap.get(cntct.Id) != null){
+					cntct.GB_Canada_Only_Indicator__c = assetContactMap.get(cntct.Id).GB_Canada_Only_Indicator__c;
+					cntct.GB_Data_Constraint_Indicator__c = assetContactMap.get(cntct.Id).GB_Data_Constraint_Indicator__c;
+					cntct.GB_OTIP_Indicator__c = assetContactMap.get(cntct.Id).GB_OTIP_Indicator__c;
+					cntct.Manulife_Staff_Indicator__c  = assetContactMap.get(cntct.Id).Manulife_Staff_Indicator__c;
+					contactUpdateLst.add(cntct);
+				}
+			}else{
+				cntct.GB_Canada_Only_Indicator__c = false;
+				cntct.GB_Data_Constraint_Indicator__c = false;
+				cntct.GB_OTIP_Indicator__c = false;
+				cntct.Manulife_Staff_Indicator__c  = false;
+				contactUpdateLst.add(cntct);
+			}
+			            
         }
         system.debug('contactUpdateLst==='+contactUpdateLst);
 		system.debug('custAccUpdateLst==='+custAccUpdateLst);
