@@ -3,12 +3,14 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
     Map<Id,Account> sponsorAccountsMap = new Map<Id,Account>();
     Set<ID> sponsorIdSet = new Set<ID>();
     Set<ID> assetIdSet = new Set<ID>();
+	Boolean isDelete = false;
     global String whereCondition;
     global String assetQuery;
     global C360_handleAccountIndicators(Map<Id,Account> sponsorMap,Set<Id> sponsorIds,Set<Id> assetIds){
         sponsorAccountsMap = sponsorMap;
         sponsorIdSet = sponsorIds;
         assetIdSet = assetIds;
+		//isDelete = isDeleteVal;
         system.debug('assetIdSet==='+assetIdSet);
         if(assetIdSet != null){
             whereCondition = 'Id =: assetIdSet';
@@ -30,7 +32,8 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
     global void execute(Database.BatchableContext BC, SObject[] Scope){
         Set<Id> custAccntIdSet = new Set<Id>();
         Map<Id,Asset> assetCustomerMap = new Map<Id,Asset>();
-        Map<Id,Account> assetMap = new Map<Id,Account>();
+        Map<Id,Asset> assetMap = new Map<Id,Asset>();
+		Map<Id,Asset> assetContactMap = new Map<Id,Asset>();
         List<Account> custAccUpdateLst = new List<Account>();
         Set<Id> assetIdSet = new Set<Id>();
         Set<Id> contactIdSet = new Set<Id>();
@@ -42,11 +45,12 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
                    custAccntIdSet.add(asst.AccountId); 
                    assetCustomerMap.put(asst.AccountId,asst);
                    assetIdSet.add(asst.Id);
-                  // assetMap.put(asst.AccountId,accnt);
+                   assetMap.put(asst.Id,asst);
                 }
             }
         //}
         system.debug('assetCustomerMap====='+assetCustomerMap);
+		system.debug('assetMap====='+assetMap);
         
         for(Account custAccounts : C360_SponsorIndicatorsUtil.findRelatedCustomerAccountsList(custAccntIdSet)){
             if(!assetCustomerMap.isEmpty() && assetCustomerMap.get(custAccounts.Id) != null){
@@ -59,18 +63,20 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
         }
         for(AssetContactRoles__c asr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet)){
             contactIdSet.add(asr.Contact__c);
+			assetContactMap.put(asr.Contact__c,assetMap.get(asr.Asset__c));
         }
-        system.debug('contactIdSet===='+contactIdSet+'assetCustomerMap====='+assetCustomerMap);
+        system.debug('contactIdSet===='+contactIdSet+'assetContactMap====='+assetContactMap);
         for(Contact cntct : C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet)){
-            if(!assetCustomerMap.isEmpty() && assetCustomerMap.get(cntct.AccountId) != null){
-                cntct.GB_Canada_Only_Indicator__c = assetCustomerMap.get(cntct.AccountId).GB_Canada_Only_Indicator__c;
-                cntct.GB_Data_Constraint_Indicator__c = assetCustomerMap.get(cntct.AccountId).GB_Data_Constraint_Indicator__c;
-                cntct.GB_OTIP_Indicator__c = assetCustomerMap.get(cntct.AccountId).GB_OTIP_Indicator__c;
-                cntct.Manulife_Staff_Indicator__c  = assetCustomerMap.get(cntct.AccountId).Manulife_Staff_Indicator__c;
+            if(!assetContactMap.isEmpty() && assetContactMap.get(cntct.Id) != null){
+                cntct.GB_Canada_Only_Indicator__c = assetContactMap.get(cntct.Id).GB_Canada_Only_Indicator__c;
+                cntct.GB_Data_Constraint_Indicator__c = assetContactMap.get(cntct.Id).GB_Data_Constraint_Indicator__c;
+                cntct.GB_OTIP_Indicator__c = assetContactMap.get(cntct.Id).GB_OTIP_Indicator__c;
+                cntct.Manulife_Staff_Indicator__c  = assetContactMap.get(cntct.Id).Manulife_Staff_Indicator__c;
                 contactUpdateLst.add(cntct);
             }            
         }
         system.debug('contactUpdateLst==='+contactUpdateLst);
+		system.debug('custAccUpdateLst==='+custAccUpdateLst);
         try{
             if(custAccUpdateLst != null && !custAccUpdateLst.isEmpty()){
                 update custAccUpdateLst;
