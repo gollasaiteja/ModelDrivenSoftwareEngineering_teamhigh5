@@ -46,6 +46,6 @@ public class C360_SponsorIndicatorsUtil {
     }
     
     public static List<AssetContactRoles__c> findRelatedAssetContactRolesByContacts(Set<Id> contactIds){
-        return [Select Id, Asset__c, Contact__c,End_Date__c from AssetContactRoles__c WHERE Contact__c =: contactIds];
+        return [Select Id, Asset__c, Contact__c,End_Date__c,Asset__r.GB_Canada_Only_Indicator__c,Asset__r.GB_Data_Constraint_Indicator__c,Asset__r.GB_OTIP_Indicator__c,Asset__r.Manulife_Staff_Indicator__c from AssetContactRoles__c WHERE Contact__c =: contactIds];
     }
 }
