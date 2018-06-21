@@ -1,0 +1,41 @@
+If indicators on contact gets updated ---> update it's Customer Account Indicators which will also update Asset Indicators (since those are formulas to Customer Account)
+As indicators are updated on contact this should be the triggering point.
+
+If trigger is on AssetContactRoles__c then we will not know if they are any updated to indicators on contact so it's not possible to update Asset and Account.
+Even though, Contact and Asset association can be updated/deleted 
+
+
+A1 - As1 - C1
+      As1   - C2
+	  
+	  0011f000004f4a7
+	  02i1f000000l3W8
+	  0031f000003xzOT
+	  0011f000004f4aC
+	  
+	  
+	  
+1. If Asset Contact Role is inserted/updated/deleted/undeleted:
+	a. Do we need to update Customer Account related to Asset accordingly? - this is implemented for insert and update
+	b. Do we need to update Customer Account related to Contact accordingly?
+2. 
+
+A1, A2, C1, C2
+
+A1C1
+A2C1
+A3C1
+
+
+re evaluate the other ASR --  tirgger -->fires
+
+update contact trigger/ class -- 
+
+
+update account class
+
+end dated role -- end_date_role__c as deleted.(ACR) and Asset
+
+only query the asset where asset end date is null or today < end date 
+
+if there an end date -- its dead.

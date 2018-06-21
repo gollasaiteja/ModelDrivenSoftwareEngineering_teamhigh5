@@ -32,4 +32,20 @@ public class C360_SponsorIndicatorsUtil {
         //TODO
         return null;
     }
+    
+    public static List<Account> findRelatedCustomerAccountsList(Set<Id> custAccountIdSet){
+        return [Select GB_Canada_Only_Indicator__c, Id, GB_Data_Constraint_Indicator__c,GB_OTIP_Indicator__c,Manulife_Staff_Indicator__c from Account WHERE Id =: custAccountIdSet];
+    }
+    
+    public static List<AssetContactRoles__c> findRelatedAssetContactRoles(Set<Id> assetIds){
+        return [Select Id, Asset__c, Contact__c,End_Date__c from AssetContactRoles__c WHERE Asset__c =: assetIds];
+    }
+    
+    public static List<Contact> findRelatedContactsByContactIds(Set<Id> contactIds){
+        return [Select Id,AccountId from Contact where Id =: contactIds];
+    }
+    
+    public static List<AssetContactRoles__c> findRelatedAssetContactRolesByContacts(Set<Id> contactIds){
+        return [Select Id, Asset__c, Contact__c,End_Date__c from AssetContactRoles__c WHERE Contact__c =: contactIds];
+    }
 }
