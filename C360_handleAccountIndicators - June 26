@@ -56,7 +56,7 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
         system.debug('custAccntIdSet from sponsor account====='+custAccntIdSet);
         system.debug('assetMap====='+assetMap);        
         
-        for(AssetContactRoles__c asr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet)){
+        /**for(AssetContactRoles__c asr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet)){
             if(asr.End_Date__c != null && asr.End_Date__c < system.today()){
                 endContactIdSet.add(asr.Contact__c);
                 endAssetContactMap.put(asr.Contact__c,assetMap.get(asr.Asset__c));
@@ -77,7 +77,7 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
         else{
             contactsList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet);
         }
-        system.debug('endContactsList==='+endContactsList+'contactsList====='+contactsList);
+        system.debug('endContactsList==='+endContactsList+'contactsList====='+contactsList);**/
         /**for(Contact cntct : contactsList){
 			if(!assetContactMap.isEmpty() && assetContactMap.get(cntct.Id) != null){
 				cntct.GB_Canada_Only_Indicator__c = assetContactMap.get(cntct.Id).GB_Canada_Only_Indicator__c;
@@ -92,6 +92,14 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
 				assetCustomerMap.put(cntct.AccountId,assetContactMap.get(cntct.Id));
 			}                        
         }**/
+		
+		for(AssetContactRoles__c asr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet)){            
+			contactIdSet.add(asr.Contact__c);            
+        }
+        system.debug('contactIdSet===='+contactIdSet);
+        List<Contact> contactsList = new List<Contact>();
+		contactsList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet);
+		system.debug('endContactsList==='+endContactsList+'contactsList====='+contactsList);
 		Set<Id> contactIds = new Set<Id>();
 		for(Contact endCntct : contactsList){
             contactIds.add(endCntct.Id);
@@ -124,10 +132,9 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
                 contactUpdateLst.add(cnt);
             }
         }
-        system.debug('contactUpdateLst 127 line==='+contactUpdateLst);
-        system.debug('contactUpdateLst 128 line==='+contactUpdateLst);
+        system.debug('contactUpdateLst 135 line==='+contactUpdateLst);
         Set<Id> endContactIds = new Set<Id>();
-        for(Contact endCntct : endContactsList){
+        /**for(Contact endCntct : endContactsList){
             endContactIds.add(endCntct.Id);
             if(endCntct.Account.Recordtype.Name == 'Customer'){
                 custAccntIdSet.add(endCntct.AccountId);
@@ -159,7 +166,7 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
             }
         }
         system.debug('contactUpdateLst 2222==='+contactUpdateLst);
-        system.debug('custAccntIdSet====='+custAccntIdSet);
+        system.debug('custAccntIdSet====='+custAccntIdSet);**/
         /**for(Account custAccounts : C360_SponsorIndicatorsUtil.findRelatedCustomerAccountsList(custAccntIdSet)){
             if(!assetCustomerMap.isEmpty() && assetCustomerMap.get(custAccounts.Id) != null){
                 custAccounts.GB_Canada_Only_Indicator__c = assetCustomerMap.get(custAccounts.Id).GB_Canada_Only_Indicator__c;
