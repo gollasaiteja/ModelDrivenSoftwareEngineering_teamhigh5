@@ -99,13 +99,13 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
         system.debug('contactIdSet===='+contactIdSet);
         List<Contact> contactsList = new List<Contact>();
 		contactsList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet);
-		system.debug('endContactsList==='+endContactsList+'contactsList====='+contactsList);
+		system.debug('contactsList====='+contactsList);
 		Set<Id> contactIds = new Set<Id>();
-		for(Contact endCntct : contactsList){
-            contactIds.add(endCntct.Id);
-            if(endCntct.Account.Recordtype.Name == 'Customer'){
-                custAccntIdSet.add(endCntct.AccountId);
-                assetCustomerMap.put(endCntct.AccountId,assetContactMap.get(endCntct.Id));
+		for(Contact cntct : contactsList){
+            contactIds.add(cntct.Id);
+            if(cntct.Account.Recordtype.Name == 'Customer'){
+                custAccntIdSet.add(cntct.AccountId);
+                assetCustomerMap.put(cntct.AccountId,assetContactMap.get(cntct.Id));
             }
         }
         system.debug('custAccntIdSet end contacts 103 line====='+custAccntIdSet);
