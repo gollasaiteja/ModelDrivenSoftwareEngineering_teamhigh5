@@ -1,0 +1,22 @@
+public class C360_AssetTriggerHandler extends C360_BaseTriggerHandler {
+      
+    public override String getTriggerID() {
+        return 'Asset';
+    }
+        
+    public override void onAfterUpdate(List<SObject> newSObjectList, Map<Id,SObject> newSObjectMap,List<SObject> oldSObjectList, Map<Id,SObject> oldSObjectMap){
+        //TODO
+		Set<Id> assetIdSet = new Set<Id>();
+		for(Asset asst : (List<Account>)newSObjectList){
+			Asset oldAsset = (Asset)oldSObjectMap.get(asst.Id);
+			if(asst.Coverage_End_Date__c != oldAsset.Coverage_End_Date__c){
+				assetIdSet.add(asst);
+			}
+		}		
+		system.debug('assetIdSet====='+assetIdSet);
+		if(!system.isBatch() && !assetIdSet.isEmpty()){
+			database.ExecuteBatch(new C360_handleAccountIndicators(null,null,null,assetIdSet),200);
+		}
+    }
+
+}

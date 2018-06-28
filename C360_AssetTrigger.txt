@@ -1,0 +1,3 @@
+trigger C360_AssetTrigger on Asset (after update) {
+    new C360_AssetTriggerHandler().run();    
+}
