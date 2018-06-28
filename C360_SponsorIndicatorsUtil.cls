@@ -38,7 +38,7 @@ public class C360_SponsorIndicatorsUtil {
     }
     
     public static List<AssetContactRoles__c> findRelatedAssetContactRoles(Set<Id> assetIds){
-        return [Select Id, Asset__c, Contact__c,End_Date__c from AssetContactRoles__c WHERE Asset__c =: assetIds AND (End_Date__c = null OR End_Date__c >: system.today()) AND (Asset__r.Coverage_End_Date__c = null OR Asset__r.Coverage_End_Date__c >: system.today())];
+        return [Select Id, Asset__c, Contact__c,End_Date__c from AssetContactRoles__c WHERE Asset__c =: assetIds];
     }
     
     public static List<Contact> findRelatedContactsByContactIds(Set<Id> contactIds){
