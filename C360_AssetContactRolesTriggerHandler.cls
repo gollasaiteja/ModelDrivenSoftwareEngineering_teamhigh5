@@ -45,7 +45,7 @@ public class C360_AssetContactRolesTriggerHandler  extends C360_BaseTriggerHandl
         }*/
         system.debug('assetIdSet in ASC ===== '+assetIdSet);
         if(!System.isbatch()){
-            Database.executeBatch(new C360_handleAccountIndicators(null,null,assetIdSet),200);
+            Database.executeBatch(new C360_handleAccountIndicators(null,null,assetIdSet,null),200);
         }
     }
 
