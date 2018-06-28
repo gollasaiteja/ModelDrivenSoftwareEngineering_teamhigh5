@@ -28,7 +28,7 @@ public class C360_AccountTriggerHandler extends C360_BaseTriggerHandler {
 		}
 		system.debug('accountIdLst====='+accountIdSet);
 		if(!system.isBatch() && !accountIdSet.isEmpty()){
-			database.ExecuteBatch(new C360_handleAccountIndicators(accountMap,accountIdSet,null),200);
+			database.ExecuteBatch(new C360_handleAccountIndicators(accountMap,accountIdSet,null,null),200);
 		}
     }
 
