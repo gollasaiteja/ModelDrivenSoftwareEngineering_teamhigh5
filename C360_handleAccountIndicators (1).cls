@@ -3,27 +3,31 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
     Map<Id,Account> sponsorAccountsMap = new Map<Id,Account>();
     Set<ID> sponsorIdSet = new Set<ID>();
     Set<ID> assetIdSet = new Set<ID>();
+    Set<ID> assetTriggerIdSet = new Set<ID>();
     //Boolean isToDelete = false;
     global String whereCondition;
     global String assetQuery;
-    global C360_handleAccountIndicators(Map<Id,Account> sponsorMap,Set<Id> sponsorIds,Set<Id> assetIds/*, Boolean isDeleteVal*/){
+    global Date todayDate = system.today();
+    global C360_handleAccountIndicators(Map<Id,Account> sponsorMap,Set<Id> sponsorIds,Set<Id> assetIds, Set<Id> assetTriggerIds/*, Boolean isDeleteVal*/){
         sponsorAccountsMap = sponsorMap;
         sponsorIdSet = sponsorIds;
         assetIdSet = assetIds;
+        assetTriggerIdSet = assetTriggerIds;
         //isToDelete = isDeleteVal;
         system.debug('assetIdSet==='+assetIdSet);
         if(assetIdSet != null){
             whereCondition = 'Id =: assetIdSet';
         }
+        else if(assetTriggerIdSet != null){
+            whereCondition = 'Id =: assetTriggerIdSet';
+        }
         else{
             whereCondition = 'Sponsor__c =: sponsorIdSet';
         }
         assetQuery = 'Select Account.recordType.Name,GB_Canada_Only_Indicator__c, Id, GB_Data_Constraint_Indicator__c,GB_OTIP_Indicator__c,Manulife_Staff_Indicator__c from Asset Where '+whereCondition;
+        system.debug('query string======'+assetQuery);
     }
-    
-    //sponsorIdLst = sponsorAccountsMap.keyset();
-    //public String assetQuery = 'Select Account.recordType.Name,GB_Canada_Only_Indicator__c, Id, GB_Data_Constraint_Indicator__c,GB_OTIP_Indicator__c,Manulife_Staff_Indicator__c from Asset Where Sponsor__c =: sponsorIdLst';
-    
+        
     global Database.QueryLocator start(Database.BatchableContext BC){
         system.debug('assetQuery===='+assetQuery);
         return Database.getQueryLocator(assetQuery);
@@ -40,108 +44,95 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
         Set<Id> contactIdSet = new Set<Id>();
         Set<Id> endContactIdSet = new Set<Id>();
         List<Contact> contactUpdateLst = new List<Contact>();
-        //for(Account accnt : sponsorAccountsMap.values()){
-            for(Asset asst : (List<Asset>)Scope){
-               system.debug('asst.Account.Recordtype.Name======'+asst.Account.Recordtype.Name);
-                if(asst.Account.Recordtype.Name == 'Customer'){
-                   custAccntIdSet.add(asst.AccountId); 
-                   assetCustomerMap.put(asst.AccountId,asst);
-                   assetIdSet.add(asst.Id);
-                   assetMap.put(asst.Id,asst);
-                }
+        for(Asset asst : (List<Asset>)Scope){
+           system.debug('asst.Account.Recordtype.Name======'+asst.Account.Recordtype.Name);
+            if(asst.Account.Recordtype.Name == 'Customer'){
+               custAccntIdSet.add(asst.AccountId); 
+               assetCustomerMap.put(asst.AccountId,asst);
+               assetIdSet.add(asst.Id);
+               assetMap.put(asst.Id,asst);
             }
-        //}
+        }
         
-        system.debug('assetMap====='+assetMap);        
+        system.debug('custAccntIdSet from sponsor account====='+custAccntIdSet);
+        system.debug('assetMap====='+assetMap);      
         
-        for(AssetContactRoles__c asr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet)){
-            if(asr.End_Date__c != null && asr.End_Date__c > system.today()){
-                endContactIdSet.add(asr.Contact__c);
-                endAssetContactMap.put(asr.Contact__c,assetMap.get(asr.Asset__c));
+        for(AssetContactRoles__c asr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet)){            
+            system.debug('asr====='+asr);
+            if(assetTriggerIdset != null || assetIdSet != null){
+                contactIdSet.add(asr.Contact__c);  
+                system.debug('contactIdSet 1111111111111111====='+contactIdSet);
             }
             else{
-                contactIdSet.add(asr.Contact__c);
-                assetContactMap.put(asr.Contact__c,assetMap.get(asr.Asset__c));
-            }
-            
-        }
-		system.debug('endContactIdSet===='+endContactIdSet+'endAssetContactMap====='+endAssetContactMap);
-        system.debug('contactIdSet===='+contactIdSet+'assetContactMap====='+assetContactMap);
-        List<Contact> contactsList = new List<Contact>();
-        List<Contact> endContactsList = new List<Contact>();
-        if(!endContactIdSet.isEmpty() && endContactIdSet != null){
-            endContactsList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(endContactIdSet);
-        }
-        else{
-            contactsList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet);
-        }
-		system.debug('endContactsList==='+endContactsList+'contactsList====='+contactsList);
-        for(Contact cntct : contactsList){
-            //if(!isToDelete){
-                if(!assetContactMap.isEmpty() && assetContactMap.get(cntct.Id) != null){
-                    cntct.GB_Canada_Only_Indicator__c = assetContactMap.get(cntct.Id).GB_Canada_Only_Indicator__c;
-                    cntct.GB_Data_Constraint_Indicator__c = assetContactMap.get(cntct.Id).GB_Data_Constraint_Indicator__c;
-                    cntct.GB_OTIP_Indicator__c = assetContactMap.get(cntct.Id).GB_OTIP_Indicator__c;
-                    cntct.Manulife_Staff_Indicator__c  = assetContactMap.get(cntct.Id).Manulife_Staff_Indicator__c;
-                    contactUpdateLst.add(cntct);
+                if((asr.End_Date__c == null || asr.End_Date__c > system.today()) && (asr.Asset__r.Coverage_End_Date__c == null || asr.Asset__r.Coverage_End_Date__c > system.today())){
+                    contactIdSet.add(asr.Contact__c);
+                    system.debug('contactIdSet 2222222222222====='+contactIdSet);
                 }
-				if(cntct.Account.Recordtype.Name == 'Customer'){
-					custAccntIdSet.add(cntct.AccountId);
-					assetCustomerMap.put(cntct.AccountId,assetContactMap.get(cntct.Id));
-				}
-            /*}else{
-                cntct.GB_Canada_Only_Indicator__c = false;
-                cntct.GB_Data_Constraint_Indicator__c = false;
-                cntct.GB_OTIP_Indicator__c = false;
-                cntct.Manulife_Staff_Indicator__c  = false;
-                contactUpdateLst.add(cntct);
-            }*/
-                        
+            }                     
         }
-		system.debug('contactUpdateLst 1111==='+contactUpdateLst);
-        Set<Id> endContactIds = new Set<Id>();
-        for(Contact endCntct : endContactsList){
-            endContactIds.add(endCntct.Id);
-			if(endCntct.Account.Recordtype.Name == 'Customer'){
-				custAccntIdSet.add(endCntct.AccountId);
-				assetCustomerMap.put(endCntct.AccountId,assetContactMap.get(endCntct.Id));
-			}
+        system.debug('contactIdSet===='+contactIdSet);
+        List<Contact> contactsList = new List<Contact>();
+        contactsList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet);
+        system.debug('contactsList====='+contactsList);
+        Set<Id> contactIds = new Set<Id>();
+        for(Contact cntct : contactsList){
+            contactIds.add(cntct.Id);
+            if(cntct.Account.Recordtype.Name == 'Customer'){
+                custAccntIdSet.add(cntct.AccountId);
+                assetCustomerMap.put(cntct.AccountId,assetContactMap.get(cntct.Id));
+            }
         }
-        if(!endContactIds.isEmpty() && endContactIds != null){
-            for(Contact cnt : endContactsList){
-				cnt.GB_Canada_Only_Indicator__c =  false;
-				cnt.GB_Data_Constraint_Indicator__c = false;
-				cnt.GB_OTIP_Indicator__c = false;
-				cnt.Manulife_Staff_Indicator__c = false;
-				for(AssetContactRoles__c acr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRolesByContacts(endContactIds)){                
-                    if(acr.Asset__r.GB_Canada_Only_Indicator__c){
-                        cnt.GB_Canada_Only_Indicator__c = acr.Asset__r.GB_Canada_Only_Indicator__c; 
-                    }
-                    if(acr.Asset__r.GB_Data_Constraint_Indicator__c){
-                        cnt.GB_Data_Constraint_Indicator__c = acr.Asset__r.GB_Data_Constraint_Indicator__c;
-                    }
-                    if(acr.Asset__r.GB_OTIP_Indicator__c){
-                        cnt.GB_OTIP_Indicator__c = acr.Asset__r.GB_OTIP_Indicator__c;
-                    }
-                    if(acr.Asset__r.Manulife_Staff_Indicator__c){
-                        cnt.Manulife_Staff_Indicator__c = acr.Asset__r.Manulife_Staff_Indicator__c;
+        system.debug('custAccntIdSet end contacts 103 line====='+custAccntIdSet);
+        if(!contactIds.isEmpty() && contactIds != null){
+            for(Contact cnt : contactsList){
+                cnt.GB_Canada_Only_Indicator__c =  false;
+                cnt.GB_Data_Constraint_Indicator__c = false;
+                cnt.GB_OTIP_Indicator__c = false;
+                cnt.Manulife_Staff_Indicator__c = false;
+                for(AssetContactRoles__c acr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRolesByContacts(contactIds)){                
+                    if(cnt.Id == acr.Contact__c){
+                        if(acr.Asset__r.GB_Canada_Only_Indicator__c){
+                            cnt.GB_Canada_Only_Indicator__c = acr.Asset__r.GB_Canada_Only_Indicator__c; 
+                        }
+                        if(acr.Asset__r.GB_Data_Constraint_Indicator__c){
+                            cnt.GB_Data_Constraint_Indicator__c = acr.Asset__r.GB_Data_Constraint_Indicator__c;
+                        }
+                        if(acr.Asset__r.GB_OTIP_Indicator__c){
+                            cnt.GB_OTIP_Indicator__c = acr.Asset__r.GB_OTIP_Indicator__c;
+                        }
+                        if(acr.Asset__r.Manulife_Staff_Indicator__c){
+                            cnt.Manulife_Staff_Indicator__c = acr.Asset__r.Manulife_Staff_Indicator__c;
+                        }
                     }                   
                 }
-				contactUpdateLst.add(cnt);
+                contactUpdateLst.add(cnt);
             }
         }
-		system.debug('contactUpdateLst 2222==='+contactUpdateLst);
-		system.debug('custAccntIdSet====='+custAccntIdSet);
-		for(Account custAccounts : C360_SponsorIndicatorsUtil.findRelatedCustomerAccountsList(custAccntIdSet)){
-            if(!assetCustomerMap.isEmpty() && assetCustomerMap.get(custAccounts.Id) != null){
-                custAccounts.GB_Canada_Only_Indicator__c = assetCustomerMap.get(custAccounts.Id).GB_Canada_Only_Indicator__c;
-                custAccounts.GB_Data_Constraint_Indicator__c = assetCustomerMap.get(custAccounts.Id).GB_Data_Constraint_Indicator__c;
-                custAccounts.GB_OTIP_Indicator__c = assetCustomerMap.get(custAccounts.Id).GB_OTIP_Indicator__c;
-                custAccounts.Manulife_Staff_Indicator__c  = assetCustomerMap.get(custAccounts.Id).Manulife_Staff_Indicator__c;
-                custAccUpdateLst.add(custAccounts);
-            }            
+        system.debug('contactUpdateLst 135 line==='+contactUpdateLst);
+        for(Account custAccounts : C360_SponsorIndicatorsUtil.findRelatedCustomerAccountsList(custAccntIdSet)){
+            custAccounts.GB_Canada_Only_Indicator__c =  false;
+            custAccounts.GB_Data_Constraint_Indicator__c = false;
+            custAccounts.GB_OTIP_Indicator__c = false;
+            custAccounts.Manulife_Staff_Indicator__c = false;
+            for(Asset ast : C360_SponsorIndicatorsUtil.findRelatedAssetByCustomers(custAccntIdSet)){
+                if(ast.AccountId == custAccounts.Id){
+                    if(ast.GB_Canada_Only_Indicator__c){
+                        custAccounts.GB_Canada_Only_Indicator__c = ast.GB_Canada_Only_Indicator__c; 
+                    }
+                    if(ast.GB_Data_Constraint_Indicator__c){
+                        custAccounts.GB_Data_Constraint_Indicator__c = ast.GB_Data_Constraint_Indicator__c;
+                    }
+                    if(ast.GB_OTIP_Indicator__c){
+                        custAccounts.GB_OTIP_Indicator__c = ast.GB_OTIP_Indicator__c;
+                    }
+                    if(ast.Manulife_Staff_Indicator__c){
+                        custAccounts.Manulife_Staff_Indicator__c = ast.Manulife_Staff_Indicator__c;
+                    }
+                }               
+            }           
+            custAccUpdateLst.add(custAccounts);
         }
-		system.debug('assetCustomerMap====='+assetCustomerMap);
+        system.debug('assetCustomerMap====='+assetCustomerMap);
         system.debug('contactUpdateLst==='+contactUpdateLst);
         system.debug('custAccUpdateLst==='+custAccUpdateLst);
         try{
