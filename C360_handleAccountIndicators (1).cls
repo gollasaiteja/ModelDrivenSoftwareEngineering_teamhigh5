@@ -137,16 +137,16 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
             custAccounts.GB_OTIP_Indicator__c = false;
             custAccounts.Manulife_Staff_Indicator__c = false;
 			if(assetAccountIdMap.get(custAccounts.Id) != null){
-				if(assetAccountIdMap.get(custAccounts.Id).Asset__r.GB_Canada_Only_Indicator__c){
+				if(assetAccountIdMap.get(custAccounts.Id).GB_Canada_Only_Indicator__c){
 					custAccounts.GB_Canada_Only_Indicator__c = true;
 				}
-				if(assetAccountIdMap.get(custAccounts.Id).Asset__r.GB_Data_Constraint_Indicator__c){
+				if(assetAccountIdMap.get(custAccounts.Id).GB_Data_Constraint_Indicator__c){
 					custAccounts.GB_Data_Constraint_Indicator__c = true;
 				}
-				if(assetAccountIdMap.get(custAccounts.Id).Asset__r.GB_OTIP_Indicator__c){
+				if(assetAccountIdMap.get(custAccounts.Id).GB_OTIP_Indicator__c){
 					custAccounts.GB_OTIP_Indicator__c = true;
 				}
-				if(assetAccountIdMap.get(custAccounts.Id).Asset__r.Manulife_Staff_Indicator__c){
+				if(assetAccountIdMap.get(custAccounts.Id).Manulife_Staff_Indicator__c){
 					custAccounts.Manulife_Staff_Indicator__c = true;
 				}
 			}
