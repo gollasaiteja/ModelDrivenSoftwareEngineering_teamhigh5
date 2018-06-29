@@ -1,0 +1,116 @@
+43.0 APEX_CODE,FINEST;APEX_PROFILING,FINEST;CALLOUT,FINEST;DB,FINEST;NBA,INFO;SYSTEM,FINEST;VALIDATION,FINEST;VISUALFORCE,FINEST;WAVE,INFO;WORKFLOW,FINEST
+12:06:36.0 (446892)|USER_INFO|[EXTERNAL]|0051f000000IdnF|sai_teja_golla@manulife-cdn.com.dev53|Eastern Standard Time|GMT-04:00
+12:06:36.0 (484004)|EXECUTION_STARTED
+12:06:36.0 (491196)|CODE_UNIT_STARTED|[EXTERNAL]|01p1f000000990u|C360_handleAccountIndicators
+12:06:36.0 (2273129)|HEAP_ALLOCATE|[72]|Bytes:3
+12:06:36.0 (2334878)|HEAP_ALLOCATE|[77]|Bytes:152
+12:06:36.0 (2349361)|HEAP_ALLOCATE|[342]|Bytes:408
+12:06:36.0 (2360917)|HEAP_ALLOCATE|[355]|Bytes:408
+12:06:36.0 (2371961)|HEAP_ALLOCATE|[467]|Bytes:48
+12:06:36.0 (2399247)|HEAP_ALLOCATE|[139]|Bytes:6
+12:06:36.0 (3751135)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:270
+12:06:36.0 (26832788)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:11
+12:06:36.0 (26876870)|SYSTEM_METHOD_ENTRY|[15]|BatchableContextImpl.BatchableContextImpl()
+12:06:36.0 (26889735)|STATEMENT_EXECUTE|[15]
+12:06:36.0 (26906424)|SYSTEM_METHOD_EXIT|[15]|BatchableContextImpl
+12:06:36.0 (26923510)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+12:06:36.0 (26933005)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+12:06:36.0 (26948109)|VARIABLE_SCOPE_BEGIN|[31]|this|Database.BatchableContextImpl|true|false
+12:06:36.0 (27021470)|VARIABLE_ASSIGNMENT|[31]|this|{}|0x2f3609f
+12:06:36.0 (27037431)|VARIABLE_SCOPE_BEGIN|[31]|jobId|Id|false|false
+12:06:36.0 (27170884)|VARIABLE_ASSIGNMENT|[31]|jobId|"7071f000000aADgAAM"
+12:06:36.0 (27180456)|VARIABLE_SCOPE_BEGIN|[31]|childJobId|Id|false|false
+12:06:36.0 (27191016)|VARIABLE_ASSIGNMENT|[31]|childJobId|null
+12:06:36.0 (27649377)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:57
+12:06:36.0 (27676320)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+12:06:36.0 (27682441)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:55
+12:06:36.0 (27695657)|METHOD_ENTRY|[1]|01p1f000000990u|C360_handleAccountIndicators.C360_handleAccountIndicators()
+12:06:36.0 (27703060)|STATEMENT_EXECUTE|[1]
+12:06:36.0 (27707857)|STATEMENT_EXECUTE|[1]
+12:06:36.0 (27712892)|METHOD_EXIT|[1]|C360_handleAccountIndicators
+12:06:36.0 (27719932)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:32
+12:06:36.0 (27724482)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+12:06:36.0 (27732977)|VARIABLE_SCOPE_BEGIN|[31]|this|C360_handleAccountIndicators|true|false
+12:06:36.0 (27830732)|VARIABLE_ASSIGNMENT|[31]|this|{"assetQuery":"Select Account.recor (165 more) ...","assetTriggerIdSet":"0x7826895d","todayDate":"2018-06-29T00:00:00.000Z","whereCondition":"Id =: assetTriggerId (3 more) ..."}|0x61c8f95e
+12:06:36.0 (27842737)|VARIABLE_SCOPE_BEGIN|[31]|BC|Database.BatchableContext|true|false
+12:06:36.0 (27903298)|VARIABLE_ASSIGNMENT|[31]|BC|{"jobId":"7071f000000aADgAAM"}|0x2f3609f
+12:06:36.0 (27916510)|STATEMENT_EXECUTE|[31]
+12:06:36.0 (27919464)|STATEMENT_EXECUTE|[32]
+12:06:36.0 (27924605)|HEAP_ALLOCATE|[32]|Bytes:14
+12:06:36.0 (27949405)|HEAP_ALLOCATE|[32]|Bytes:199
+12:06:36.0 (27974205)|HEAP_ALLOCATE|[50]|Bytes:5
+12:06:36.0 (27995574)|HEAP_ALLOCATE|[56]|Bytes:5
+12:06:36.0 (28004151)|HEAP_ALLOCATE|[64]|Bytes:7
+12:06:36.0 (28039776)|SYSTEM_METHOD_ENTRY|[32]|System.debug(ANY)
+12:06:36.0 (28069521)|USER_DEBUG|[32]|DEBUG|assetQuery====Select Account.recordType.Name,GB_Canada_Only_Indicator__c, Id, GB_Data_Constraint_Indicator__c,GB_OTIP_Indicator__c,Manulife_Staff_Indicator__c from Asset Where Id =: assetTriggerIdSet
+12:06:36.0 (28081112)|SYSTEM_METHOD_EXIT|[32]|System.debug(ANY)
+12:06:36.0 (28086594)|STATEMENT_EXECUTE|[33]
+12:06:36.0 (28102728)|SYSTEM_METHOD_ENTRY|[33]|Database.getQueryLocator(String)
+12:06:36.0 (29608553)|SOQL_EXECUTE_BEGIN|[33]|Aggregations:0|Select Account.recordType.Name,GB_Canada_Only_Indicator__c, Id, GB_Data_Constraint_Indicator__c,GB_OTIP_Indicator__c,Manulife_Staff_Indicator__c from Asset 
+12:06:36.0 (29628808)|LIMIT_USAGE|[33]|SOQL|1|200
+12:06:36.0 (29649106)|LIMIT_USAGE|[33]|AGGS|0|600
+12:06:36.0 (51255366)|SOQL_EXECUTE_END|[33]|Rows:1
+12:06:36.0 (51277537)|LIMIT_USAGE|[33]|QUERY_LOCATOR_SOQL_ROWS|1|50000000
+12:06:36.0 (51328031)|HEAP_ALLOCATE|[33]|Bytes:20
+12:06:36.0 (51345006)|SYSTEM_METHOD_EXIT|[33]|Database.getQueryLocator(String)
+12:06:36.69 (69912171)|CUMULATIVE_LIMIT_USAGE
+12:06:36.69 (69912171)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+12:06:36.69 (69912171)|TOTAL_EMAIL_RECIPIENTS_QUEUED|0
+12:06:36.69 (69912171)|STATIC_VARIABLE_LIST|
+  int:BYTES:0
+  int:BYTES:0
+  char[]:DigitOnes:0
+  char[]:DigitTens:0
+  Boolean:FALSE:0
+  int:MAX_EXPONENT:0
+  double:MAX_VALUE:0
+  int:MAX_VALUE:0
+  int:MIN_EXPONENT:0
+  double:MIN_NORMAL:0
+  double:MIN_VALUE:0
+  int:MIN_VALUE:0
+  double:NEGATIVE_INFINITY:0
+  double:NaN:0
+  double:POSITIVE_INFINITY:0
+  int:SIZE:0
+  int:SIZE:0
+  Boolean:TRUE:0
+  String:__sfdcParameterizedTypes:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  char[]:digits:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  int[]:sizeTable:0
+
+12:06:36.69 (69912171)|CUMULATIVE_LIMIT_USAGE_END
+
+12:06:36.0 (70049824)|CODE_UNIT_FINISHED|C360_handleAccountIndicators
+12:06:36.0 (71034515)|EXECUTION_FINISHED
+12:06:36.87 (87525878)|CUMULATIVE_PROFILING_BEGIN
+12:06:36.87 (87525878)|CUMULATIVE_PROFILING|SOQL operations|
+Class.C360_handleAccountIndicators.start: line 33, column 1: com.salesforce.api.Database.getQueryLocator(String): executed 1 time in 23 ms
+
+12:06:36.87 (87525878)|CUMULATIVE_PROFILING|No profiling information for SOSL operations
+12:06:36.87 (87525878)|CUMULATIVE_PROFILING|No profiling information for DML operations
+12:06:36.87 (87525878)|CUMULATIVE_PROFILING|method invocations|
+External entry point: global Database.QueryLocator start(Database.BatchableContext): executed 1 time in 23 ms
+Class.C360_handleAccountIndicators.start: line 32, column 1: global public static void debug(ANY): executed 1 time in 0 ms
+
+12:06:36.87 (87525878)|CUMULATIVE_PROFILING_END

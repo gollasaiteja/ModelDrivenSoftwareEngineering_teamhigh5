@@ -1,0 +1,92 @@
+43.0 APEX_CODE,FINEST;APEX_PROFILING,FINEST;CALLOUT,FINEST;DB,FINEST;NBA,INFO;SYSTEM,FINEST;VALIDATION,FINEST;VISUALFORCE,FINEST;WAVE,INFO;WORKFLOW,FINEST
+12:06:37.0 (142404)|USER_INFO|[EXTERNAL]|0051f000000IdnF|sai_teja_golla@manulife-cdn.com.dev53|Eastern Standard Time|GMT-04:00
+12:06:37.0 (193877)|EXECUTION_STARTED
+12:06:37.0 (202845)|CODE_UNIT_STARTED|[EXTERNAL]|01p1f000000990u|C360_handleAccountIndicators
+12:06:37.0 (2027901)|HEAP_ALLOCATE|[72]|Bytes:3
+12:06:37.0 (2086523)|HEAP_ALLOCATE|[77]|Bytes:152
+12:06:37.0 (2101757)|HEAP_ALLOCATE|[342]|Bytes:408
+12:06:37.0 (2114437)|HEAP_ALLOCATE|[355]|Bytes:408
+12:06:37.0 (2126299)|HEAP_ALLOCATE|[467]|Bytes:48
+12:06:37.0 (2152667)|HEAP_ALLOCATE|[139]|Bytes:6
+12:06:37.0 (3620615)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:270
+12:06:37.0 (3784903)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:11
+12:06:37.0 (3805640)|SYSTEM_METHOD_ENTRY|[15]|BatchableContextImpl.BatchableContextImpl()
+12:06:37.0 (3812748)|STATEMENT_EXECUTE|[15]
+12:06:37.0 (3828757)|SYSTEM_METHOD_EXIT|[15]|BatchableContextImpl
+12:06:37.0 (3838115)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+12:06:37.0 (3843846)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+12:06:37.0 (3851750)|VARIABLE_SCOPE_BEGIN|[31]|this|Database.BatchableContextImpl|true|false
+12:06:37.0 (3925859)|VARIABLE_ASSIGNMENT|[31]|this|{}|0x687d4621
+12:06:37.0 (3934514)|VARIABLE_SCOPE_BEGIN|[31]|jobId|Id|false|false
+12:06:37.0 (4041661)|VARIABLE_ASSIGNMENT|[31]|jobId|"7071f000000aADgAAM"
+12:06:37.0 (4050440)|VARIABLE_SCOPE_BEGIN|[31]|childJobId|Id|false|false
+12:06:37.0 (4060804)|VARIABLE_ASSIGNMENT|[31]|childJobId|null
+12:06:37.0 (11105799)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:57
+12:06:37.0 (11122686)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+12:06:37.0 (11130055)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:55
+12:06:37.0 (11147717)|METHOD_ENTRY|[1]|01p1f000000990u|C360_handleAccountIndicators.C360_handleAccountIndicators()
+12:06:37.0 (11157396)|STATEMENT_EXECUTE|[1]
+12:06:37.0 (11163532)|STATEMENT_EXECUTE|[1]
+12:06:37.0 (11170838)|METHOD_EXIT|[1]|C360_handleAccountIndicators
+12:06:37.0 (11180533)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:32
+12:06:37.0 (11185826)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+12:06:37.0 (11195960)|VARIABLE_SCOPE_BEGIN|[188]|this|C360_handleAccountIndicators|true|false
+12:06:37.0 (11306839)|VARIABLE_ASSIGNMENT|[188]|this|{"assetQuery":"Select Account.recor (165 more) ...","assetTriggerIdSet":"0x726e518f","todayDate":"2018-06-29T00:00:00.000Z","whereCondition":"Id =: assetTriggerId (3 more) ..."}|0x1ef1a941
+12:06:37.0 (11322091)|VARIABLE_SCOPE_BEGIN|[188]|BC|Database.BatchableContext|true|false
+12:06:37.0 (11418264)|VARIABLE_ASSIGNMENT|[188]|BC|{"jobId":"7071f000000aADgAAM"}|0x687d4621
+12:06:37.0 (11435402)|STATEMENT_EXECUTE|[188]
+12:06:37.23 (23711785)|CUMULATIVE_LIMIT_USAGE
+12:06:37.23 (23711785)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+12:06:37.23 (23711785)|TOTAL_EMAIL_RECIPIENTS_QUEUED|0
+12:06:37.23 (23711785)|STATIC_VARIABLE_LIST|
+  int:BYTES:0
+  int:BYTES:0
+  char[]:DigitOnes:0
+  char[]:DigitTens:0
+  int:MAX_EXPONENT:0
+  double:MAX_VALUE:0
+  int:MAX_VALUE:0
+  int:MIN_EXPONENT:0
+  double:MIN_NORMAL:0
+  double:MIN_VALUE:0
+  int:MIN_VALUE:0
+  double:NEGATIVE_INFINITY:0
+  double:NaN:0
+  double:POSITIVE_INFINITY:0
+  int:SIZE:0
+  int:SIZE:0
+  String:__sfdcParameterizedTypes:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  char[]:digits:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  int[]:sizeTable:0
+
+12:06:37.23 (23711785)|CUMULATIVE_LIMIT_USAGE_END
+
+12:06:37.0 (23847433)|CODE_UNIT_FINISHED|C360_handleAccountIndicators
+12:06:37.0 (24870251)|EXECUTION_FINISHED
+12:06:37.41 (41373474)|CUMULATIVE_PROFILING_BEGIN
+12:06:37.41 (41373474)|CUMULATIVE_PROFILING|No profiling information for SOQL operations
+12:06:37.41 (41373474)|CUMULATIVE_PROFILING|No profiling information for SOSL operations
+12:06:37.41 (41373474)|CUMULATIVE_PROFILING|No profiling information for DML operations
+12:06:37.41 (41373474)|CUMULATIVE_PROFILING|method invocations|
+External entry point: global void finish(Database.BatchableContext): executed 1 time in 0 ms
+
+12:06:37.41 (41373474)|CUMULATIVE_PROFILING_END
