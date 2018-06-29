@@ -99,13 +99,13 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
 						cnt.GB_Canada_Only_Indicator__c = true;
 					}
 					if(assetContactIdMap.get(cnt.Id).Asset__r.GB_Data_Constraint_Indicator__c){
-						cnt.GB_Data_Constraint_Indicator__c = acr.Asset__r.GB_Data_Constraint_Indicator__c;
+						cnt.GB_Data_Constraint_Indicator__c = true;
 					}
 					if(assetContactIdMap.get(cnt.Id).Asset__r.GB_OTIP_Indicator__c){
-						cnt.GB_OTIP_Indicator__c = acr.Asset__r.GB_OTIP_Indicator__c;
+						cnt.GB_OTIP_Indicator__c = true;
 					}
 					if(assetContactIdMap.get(cnt.Id).Asset__r.Manulife_Staff_Indicator__c){
-						cnt.Manulife_Staff_Indicator__c = acr.Asset__r.Manulife_Staff_Indicator__c;
+						cnt.Manulife_Staff_Indicator__c = true;
 					}
 				}
                 /*for(AssetContactRoles__c acr : C360_SponsorIndicatorsUtil.findRelatedAssetContactRolesByContacts(contactIds)){                
@@ -141,13 +141,13 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
 					custAccounts.GB_Canada_Only_Indicator__c = true;
 				}
 				if(assetAccountIdMap.get(custAccounts.Id).Asset__r.GB_Data_Constraint_Indicator__c){
-					custAccounts.GB_Data_Constraint_Indicator__c = acr.Asset__r.GB_Data_Constraint_Indicator__c;
+					custAccounts.GB_Data_Constraint_Indicator__c = true;
 				}
 				if(assetAccountIdMap.get(custAccounts.Id).Asset__r.GB_OTIP_Indicator__c){
-					custAccounts.GB_OTIP_Indicator__c = acr.Asset__r.GB_OTIP_Indicator__c;
+					custAccounts.GB_OTIP_Indicator__c = true;
 				}
 				if(assetAccountIdMap.get(custAccounts.Id).Asset__r.Manulife_Staff_Indicator__c){
-					custAccounts.Manulife_Staff_Indicator__c = acr.Asset__r.Manulife_Staff_Indicator__c;
+					custAccounts.Manulife_Staff_Indicator__c = true;
 				}
 			}
             /*for(Asset ast : C360_SponsorIndicatorsUtil.findRelatedAssetByCustomers(custAccntIdSet)){
