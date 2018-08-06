@@ -1,0 +1,33 @@
+public class C360_AssetTriggerHandler extends C360_BaseTriggerHandler {
+      
+    public override String getTriggerID() {
+        return 'Asset';
+    }
+        
+    public override void onAfterUpdate(List<SObject> newSObjectList, Map<Id,SObject> newSObjectMap,List<SObject> oldSObjectList, Map<Id,SObject> oldSObjectMap){
+        //TODO
+        Set<Id> assetIdSet = new Set<Id>();
+		Set<Id> sponsorIdSet = new Set<Id>();
+		Map<Id,Account> accountMap = new Map<Id,Account>();
+        for(Asset asst : (List<Asset>)newSObjectList){
+            Asset oldAsset = (Asset)oldSObjectMap.get(asst.Id);
+            if(asst.Coverage_End_Date__c != oldAsset.Coverage_End_Date__c){
+                assetIdSet.add(asst.Id);
+            }
+			if(asst.Sponsor__c != oldAsset.Sponsor__c){
+				sponsorIdSet.add(asst.Sponsor__c);				
+			}
+        }
+		for(Account acnt : [Select Canada_Only__c, Id, Special_Handling__c,GB_OTIP_Indicator__c,Staff_Plan__c,GB_OTIP_Staff_Indicator__c from Account Where ID =: sponsorIdSet]){
+			accountMap.put(acnt.Id,acnt);
+		}
+        system.debug('assetIdSet====='+assetIdSet);
+        if(!system.isBatch() && !assetIdSet.isEmpty()){
+            database.ExecuteBatch(new C360_handleAccountIndicators(null,null,null,assetIdSet),200);
+        }
+		if(!system.isBatch() && !accountMap.isEmpty()){
+            database.ExecuteBatch(new C360_handleAssetIndicators(accountMap),200);
+        }
+    }
+
+}
