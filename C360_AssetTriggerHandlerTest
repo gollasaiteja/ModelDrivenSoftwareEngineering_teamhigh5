@@ -1,0 +1,23 @@
+@isTest
+public class C360_AssetTriggerHandlerTest{
+	static testMethod void testAsset(){
+		C360_AssetTriggerHandler handlerCls = new C360_AssetTriggerHandler
+		handlerCls.getTriggerID();
+		Map<Id,Asset> newAssetMap = Map<Id,Asset>();
+		Map<Id,Asset> oldAssetMap = Map<Id,Asset>();
+		List<Account> newAccount = C360_UtilTest.createAccountData();
+		List<Account> oldAccount = C360_UtilTest.createAccountData();
+		List<Asset> oldAsset = createAssetData(oldAccount[0],oldAccount[0]);
+		List<Asset> newAsset = createAssetData(newAccount[0],newAccount[0]);
+		newAsset.Coverage_End_Date__c = system.today();
+		newAsset.Sponsor__c = oldAccount[0].Id;
+		update newAsset;
+		
+		oldAssetMap.put(oldAsset[0].Id,oldAsset[0]);
+		newAssetMap.put(newAsset[0].Id,newAsset[0]);
+		handlerCls.onAfterUpdate(newAsset,newAssetMap,oldAsset,oldAssetMap);
+		Test.StartTest();
+		database.ExecuteBatch(new C360_handleAssetIndicators(newAccountMap),200);
+		Test.StopTest();
+	}
+}
