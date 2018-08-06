@@ -1,0 +1,49 @@
+@isTest
+public class C360_UtilTest{
+    public static List<Account> createAccountData(){
+        List<Account> accountDataList = new List<Account>();
+        Account accountData = new Account();
+        accountData.name = 'Test Account';
+        accountData.Canada_Only__c = true;
+        accountData.Special_Handling__c = true;
+        accountData.GB_OTIP_Indicator__c = true;
+        accountData.GB_OTIP_Staff_Indicator__c = false;
+        accountData.Staff_Plan__c = false;
+        accountDataList.add(accountData);
+        insert accountDataList;
+        return accountDataList;
+    }
+    
+    public static List<Asset> createAssetData(Id sponsorId, Id accountId){
+        List<Asset> assetDataList = new List<Asset>();
+        Asset assetData = new Asset();
+        assetData.name = 'Test Asset';
+        assetData.Sponsor__c = sponsorId;
+        assetData.AccountId = accountId;
+        assetData.Canada_Only__c = true;
+        assetData.Special_Handling__c = true;
+        assetData.GB_OTIP_Indicator__c = true;
+        assetData.GB_OTIP_Staff_Indicator__c = false;
+        assetData.Staff_Plan__c = false;
+        assetDataList.add(assetData);
+        insert assetDataList;
+        return assetDataList;
+    }
+    
+    public static List<Contact> createContactData(Id accountId){
+        List<Contact> contactDataList = new List<Contact>();
+        Contact contactData = new Contact();
+        contactData.FirstName = 'Test Contact';
+        contactData.LastName = 'Test Contact Last Name';
+        //assetData.Sponsor__c = sponsorId;
+        contactData.AccountId = accountId;
+        contactData.Canada_Only__c = true;
+        contactData.Special_Handling__c = true;
+        contactData.GB_OTIP_Indicator__c = true;
+        contactData.GB_OTIP_Staff_Indicator__c = false;
+        contactData.Staff_Plan__c = false;
+        contactDataList.add(contactData);
+        insert contactDataList;
+        return contactDataList;
+    }
+}
