@@ -1,0 +1,35 @@
+@isTest
+public class C360_AssetContactRolesTriggerHandlerTest{
+    static testMethod void testSponsorAccount(){
+        C360_AssetContactRolesTriggerHandler handlerCls = new C360_AssetContactRolesTriggerHandler();
+        handlerCls.getTriggerID();
+        Map<Id,AssetContactRoles__c> newAssCntctMap = new Map<Id,AssetContactRoles__c>();
+        Map<Id,AssetContactRoles__c> oldAssCntctMap = new Map<Id,AssetContactRoles__c>();
+        List<Account> newAccount = C360_UtilTest.createAccountData();
+        newAccountMap.put(newAccount[0].Id,newAccount[0]);
+        newAccount[0].Canada_Only__c = false;
+        newAccount[0].Special_Handling__c = false;
+        newAccount[0].GB_OTIP_Indicator__c = false;
+        newAccount[0].GB_OTIP_Staff_Indicator__c = true;
+        newAccount[0].Staff_Plan__c = true;
+        update newAccount[0];
+        List<Account> oldAccount = C360_UtilTest.createAccountData();        
+        List<Asset> assetList = C360_UtilTest.createAssetData(newAccount[0].Id,oldAccount[0].Id);
+		List<Contact> contactLst = C360_UtilTest.createContactData(newAccount[0].Id);
+		List<AssetContactRoles__c> assetContactRoleLst = C360_UtilTest.createAssetContactRole(assetList[0].Id,contactLst[0].Id);
+		List<AssetContactRoles__c> oldAssetContactRoleLst = C360_UtilTest.createAssetContactRole(assetList[0].Id,contactLst[0].Id);
+		
+		newAssCntctMap.put(assetContactRoleLst[0].Id,assetContactRoleLst);
+		oldAssCntctMap.put(oldAssetContactRoleLst[0].Id,oldAssetContactRoleLst);
+		
+		Test.StartTest();
+		handlerCls.onAfterInsert(assetContactRoleLst,newAssCntctMap,oldAssetContactRoleLst,oldAssCntctMap);
+		handlerCls.onAfterUpdate(assetContactRoleLst,newAssCntctMap,oldAssetContactRoleLst,oldAssCntctMap);
+		handlerCls.onBeforeDelete(assetContactRoleLst,newAssCntctMap,oldAssetContactRoleLst,oldAssCntctMap);
+		handlerCls.onAfterDelete(assetContactRoleLst,newAssCntctMap,oldAssetContactRoleLst,oldAssCntctMap);
+		handlerCls.onAfterUndelete();
+        
+        //database.ExecuteBatch(new C360_handleAssetIndicators(newAccountMap),200);
+        Test.StopTest();
+    }
+}
