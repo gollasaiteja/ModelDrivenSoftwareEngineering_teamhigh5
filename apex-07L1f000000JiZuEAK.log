@@ -1,0 +1,635 @@
+43.0 APEX_CODE,FINEST;APEX_PROFILING,FINEST;CALLOUT,FINEST;DB,FINEST;NBA,INFO;SYSTEM,FINEST;VALIDATION,FINEST;VISUALFORCE,FINEST;WAVE,INFO;WORKFLOW,FINEST
+11:34:44.0 (51673)|USER_INFO|[EXTERNAL]|0051f000000IdnF|sai_teja_golla@manulife-cdn.com.dev53|Eastern Standard Time|GMT-04:00
+11:34:44.0 (85792)|EXECUTION_STARTED
+11:34:44.0 (91092)|CODE_UNIT_STARTED|[EXTERNAL]|01p1f0000009Hlb|C360_handleAssetIndicators
+11:34:44.0 (629479)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:57
+11:34:44.0 (656572)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:13
+11:34:44.0 (662391)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:5
+11:34:44.0 (672276)|METHOD_ENTRY|[1]|01p1f0000009Hlb|C360_handleAssetIndicators.C360_handleAssetIndicators()
+11:34:44.0 (678346)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (683326)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (688169)|METHOD_EXIT|[1]|C360_handleAssetIndicators
+11:34:44.0 (695390)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:16
+11:34:44.0 (699585)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+11:34:44.0 (756919)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (766826)|VARIABLE_SCOPE_BEGIN|[18]|this|C360_handleAssetIndicators|true|false
+11:34:44.0 (831704)|VARIABLE_ASSIGNMENT|[18]|this|{"assetQuery":"Select Account.recor (168 more) ...","sponsorAccountsMap":"0x3173dfb1","sponsorIdsSet":"0x362bf350"}|0x6f5a3bc4
+11:34:44.0 (841575)|VARIABLE_SCOPE_BEGIN|[18]|BC|Database.BatchableContext|true|false
+11:34:44.0 (982921)|VARIABLE_ASSIGNMENT|[18]|BC|{"childJobId":"7071f000000rjx6AAA","jobId":"7071f000000rjx4AAA"}|0x361ad16f
+11:34:44.0 (994498)|VARIABLE_SCOPE_BEGIN|[18]|Scope|List<SObject>|true|false
+11:34:44.0 (1033245)|VARIABLE_ASSIGNMENT|[18]|Scope|[{"AccountId":"0011f000004f4aCAAQ","Canada_Only__c":true,"Id":"02i1f000000lHUDAA2","Special_Handling__c":false,"GB_OTIP_Indicator__c":false,"Staff_Plan__c":true,"GB_OTIP_Staff_Indicator__c":false,"Sponsor__c":"0011f000004p620AAA","Account":{"Id":"0011f000004f4aCAAQ","RecordTypeId":"012U0000000g3HKIAY","RecordType":{"Id":"012U0000000g3HKIAY","Name":"Customer"}}}]|0x4404c93c
+11:34:44.0 (1050542)|STATEMENT_EXECUTE|[18]
+11:34:44.0 (1053592)|STATEMENT_EXECUTE|[19]
+11:34:44.0 (1067594)|HEAP_ALLOCATE|[19]|Bytes:4
+11:34:44.0 (1122442)|SYSTEM_CONSTRUCTOR_ENTRY|[19]|<init>()
+11:34:44.0 (1152276)|SYSTEM_CONSTRUCTOR_EXIT|[19]|<init>()
+11:34:44.0 (1158960)|VARIABLE_SCOPE_BEGIN|[19]|assetUpdateLst|List<Asset>|true|false
+11:34:44.0 (1171167)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (1180363)|VARIABLE_ASSIGNMENT|[19]|assetUpdateLst|[]|0x6ba5085a
+11:34:44.0 (1200789)|SYSTEM_METHOD_ENTRY|[20]|List<Asset>.iterator()
+11:34:44.0 (1341933)|SYSTEM_METHOD_EXIT|[20]|List<Asset>.iterator()
+11:34:44.0 (1366810)|SYSTEM_METHOD_ENTRY|[20]|system.ListIterator.hasNext()
+11:34:44.0 (1398731)|HEAP_ALLOCATE|[50]|Bytes:5
+11:34:44.0 (1419891)|HEAP_ALLOCATE|[56]|Bytes:5
+11:34:44.0 (1429151)|HEAP_ALLOCATE|[64]|Bytes:7
+11:34:44.0 (1443993)|HEAP_ALLOCATE|[20]|Bytes:5
+11:34:44.0 (1453407)|SYSTEM_METHOD_EXIT|[20]|system.ListIterator.hasNext()
+11:34:44.0 (1487977)|HEAP_ALLOCATE|[20]|Bytes:40
+11:34:44.0 (1500350)|VARIABLE_SCOPE_BEGIN|[20]|asst|Asset|true|false
+11:34:44.0 (1535541)|VARIABLE_ASSIGNMENT|[20]|asst|{"AccountId":"0011f000004f4aCAAQ","Canada_Only__c":true,"Id":"02i1f000000lHUDAA2","Special_Handling__c":false,"GB_OTIP_Indicator__c":false,"Staff_Plan__c":true,"GB_OTIP_Staff_Indicator__c":false,"Sponsor__c":"0011f000004p620AAA","Account":{"Id":"0011f000004f4aCAAQ","RecordTypeId":"012U0000000g3HKIAY","RecordType":{"Id":"012U0000000g3HKIAY","Name":"Customer"}}}|0x7165f644
+11:34:44.0 (1546357)|STATEMENT_EXECUTE|[20]
+11:34:44.0 (1548986)|STATEMENT_EXECUTE|[21]
+11:34:44.0 (1629190)|SYSTEM_METHOD_ENTRY|[21]|Map<Id,Account>.get(Object)
+11:34:44.0 (1673230)|SYSTEM_METHOD_EXIT|[21]|Map<Id,Account>.get(Object)
+11:34:44.0 (1762565)|VARIABLE_ASSIGNMENT|[21]|this.Canada_Only__c|true|0x7165f644
+11:34:44.0 (1770440)|STATEMENT_EXECUTE|[22]
+11:34:44.0 (1793004)|SYSTEM_METHOD_ENTRY|[22]|Map<Id,Account>.get(Object)
+11:34:44.0 (1817017)|SYSTEM_METHOD_EXIT|[22]|Map<Id,Account>.get(Object)
+11:34:44.0 (1859936)|VARIABLE_ASSIGNMENT|[22]|this.Special_Handling__c|false|0x7165f644
+11:34:44.0 (1867106)|STATEMENT_EXECUTE|[23]
+11:34:44.0 (1884428)|SYSTEM_METHOD_ENTRY|[23]|Map<Id,Account>.get(Object)
+11:34:44.0 (1904908)|SYSTEM_METHOD_EXIT|[23]|Map<Id,Account>.get(Object)
+11:34:44.0 (1940518)|VARIABLE_ASSIGNMENT|[23]|this.GB_OTIP_Indicator__c|true|0x7165f644
+11:34:44.0 (1947084)|STATEMENT_EXECUTE|[24]
+11:34:44.0 (1962528)|SYSTEM_METHOD_ENTRY|[24]|Map<Id,Account>.get(Object)
+11:34:44.0 (1980735)|SYSTEM_METHOD_EXIT|[24]|Map<Id,Account>.get(Object)
+11:34:44.0 (2014042)|VARIABLE_ASSIGNMENT|[24]|this.Staff_Plan__c|false|0x7165f644
+11:34:44.0 (2021222)|STATEMENT_EXECUTE|[25]
+11:34:44.0 (2036782)|SYSTEM_METHOD_ENTRY|[25]|Map<Id,Account>.get(Object)
+11:34:44.0 (2056054)|SYSTEM_METHOD_EXIT|[25]|Map<Id,Account>.get(Object)
+11:34:44.0 (2089405)|VARIABLE_ASSIGNMENT|[25]|this.GB_OTIP_Staff_Indicator__c|false|0x7165f644
+11:34:44.0 (2096647)|STATEMENT_EXECUTE|[26]
+11:34:44.0 (2111260)|SYSTEM_METHOD_ENTRY|[26]|List<Asset>.add(Object)
+11:34:44.0 (2127922)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (2138673)|SYSTEM_METHOD_EXIT|[26]|List<Asset>.add(Object)
+11:34:44.0 (2148116)|SYSTEM_METHOD_ENTRY|[20]|system.ListIterator.hasNext()
+11:34:44.0 (2157486)|HEAP_ALLOCATE|[20]|Bytes:5
+11:34:44.0 (2164403)|SYSTEM_METHOD_EXIT|[20]|system.ListIterator.hasNext()
+11:34:44.0 (2176193)|VARIABLE_ASSIGNMENT|[20]|asst|null|
+11:34:44.0 (2182134)|STATEMENT_EXECUTE|[28]
+11:34:44.0 (2219581)|SYSTEM_METHOD_ENTRY|[28]|Database.update(List<SObject>, Boolean)
+11:34:44.0 (2248852)|DML_BEGIN|[28]|Op:Update|Type:Asset|Rows:1
+11:34:44.0 (2266884)|LIMIT_USAGE|[28]|DML|1|150
+11:34:44.0 (2280038)|LIMIT_USAGE|[28]|DML_ROWS|1|10000
+11:34:44.0 (2307496)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (25165958)|CODE_UNIT_STARTED|[EXTERNAL]|01q0P0000001NRy|AssetTrigger on Asset trigger event BeforeUpdate|__sfdc_trigger/AssetTrigger
+11:34:44.0 (25204802)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (25239658)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (25345152)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:1
+11:34:44.0 (25368556)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (25376268)|VARIABLE_SCOPE_BEGIN|[1]|this|AssetTrigger|true|false
+11:34:44.0 (25404832)|VARIABLE_ASSIGNMENT|[1]|this|{}|0x7c1da828
+11:34:44.0 (25463112)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (25471119)|VARIABLE_SCOPE_BEGIN|[1]|this|AssetTrigger|true|false
+11:34:44.0 (25490316)|VARIABLE_ASSIGNMENT|[1]|this|{}|0x7c1da828
+11:34:44.0 (25498147)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (25516735)|STATEMENT_EXECUTE|[2]
+11:34:44.0 (25519222)|STATEMENT_EXECUTE|[11]
+11:34:44.0 (27083254)|HEAP_ALLOCATE|[11]|Bytes:13
+11:34:44.0 (27124061)|METHOD_ENTRY|[6]|01p0P000002DKqN|GBI_AssetDomain.GBI_AssetDomain()
+11:34:44.0 (27131404)|STATEMENT_EXECUTE|[6]
+11:34:44.0 (27136268)|STATEMENT_EXECUTE|[6]
+11:34:44.0 (27645062)|SYSTEM_MODE_ENTER|false
+11:34:44.0 (27659737)|HEAP_ALLOCATE|[11]|Bytes:5
+11:34:44.0 (27669343)|SYSTEM_MODE_EXIT|false
+11:34:44.0 (27680349)|METHOD_EXIT|[6]|GBI_AssetDomain
+11:34:44.0 (27700830)|METHOD_ENTRY|[11]|01p0P000002DKqN|GBI_AssetDomain.triggerHandler()
+11:34:44.0 (27737291)|SYSTEM_MODE_ENTER|false
+11:34:44.0 (27744396)|HEAP_ALLOCATE|[8]|Bytes:5
+11:34:44.0 (27750705)|STATEMENT_EXECUTE|[7]
+11:34:44.0 (27753318)|STATEMENT_EXECUTE|[8]
+11:34:44.0 (27788813)|VARIABLE_SCOPE_BEGIN|[8]|newList|List<Asset>|true|false
+11:34:44.0 (56341599)|VARIABLE_ASSIGNMENT|[8]|newList|[{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0xcf5e5f2
+11:34:44.0 (56383337)|STATEMENT_EXECUTE|[9]
+11:34:44.0 (56450896)|VARIABLE_SCOPE_BEGIN|[9]|oldMap|Map<Id,Asset>|true|false
+11:34:44.0 (57824882)|VARIABLE_ASSIGNMENT|[9]|oldMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x43922f4b
+11:34:44.0 (57864103)|STATEMENT_EXECUTE|[10]
+11:34:44.0 (57872175)|STATEMENT_EXECUTE|[11]
+11:34:44.0 (57878974)|STATEMENT_EXECUTE|[12]
+11:34:44.0 (57904126)|METHOD_ENTRY|[12]|01p0P000002DKqN|GBI_AssetDomain.handleBeforeUpdate(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (57953701)|VARIABLE_SCOPE_BEGIN|[23]|newList|List<Asset>|true|false
+11:34:44.0 (58645497)|VARIABLE_ASSIGNMENT|[23]|newList|[{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0xcf5e5f2
+11:34:44.0 (58672978)|VARIABLE_SCOPE_BEGIN|[23]|oldMap|Map<Id,Asset>|true|false
+11:34:44.0 (59381058)|VARIABLE_ASSIGNMENT|[23]|oldMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x43922f4b
+11:34:44.0 (59416163)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:5
+11:34:44.0 (59424205)|STATEMENT_EXECUTE|[23]
+11:34:44.0 (59437148)|METHOD_EXIT|[12]|01p0P000002DKqN|GBI_AssetDomain.handleBeforeUpdate(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (59452604)|STATEMENT_EXECUTE|[14]
+11:34:44.0 (59457039)|SYSTEM_MODE_EXIT|false
+11:34:44.0 (59465329)|METHOD_EXIT|[11]|01p0P000002DKqN|GBI_AssetDomain.triggerHandler()
+11:34:44.59 (59475452)|CUMULATIVE_LIMIT_USAGE
+11:34:44.59 (59475452)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 1 out of 150
+  Number of DML rows: 1 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+11:34:44.59 (59475452)|TOTAL_EMAIL_RECIPIENTS_QUEUED|0
+11:34:44.59 (59475452)|STATIC_VARIABLE_LIST|
+  int:BYTES:0
+  int:BYTES:0
+  char[]:DigitOnes:0
+  char[]:DigitTens:0
+  Boolean:FALSE:0
+  int:MAX_EXPONENT:0
+  double:MAX_VALUE:0
+  int:MAX_VALUE:0
+  int:MIN_EXPONENT:0
+  double:MIN_NORMAL:0
+  double:MIN_VALUE:0
+  int:MIN_VALUE:0
+  double:NEGATIVE_INFINITY:0
+  double:NaN:0
+  double:POSITIVE_INFINITY:0
+  int:SIZE:0
+  int:SIZE:0
+  Boolean:TRUE:0
+  String:__sfdcParameterizedTypes:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  char[]:digits:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  int[]:sizeTable:0
+
+11:34:44.59 (59475452)|CUMULATIVE_LIMIT_USAGE_END
+
+11:34:44.0 (61150941)|CODE_UNIT_FINISHED|AssetTrigger on Asset trigger event BeforeUpdate|__sfdc_trigger/AssetTrigger
+11:34:44.0 (78989612)|CODE_UNIT_STARTED|[EXTERNAL]|01q0P0000001NRy|AssetTrigger on Asset trigger event AfterUpdate|__sfdc_trigger/AssetTrigger
+11:34:44.0 (79024782)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (79052936)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (79095857)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (79104303)|VARIABLE_SCOPE_BEGIN|[1]|this|AssetTrigger|true|false
+11:34:44.0 (79136512)|VARIABLE_ASSIGNMENT|[1]|this|{}|0x206c6d87
+11:34:44.0 (79177054)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (79183914)|VARIABLE_SCOPE_BEGIN|[1]|this|AssetTrigger|true|false
+11:34:44.0 (79201418)|VARIABLE_ASSIGNMENT|[1]|this|{}|0x206c6d87
+11:34:44.0 (79209642)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (79218297)|STATEMENT_EXECUTE|[2]
+11:34:44.0 (79224751)|STATEMENT_EXECUTE|[3]
+11:34:44.0 (79226905)|STATEMENT_EXECUTE|[4]
+11:34:44.0 (79228933)|STATEMENT_EXECUTE|[4]
+11:34:44.0 (79231072)|STATEMENT_EXECUTE|[5]
+11:34:44.0 (81232020)|VARIABLE_SCOPE_BEGIN|[9]|CP2_AssetTriggerHelper.disableTrigger|Boolean|false|true
+11:34:44.0 (81249395)|VARIABLE_SCOPE_BEGIN|[8]|CP2_AssetTriggerHelper.processedRecords|Set<Id>|true|true
+11:34:44.0 (81267261)|HEAP_ALLOCATE|[5]|Bytes:8
+11:34:44.0 (81307770)|METHOD_ENTRY|[7]|01p0P000002CbUw|CP2_AssetTriggerHelper.CP2_AssetTriggerHelper()
+11:34:44.0 (81314783)|STATEMENT_EXECUTE|[7]
+11:34:44.0 (81319294)|STATEMENT_EXECUTE|[7]
+11:34:44.0 (81820886)|SYSTEM_MODE_ENTER|false
+11:34:44.0 (81834813)|HEAP_ALLOCATE|[8]|Bytes:5
+11:34:44.0 (81842798)|STATEMENT_EXECUTE|[8]
+11:34:44.0 (81857674)|HEAP_ALLOCATE|[8]|Bytes:4
+11:34:44.0 (81882121)|SYSTEM_CONSTRUCTOR_ENTRY|[8]|<init>(Integer)
+11:34:44.0 (81907001)|SYSTEM_CONSTRUCTOR_EXIT|[8]|<init>(Integer)
+11:34:44.0 (81941733)|VARIABLE_ASSIGNMENT|[8]|CP2_AssetTriggerHelper.processedRecords|[]|0x7a8592ba
+11:34:44.0 (81948798)|STATEMENT_EXECUTE|[9]
+11:34:44.0 (81955488)|HEAP_ALLOCATE|[9]|Bytes:5
+11:34:44.0 (81965840)|VARIABLE_ASSIGNMENT|[9]|CP2_AssetTriggerHelper.disableTrigger|false
+11:34:44.0 (81973807)|SYSTEM_MODE_EXIT|false
+11:34:44.0 (81983866)|METHOD_EXIT|[7]|CP2_AssetTriggerHelper
+11:34:44.0 (82008635)|METHOD_ENTRY|[5]|01p0P000002CbUw|CP2_AssetTriggerHelper.handleAfterUpdate(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (82037537)|VARIABLE_SCOPE_BEGIN|[56]|newAssets|List<Asset>|true|false
+11:34:44.0 (83582361)|VARIABLE_ASSIGNMENT|[56]|newAssets|[{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0x70950a60
+11:34:44.0 (83611945)|VARIABLE_SCOPE_BEGIN|[56]|oldMap|Map<Id,Asset>|true|false
+11:34:44.0 (84975672)|VARIABLE_ASSIGNMENT|[56]|oldMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x2653468a
+11:34:44.0 (85008119)|SYSTEM_MODE_ENTER|false
+11:34:44.0 (85018028)|HEAP_ALLOCATE|[57]|Bytes:5
+11:34:44.0 (85024814)|STATEMENT_EXECUTE|[56]
+11:34:44.0 (85034033)|STATEMENT_EXECUTE|[57]
+11:34:44.0 (85036235)|STATEMENT_EXECUTE|[58]
+11:34:44.0 (85049004)|HEAP_ALLOCATE|[58]|Bytes:4
+11:34:44.0 (85060110)|SYSTEM_CONSTRUCTOR_ENTRY|[58]|<init>()
+11:34:44.0 (85094069)|SYSTEM_CONSTRUCTOR_EXIT|[58]|<init>()
+11:34:44.0 (85100994)|VARIABLE_SCOPE_BEGIN|[58]|validAssets|List<Asset>|true|false
+11:34:44.0 (85111592)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (85122174)|VARIABLE_ASSIGNMENT|[58]|validAssets|[]|0x17d4540f
+11:34:44.0 (85138074)|SYSTEM_METHOD_ENTRY|[60]|List<Asset>.iterator()
+11:34:44.0 (85159917)|SYSTEM_METHOD_EXIT|[60]|List<Asset>.iterator()
+11:34:44.0 (85172568)|SYSTEM_METHOD_ENTRY|[60]|system.ListIterator.hasNext()
+11:34:44.0 (85183390)|HEAP_ALLOCATE|[60]|Bytes:5
+11:34:44.0 (85191146)|SYSTEM_METHOD_EXIT|[60]|system.ListIterator.hasNext()
+11:34:44.0 (85209074)|VARIABLE_SCOPE_BEGIN|[60]|a|Asset|true|false
+11:34:44.0 (85998733)|VARIABLE_ASSIGNMENT|[60]|a|{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}|0x7f583024
+11:34:44.0 (86024183)|STATEMENT_EXECUTE|[60]
+11:34:44.0 (86074381)|SYSTEM_METHOD_ENTRY|[61]|Set<Id>.contains(Object)
+11:34:44.0 (86103994)|SYSTEM_METHOD_EXIT|[61]|Set<Id>.contains(Object)
+11:34:44.0 (86112426)|STATEMENT_EXECUTE|[61]
+11:34:44.0 (86114981)|STATEMENT_EXECUTE|[62]
+11:34:44.0 (86130148)|SYSTEM_METHOD_ENTRY|[62]|Set<Id>.add(Object)
+11:34:44.0 (86142461)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (86153155)|SYSTEM_METHOD_EXIT|[62]|Set<Id>.add(Object)
+11:34:44.0 (86207138)|SYSTEM_METHOD_ENTRY|[64]|Map<Id,Asset>.get(Object)
+11:34:44.0 (86232344)|SYSTEM_METHOD_EXIT|[64]|Map<Id,Asset>.get(Object)
+11:34:44.0 (86265060)|STATEMENT_EXECUTE|[64]
+11:34:44.0 (86273230)|SYSTEM_METHOD_ENTRY|[60]|system.ListIterator.hasNext()
+11:34:44.0 (86300051)|HEAP_ALLOCATE|[60]|Bytes:5
+11:34:44.0 (86310457)|SYSTEM_METHOD_EXIT|[60]|system.ListIterator.hasNext()
+11:34:44.0 (86324088)|VARIABLE_ASSIGNMENT|[60]|a|null|
+11:34:44.0 (86334603)|SYSTEM_METHOD_ENTRY|[70]|List<Asset>.isEmpty()
+11:34:44.0 (86349417)|SYSTEM_METHOD_EXIT|[70]|List<Asset>.isEmpty()
+11:34:44.0 (86355616)|STATEMENT_EXECUTE|[70]
+11:34:44.0 (86361522)|SYSTEM_MODE_EXIT|false
+11:34:44.0 (86372695)|METHOD_EXIT|[5]|01p0P000002CbUw|CP2_AssetTriggerHelper.handleAfterUpdate(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (86378665)|STATEMENT_EXECUTE|[11]
+11:34:44.0 (86383721)|METHOD_ENTRY|[11]|01p0P000002DKqN|GBI_AssetDomain.triggerHandler()
+11:34:44.0 (86394788)|SYSTEM_MODE_ENTER|false
+11:34:44.0 (86401441)|HEAP_ALLOCATE|[8]|Bytes:5
+11:34:44.0 (86406333)|STATEMENT_EXECUTE|[7]
+11:34:44.0 (86408574)|STATEMENT_EXECUTE|[8]
+11:34:44.0 (86434296)|VARIABLE_SCOPE_BEGIN|[8]|newList|List<Asset>|true|false
+11:34:44.0 (87117064)|VARIABLE_ASSIGNMENT|[8]|newList|[{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0x70950a60
+11:34:44.0 (87142172)|STATEMENT_EXECUTE|[9]
+11:34:44.0 (87166758)|VARIABLE_SCOPE_BEGIN|[9]|oldMap|Map<Id,Asset>|true|false
+11:34:44.0 (87814192)|VARIABLE_ASSIGNMENT|[9]|oldMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x2653468a
+11:34:44.0 (87846005)|STATEMENT_EXECUTE|[10]
+11:34:44.0 (87851365)|STATEMENT_EXECUTE|[14]
+11:34:44.0 (87857228)|STATEMENT_EXECUTE|[15]
+11:34:44.0 (87861412)|STATEMENT_EXECUTE|[16]
+11:34:44.0 (87881526)|METHOD_ENTRY|[16]|01p0P000002DKqN|GBI_AssetDomain.handleAfterUpdate(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (87912232)|VARIABLE_SCOPE_BEGIN|[30]|newList|List<Asset>|true|false
+11:34:44.0 (88578745)|VARIABLE_ASSIGNMENT|[30]|newList|[{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0x70950a60
+11:34:44.0 (88606192)|VARIABLE_SCOPE_BEGIN|[30]|oldMap|Map<Id,Asset>|true|false
+11:34:44.0 (89213996)|VARIABLE_ASSIGNMENT|[30]|oldMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x2653468a
+11:34:44.0 (89247281)|HEAP_ALLOCATE|[31]|Bytes:5
+11:34:44.0 (89254172)|STATEMENT_EXECUTE|[30]
+11:34:44.0 (89256833)|STATEMENT_EXECUTE|[31]
+11:34:44.0 (91733221)|HEAP_ALLOCATE|[31]|Bytes:26
+11:34:44.0 (91758843)|METHOD_ENTRY|[1]|01p0P000002DKqZ|GBI_DealerAndAdvisorCodeSync.GBI_DealerAndAdvisorCodeSync()
+11:34:44.0 (91765946)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (91770487)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (91777847)|HEAP_ALLOCATE|[31]|Bytes:5
+11:34:44.0 (91787442)|METHOD_EXIT|[1]|GBI_DealerAndAdvisorCodeSync
+11:34:44.0 (91812905)|METHOD_ENTRY|[31]|01p0P000002DKqZ|GBI_DealerAndAdvisorCodeSync.execute(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (91854366)|VARIABLE_SCOPE_BEGIN|[10]|newList|List<Asset>|true|false
+11:34:44.0 (92641685)|VARIABLE_ASSIGNMENT|[10]|newList|[{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0x70950a60
+11:34:44.0 (92670259)|VARIABLE_SCOPE_BEGIN|[10]|oldMap|Map<Id,Asset>|true|false
+11:34:44.0 (93334973)|VARIABLE_ASSIGNMENT|[10]|oldMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x2653468a
+11:34:44.0 (93368479)|HEAP_ALLOCATE|[13]|Bytes:5
+11:34:44.0 (93376683)|STATEMENT_EXECUTE|[10]
+11:34:44.0 (93379340)|STATEMENT_EXECUTE|[13]
+11:34:44.0 (93419354)|HEAP_ALLOCATE|[13]|Bytes:4
+11:34:44.0 (93449963)|VARIABLE_SCOPE_BEGIN|[13]|assetsToProcess|Map<String,Asset>|true|false
+11:34:44.0 (93467600)|VARIABLE_ASSIGNMENT|[13]|assetsToProcess|{}|0x77aca646
+11:34:44.0 (93482994)|SYSTEM_METHOD_ENTRY|[14]|List<Asset>.iterator()
+11:34:44.0 (93530732)|SYSTEM_METHOD_EXIT|[14]|List<Asset>.iterator()
+11:34:44.0 (93542596)|SYSTEM_METHOD_ENTRY|[14]|system.ListIterator.hasNext()
+11:34:44.0 (93553563)|HEAP_ALLOCATE|[14]|Bytes:5
+11:34:44.0 (93560711)|SYSTEM_METHOD_EXIT|[14]|system.ListIterator.hasNext()
+11:34:44.0 (93575323)|VARIABLE_SCOPE_BEGIN|[14]|asset|Asset|true|false
+11:34:44.0 (94266842)|VARIABLE_ASSIGNMENT|[14]|asset|{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}|0x7f583024
+11:34:44.0 (94308404)|STATEMENT_EXECUTE|[14]
+11:34:44.0 (94311621)|STATEMENT_EXECUTE|[15]
+11:34:44.0 (94354365)|SYSTEM_METHOD_ENTRY|[15]|Map<Id,Asset>.get(Object)
+11:34:44.0 (94386149)|SYSTEM_METHOD_EXIT|[15]|Map<Id,Asset>.get(Object)
+11:34:44.0 (94395776)|VARIABLE_SCOPE_BEGIN|[15]|oldAsset|Asset|true|false
+11:34:44.0 (95031055)|VARIABLE_ASSIGNMENT|[15]|oldAsset|{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}|0x3fd45de7
+11:34:44.0 (95082179)|STATEMENT_EXECUTE|[16]
+11:34:44.0 (95094209)|SYSTEM_METHOD_ENTRY|[14]|system.ListIterator.hasNext()
+11:34:44.0 (95107086)|HEAP_ALLOCATE|[14]|Bytes:5
+11:34:44.0 (95116298)|SYSTEM_METHOD_EXIT|[14]|system.ListIterator.hasNext()
+11:34:44.0 (95129041)|VARIABLE_ASSIGNMENT|[14]|asset|null|
+11:34:44.0 (95139934)|SYSTEM_METHOD_ENTRY|[23]|Map<String,Asset>.isEmpty()
+11:34:44.0 (95160717)|SYSTEM_METHOD_EXIT|[23]|Map<String,Asset>.isEmpty()
+11:34:44.0 (95166780)|STATEMENT_EXECUTE|[23]
+11:34:44.0 (95177327)|METHOD_EXIT|[31]|01p0P000002DKqZ|GBI_DealerAndAdvisorCodeSync.execute(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (95186607)|METHOD_EXIT|[16]|01p0P000002DKqN|GBI_AssetDomain.handleAfterUpdate(List<Asset>, Map<Id,Asset>)
+11:34:44.0 (95192479)|SYSTEM_MODE_EXIT|false
+11:34:44.0 (95199886)|METHOD_EXIT|[11]|01p0P000002DKqN|GBI_AssetDomain.triggerHandler()
+11:34:44.95 (95208521)|CUMULATIVE_LIMIT_USAGE
+11:34:44.95 (95208521)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 1 out of 150
+  Number of DML rows: 1 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+11:34:44.95 (95208521)|TOTAL_EMAIL_RECIPIENTS_QUEUED|0
+11:34:44.95 (95208521)|STATIC_VARIABLE_LIST|
+  int:BYTES:0
+  int:BYTES:0
+  char[]:DigitOnes:0
+  char[]:DigitTens:0
+  Boolean:FALSE:0
+  int:MAX_EXPONENT:0
+  double:MAX_VALUE:0
+  int:MAX_VALUE:0
+  int:MIN_EXPONENT:0
+  double:MIN_NORMAL:0
+  double:MIN_VALUE:0
+  int:MIN_VALUE:0
+  double:NEGATIVE_INFINITY:0
+  double:NaN:0
+  double:POSITIVE_INFINITY:0
+  int:SIZE:0
+  int:SIZE:0
+  Boolean:TRUE:0
+  String:__sfdcParameterizedTypes:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  Boolean:_static_disableTrigger:0
+  Set<Id>:_static_processedRecords:0
+  char[]:digits:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  int[]:sizeTable:0
+
+11:34:44.95 (95208521)|CUMULATIVE_LIMIT_USAGE_END
+
+11:34:44.0 (96725530)|CODE_UNIT_FINISHED|AssetTrigger on Asset trigger event AfterUpdate|__sfdc_trigger/AssetTrigger
+11:34:44.0 (98415907)|CODE_UNIT_STARTED|[EXTERNAL]|01q1f0000008UgL|C360_AssetTrigger on Asset trigger event AfterUpdate|__sfdc_trigger/C360_AssetTrigger
+11:34:44.0 (98478249)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (98507597)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (98573636)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (98583570)|VARIABLE_SCOPE_BEGIN|[1]|this|C360_AssetTrigger|true|false
+11:34:44.0 (98619185)|VARIABLE_ASSIGNMENT|[1]|this|{}|0x786e02d8
+11:34:44.0 (98674539)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (98685102)|VARIABLE_SCOPE_BEGIN|[1]|this|C360_AssetTrigger|true|false
+11:34:44.0 (98704414)|VARIABLE_ASSIGNMENT|[1]|this|{}|0x786e02d8
+11:34:44.0 (98712691)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (98715560)|STATEMENT_EXECUTE|[2]
+11:34:44.0 (103764044)|HEAP_ALLOCATE|[2]|Bytes:3
+11:34:44.0 (103789096)|METHOD_ENTRY|[1]|01p1f0000009EMk|C360_AssetTriggerHandler.C360_AssetTriggerHandler()
+11:34:44.0 (103796273)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (103801089)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (103805981)|METHOD_EXIT|[1]|C360_AssetTriggerHandler
+11:34:44.0 (103822985)|HEAP_ALLOCATE|[2]|Bytes:4
+11:34:44.0 (103837097)|CONSTRUCTOR_ENTRY|[2]|01p1f0000009EMk|<init>()|C360_AssetTriggerHandler
+11:34:44.0 (103860225)|VARIABLE_SCOPE_BEGIN|[1]|this|C360_AssetTriggerHandler|true|false
+11:34:44.0 (103894902)|VARIABLE_ASSIGNMENT|[1]|this|{}|0x55c1703a
+11:34:44.0 (103908263)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:31
+11:34:44.0 (103917960)|METHOD_ENTRY|[4]|01p1f00000098kw|C360_BaseTriggerHandler.C360_BaseTriggerHandler()
+11:34:44.0 (103922760)|STATEMENT_EXECUTE|[4]
+11:34:44.0 (103926400)|STATEMENT_EXECUTE|[4]
+11:34:44.0 (103930163)|METHOD_EXIT|[4]|C360_BaseTriggerHandler
+11:34:44.0 (103982567)|CONSTRUCTOR_ENTRY|[EXTERNAL]|01p1f00000098kw|<init>()|C360_BaseTriggerHandler
+11:34:44.0 (104003219)|VARIABLE_SCOPE_BEGIN|[4]|this|C360_BaseTriggerHandler|true|false
+11:34:44.0 (104035575)|VARIABLE_ASSIGNMENT|[4]|this|{}|0x55c1703a
+11:34:44.0 (104065485)|STATEMENT_EXECUTE|[4]
+11:34:44.0 (104072916)|CONSTRUCTOR_EXIT|[EXTERNAL]|01p1f00000098kw|<init>()|C360_BaseTriggerHandler
+11:34:44.0 (104082739)|STATEMENT_EXECUTE|[1]
+11:34:44.0 (104087631)|CONSTRUCTOR_EXIT|[2]|01p1f0000009EMk|<init>()|C360_AssetTriggerHandler
+11:34:44.0 (104115348)|METHOD_ENTRY|[2]|01p1f00000098kw|C360_BaseTriggerHandler.run()
+11:34:44.0 (104126033)|VARIABLE_SCOPE_BEGIN|[5]|this|C360_BaseTriggerHandler|true|false
+11:34:44.0 (104150853)|VARIABLE_ASSIGNMENT|[5]|this|{}|0x55c1703a
+11:34:44.0 (104162056)|STATEMENT_EXECUTE|[5]
+11:34:44.0 (104172023)|METHOD_ENTRY|[6]|01p1f00000098kw|C360_BaseTriggerHandler.isTriggerActive()
+11:34:44.0 (104191925)|VARIABLE_SCOPE_BEGIN|[37]|this|C360_BaseTriggerHandler|true|false
+11:34:44.0 (104215366)|VARIABLE_ASSIGNMENT|[37]|this|{}|0x55c1703a
+11:34:44.0 (104226508)|STATEMENT_EXECUTE|[37]
+11:34:44.0 (104235176)|HEAP_ALLOCATE|[38]|Bytes:70
+11:34:44.0 (104257614)|HEAP_ALLOCATE|[38]|Bytes:4
+11:34:44.0 (104272045)|HEAP_ALLOCATE|[38]|Bytes:7
+11:34:44.0 (104312722)|METHOD_ENTRY|[38]|01p1f0000009EMk|C360_AssetTriggerHandler.getTriggerID()
+11:34:44.0 (104340564)|VARIABLE_SCOPE_BEGIN|[3]|this|C360_AssetTriggerHandler|true|false
+11:34:44.0 (104401899)|VARIABLE_ASSIGNMENT|[3]|this|{}|0x55c1703a
+11:34:44.0 (104414831)|STATEMENT_EXECUTE|[3]
+11:34:44.0 (104418431)|STATEMENT_EXECUTE|[4]
+11:34:44.0 (104424531)|HEAP_ALLOCATE|[4]|Bytes:5
+11:34:44.0 (104438017)|METHOD_EXIT|[38]|01p1f0000009EMk|C360_AssetTriggerHandler.getTriggerID()
+11:34:44.0 (104930822)|SOQL_EXECUTE_BEGIN|[38]|Aggregations:0|SELECT Active__c FROM C360_Trigger__mdt 
+11:34:44.0 (109910540)|SOQL_EXECUTE_END|[38]|Rows:1
+11:34:44.0 (109926303)|LIMIT_USAGE|[38]|SOQL_ROWS|1|50000
+11:34:44.0 (109945590)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (109998274)|SYSTEM_METHOD_ENTRY|[38]|Database.QueryLocator.iterator()
+11:34:44.0 (110098618)|HEAP_ALLOCATE|[38]|Bytes:54
+11:34:44.0 (110108109)|HEAP_ALLOCATE|[38]|Bytes:8
+11:34:44.0 (110118315)|SYSTEM_METHOD_ENTRY|[7]|QueryLocatorIterator.QueryLocatorIterator()
+11:34:44.0 (110123141)|STATEMENT_EXECUTE|[7]
+11:34:44.0 (110130148)|SYSTEM_METHOD_EXIT|[7]|QueryLocatorIterator
+11:34:44.0 (110138372)|HEAP_ALLOCATE|[38]|Bytes:28
+11:34:44.0 (110198196)|HEAP_ALLOCATE|[38]|Bytes:8
+11:34:44.0 (110217038)|HEAP_ALLOCATE|[38]|Bytes:8
+11:34:44.0 (110221488)|HEAP_ALLOCATE|[38]|Bytes:8
+11:34:44.0 (110228095)|VARIABLE_SCOPE_BEGIN|[15]|this|Database.QueryLocatorIterator|true|false
+11:34:44.0 (110294419)|VARIABLE_ASSIGNMENT|[15]|this|{}|0x1037643
+11:34:44.0 (110307129)|VARIABLE_SCOPE_BEGIN|[15]|values|List<SObject>|true|false
+11:34:44.0 (110352508)|VARIABLE_ASSIGNMENT|[15]|values|[{"Active__c":true,"Id":"m0D1f00000000KfEAI"}]|0x545d9d46
+11:34:44.0 (110364935)|VARIABLE_SCOPE_BEGIN|[15]|ql|Database.QueryLocator|true|false
+11:34:44.0 (110391634)|VARIABLE_ASSIGNMENT|[15]|ql|{"query":"SELECT Active__c FRO (50 more) ..."}|0x2c610e06
+11:34:44.0 (110402631)|VARIABLE_SCOPE_BEGIN|[15]|totalNumRecords|Integer|false|false
+11:34:44.0 (110417337)|VARIABLE_ASSIGNMENT|[15]|totalNumRecords|1
+11:34:44.0 (110425428)|VARIABLE_SCOPE_BEGIN|[15]|queryMoreSize|Integer|false|false
+11:34:44.0 (110436826)|VARIABLE_ASSIGNMENT|[15]|queryMoreSize|49999
+11:34:44.0 (110517775)|HEAP_ALLOCATE|[38]|Bytes:28
+11:34:44.0 (110534012)|SYSTEM_METHOD_EXIT|[38]|Database.QueryLocator.iterator()
+11:34:44.0 (110554880)|METHOD_ENTRY|[38]||Database.QueryLocatorIterator.hasNext()
+11:34:44.0 (110731124)|METHOD_EXIT|[38]||Database.QueryLocatorIterator.hasNext()
+11:34:44.0 (110749695)|METHOD_ENTRY|[38]||Database.QueryLocatorIterator.next()
+11:34:44.0 (110908634)|METHOD_EXIT|[38]||Database.QueryLocatorIterator.next()
+11:34:44.0 (110924020)|VARIABLE_SCOPE_BEGIN|[38]|t|C360_Trigger__mdt|true|false
+11:34:44.0 (110951562)|VARIABLE_ASSIGNMENT|[38]|t|{"Active__c":true,"Id":"m0D1f00000000KfEAI"}|0x671a3bc7
+11:34:44.0 (110962193)|STATEMENT_EXECUTE|[38]
+11:34:44.0 (110965886)|STATEMENT_EXECUTE|[39]
+11:34:44.0 (111023175)|METHOD_EXIT|[6]|01p1f00000098kw|C360_BaseTriggerHandler.isTriggerActive()
+11:34:44.0 (111037960)|STATEMENT_EXECUTE|[6]
+11:34:44.0 (111050009)|STATEMENT_EXECUTE|[21]
+11:34:44.0 (111055937)|STATEMENT_EXECUTE|[22]
+11:34:44.0 (111061472)|STATEMENT_EXECUTE|[25]
+11:34:44.0 (111064654)|STATEMENT_EXECUTE|[26]
+11:34:44.0 (111169754)|METHOD_ENTRY|[26]|01p1f0000009EMk|C360_AssetTriggerHandler.onAfterUpdate(List<SObject>, Map<Id,SObject>, List<SObject>, Map<Id,SObject>)
+11:34:44.0 (111211666)|VARIABLE_SCOPE_BEGIN|[7]|this|C360_AssetTriggerHandler|true|false
+11:34:44.0 (111253096)|VARIABLE_ASSIGNMENT|[7]|this|{}|0x55c1703a
+11:34:44.0 (111265810)|VARIABLE_SCOPE_BEGIN|[7]|newSObjectList|List<SObject>|true|false
+11:34:44.0 (112431174)|VARIABLE_ASSIGNMENT|[7]|newSObjectList|[{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"AssetLevel":1,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"IsInternal":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0x7b200905
+11:34:44.0 (112461988)|VARIABLE_SCOPE_BEGIN|[7]|newSObjectMap|Map<Id,SObject>|true|false
+11:34:44.0 (113357048)|VARIABLE_ASSIGNMENT|[7]|newSObjectMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"AssetLevel":1,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"IsInternal":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x9b9e6a6
+11:34:44.0 (113388197)|VARIABLE_SCOPE_BEGIN|[7]|oldSObjectList|List<SObject>|true|false
+11:34:44.0 (114140383)|VARIABLE_ASSIGNMENT|[7]|oldSObjectList|[{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"AssetLevel":1,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"IsInternal":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}]|0x3f4b3055
+11:34:44.0 (114192503)|VARIABLE_SCOPE_BEGIN|[7]|oldSObjectMap|Map<Id,SObject>|true|false
+11:34:44.0 (115041541)|VARIABLE_ASSIGNMENT|[7]|oldSObjectMap|{"02i1f000000lHUDAA2":{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"AssetLevel":1,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"IsInternal":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}}|0x49461936
+11:34:44.0 (115076564)|STATEMENT_EXECUTE|[7]
+11:34:44.0 (115079876)|STATEMENT_EXECUTE|[10]
+11:34:44.0 (115094108)|HEAP_ALLOCATE|[10]|Bytes:4
+11:34:44.0 (115114472)|SYSTEM_CONSTRUCTOR_ENTRY|[10]|<init>(Integer)
+11:34:44.0 (115150474)|SYSTEM_CONSTRUCTOR_EXIT|[10]|<init>(Integer)
+11:34:44.0 (115157684)|VARIABLE_SCOPE_BEGIN|[10]|sponsorIdSet|Set<Id>|true|false
+11:34:44.0 (115183874)|VARIABLE_ASSIGNMENT|[10]|sponsorIdSet|[]|0x3255493a
+11:34:44.0 (115190795)|STATEMENT_EXECUTE|[11]
+11:34:44.0 (115202795)|HEAP_ALLOCATE|[11]|Bytes:4
+11:34:44.0 (115213963)|VARIABLE_SCOPE_BEGIN|[11]|accountMap|Map<Id,Account>|true|false
+11:34:44.0 (115231186)|VARIABLE_ASSIGNMENT|[11]|accountMap|{}|0x749f0500
+11:34:44.0 (115253250)|SYSTEM_METHOD_ENTRY|[12]|List<Asset>.iterator()
+11:34:44.0 (115282935)|SYSTEM_METHOD_EXIT|[12]|List<Asset>.iterator()
+11:34:44.0 (115298907)|SYSTEM_METHOD_ENTRY|[12]|system.ListIterator.hasNext()
+11:34:44.0 (115314519)|HEAP_ALLOCATE|[12]|Bytes:5
+11:34:44.0 (115345257)|SYSTEM_METHOD_EXIT|[12]|system.ListIterator.hasNext()
+11:34:44.0 (115370292)|VARIABLE_SCOPE_BEGIN|[12]|asst|Asset|true|false
+11:34:44.0 (116215363)|VARIABLE_ASSIGNMENT|[12]|asst|{"LastModifiedDate":"2018-08-08T15:34:44.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":false,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":true,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"AssetLevel":1,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"IsInternal":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:34:44.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}|0x7f583024
+11:34:44.0 (116262087)|STATEMENT_EXECUTE|[12]
+11:34:44.0 (116265956)|STATEMENT_EXECUTE|[13]
+11:34:44.0 (116332044)|SYSTEM_METHOD_ENTRY|[13]|Map<Id,Asset>.get(Object)
+11:34:44.0 (116367630)|SYSTEM_METHOD_EXIT|[13]|Map<Id,Asset>.get(Object)
+11:34:44.0 (116385213)|VARIABLE_SCOPE_BEGIN|[13]|oldAsset|Asset|true|false
+11:34:44.0 (117059379)|VARIABLE_ASSIGNMENT|[13]|oldAsset|{"LastModifiedDate":"2018-08-08T15:20:27.000Z","Total_Payable__c":0.00,"Asset_Advisor__c":" ","GB_Canada_Only_Indicator__c":false,"AccountId":"0011f000004f4aCAAQ","Is_Current_User__c":1,"Write_Off_Amount__c":0.00,"Discount_Surcharges__c":0.00,"Asset_Advisor_Authorized__c":true,"RootAssetId":"02i1f000000lHUDAA2","CP2_Asset_Name_Tantamount__c":"Asset1215","Name":"Asset1215","Address_Country__c":"Canada","Net_Premium__c":0.00,"Vitality_Insured_Product__c":false,"CreatedById":"0051f000000IdnFAAS","Provincial_Tax__c":0.00,"Sponsor__c":"0011f000004p620AAA","RecordTypeId":"012U0000000g4N9IAI","Staff_Plan__c":true,"Address_Country_Code__c":"CA","GB_OTIP_Staff_Indicator__c":false,"IsCompetitorProduct":false,"GB_Data_Constraint_Indicator__c":false,"GB_OTIP_Indicator__c":false,"Status":"Active","Outstanding_Amount__c":0.00,"Canada_Only__c":true,"IsDeleted":false,"AssetLevel":1,"Amount_Paid__c":0.00,"Account_Name__c":"MDM Holding Account  (2 more) ...","Created_User_is_Current_User__c":true,"Business_Asset__c":false,"IsInternal":false,"Suspense_Amount__c":0.00,"SystemModstamp":"2018-08-08T15:20:27.000Z","Manulife_Staff_Indicator__c":false,"Number_of_Travellers__c":1,"Special_Handling__c":false,"On_Hold_Indicator__c":false,"Premium__c":0.00,"CreatedDate":"2018-06-22T16:16:35.000Z","Asset_Mailing_Address__c":"Canada,","Id":"02i1f000000lHUDAA2","LastModifiedById":"0051f000000IdnFAAS"}|0x3fd45de7
+11:34:44.0 (117086867)|STATEMENT_EXECUTE|[17]
+11:34:44.0 (117137610)|SYSTEM_METHOD_ENTRY|[18]|Id.compareTo(Id, Id, Boolean)
+11:34:44.0 (117170698)|SYSTEM_METHOD_EXIT|[18]|Id.compareTo(Id, Id, Boolean)
+11:34:44.0 (117177777)|STATEMENT_EXECUTE|[18]
+11:34:44.0 (117186492)|SYSTEM_METHOD_ENTRY|[12]|system.ListIterator.hasNext()
+11:34:44.0 (117198678)|HEAP_ALLOCATE|[12]|Bytes:5
+11:34:44.0 (117207132)|SYSTEM_METHOD_EXIT|[12]|system.ListIterator.hasNext()
+11:34:44.0 (117219136)|VARIABLE_ASSIGNMENT|[12]|asst|null|
+11:34:44.0 (117227477)|HEAP_ALLOCATE|[23]|Bytes:144
+11:34:44.0 (117242485)|HEAP_ALLOCATE|[23]|Bytes:4
+11:34:44.0 (117531149)|SOQL_EXECUTE_BEGIN|[23]|Aggregations:0|SELECT Canada_Only__c, Id, Special_Handling__c, GB_OTIP_Indicator__c, Staff_Plan__c, GB_OTIP_Staff_Indicator__c FROM Account 
+11:34:44.0 (117544693)|LIMIT_USAGE|[23]|SOQL|1|200
+11:34:44.0 (117556128)|LIMIT_USAGE|[23]|AGGS|0|600
+11:34:44.0 (119961987)|SOQL_EXECUTE_END|[23]|Rows:0
+11:34:44.0 (120006619)|SYSTEM_METHOD_ENTRY|[23]|Database.QueryLocator.iterator()
+11:34:44.0 (120066172)|HEAP_ALLOCATE|[23]|Bytes:28
+11:34:44.0 (120084997)|HEAP_ALLOCATE|[23]|Bytes:8
+11:34:44.0 (120089642)|HEAP_ALLOCATE|[23]|Bytes:8
+11:34:44.0 (120095234)|VARIABLE_SCOPE_BEGIN|[15]|this|Database.QueryLocatorIterator|true|false
+11:34:44.0 (120140699)|VARIABLE_ASSIGNMENT|[15]|this|{}|0x6ab7e2c3
+11:34:44.0 (120148786)|VARIABLE_SCOPE_BEGIN|[15]|values|List<SObject>|true|false
+11:34:44.0 (120157403)|VARIABLE_ASSIGNMENT|[15]|values|null|
+11:34:44.0 (120162069)|VARIABLE_SCOPE_BEGIN|[15]|ql|Database.QueryLocator|true|false
+11:34:44.0 (120178236)|VARIABLE_ASSIGNMENT|[15]|ql|{"query":"SELECT Canada_Only__ (124 more) ..."}|0x1a55af6b
+11:34:44.0 (120184003)|VARIABLE_SCOPE_BEGIN|[15]|totalNumRecords|Integer|false|false
+11:34:44.0 (120192497)|VARIABLE_ASSIGNMENT|[15]|totalNumRecords|0
+11:34:44.0 (120196760)|VARIABLE_SCOPE_BEGIN|[15]|queryMoreSize|Integer|false|false
+11:34:44.0 (120204184)|VARIABLE_ASSIGNMENT|[15]|queryMoreSize|49999
+11:34:44.0 (120253805)|HEAP_ALLOCATE|[23]|Bytes:28
+11:34:44.0 (120263636)|SYSTEM_METHOD_EXIT|[23]|Database.QueryLocator.iterator()
+11:34:44.0 (120276591)|METHOD_ENTRY|[23]||Database.QueryLocatorIterator.hasNext()
+11:34:44.0 (120298178)|METHOD_EXIT|[23]||Database.QueryLocatorIterator.hasNext()
+11:34:44.0 (120314397)|VARIABLE_ASSIGNMENT|[23]|acnt|null|
+11:34:44.0 (120340989)|STATEMENT_EXECUTE|[23]
+11:34:44.0 (120367319)|SYSTEM_METHOD_ENTRY|[30]|System.isBatch()
+11:34:44.0 (120391420)|SYSTEM_METHOD_EXIT|[30]|System.isBatch()
+11:34:44.0 (120397800)|STATEMENT_EXECUTE|[30]
+11:34:44.0 (120404910)|METHOD_EXIT|[26]|01p1f0000009EMk|C360_AssetTriggerHandler.onAfterUpdate(List<SObject>, Map<Id,SObject>, List<SObject>, Map<Id,SObject>)
+11:34:44.0 (120417400)|STATEMENT_EXECUTE|[28]
+11:34:44.0 (120423710)|STATEMENT_EXECUTE|[31]
+11:34:44.0 (120428252)|METHOD_EXIT|[2]|01p1f00000098kw|C360_BaseTriggerHandler.run()
+11:34:44.120 (120436880)|CUMULATIVE_LIMIT_USAGE
+11:34:44.120 (120436880)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 200
+  Number of query rows: 1 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 1 out of 150
+  Number of DML rows: 1 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+11:34:44.120 (120436880)|TOTAL_EMAIL_RECIPIENTS_QUEUED|0
+11:34:44.120 (120436880)|STATIC_VARIABLE_LIST|
+  int:BYTES:0
+  int:BYTES:0
+  char[]:DigitOnes:0
+  char[]:DigitTens:0
+  Boolean:FALSE:0
+  int:MAX_EXPONENT:0
+  double:MAX_VALUE:0
+  int:MAX_VALUE:0
+  int:MIN_EXPONENT:0
+  double:MIN_NORMAL:0
+  double:MIN_VALUE:0
+  int:MIN_VALUE:0
+  double:NEGATIVE_INFINITY:0
+  double:NaN:0
+  double:POSITIVE_INFINITY:0
+  int:SIZE:0
+  int:SIZE:0
+  Boolean:TRUE:0
+  String:__sfdcParameterizedTypes:0
+  String:__sfdcParameterizedTypes:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcAdditionalCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  String:_sfdcSuppressedCodeLocations:0
+  Boolean:_static_disableTrigger:0
+  Set<Id>:_static_processedRecords:0
+  char[]:digits:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  long:serialVersionUID:0
+  int[]:sizeTable:0
+
+11:34:44.120 (120436880)|CUMULATIVE_LIMIT_USAGE_END
+
+11:34:44.0 (121472429)|CODE_UNIT_FINISHED|C360_AssetTrigger on Asset trigger event AfterUpdate|__sfdc_trigger/C360_AssetTrigger
+11:34:44.0 (121886366)|DML_END|[28]
+11:34:44.0 (121931141)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.0 (121970736)|HEAP_ALLOCATE|[28]|Bytes:8
+11:34:44.0 (121989755)|SYSTEM_METHOD_EXIT|[28]|Database.update(List<SObject>, Boolean)
+11:34:44.0 (122000838)|VARIABLE_SCOPE_BEGIN|[28]|saveRes|List<Database.SaveResult>|true|false
+11:34:44.0 (122207834)|VARIABLE_ASSIGNMENT|[28]|saveRes|[{"success":true,"id":"02i1f000000lHUDAA2"}]|0x95566dc
+11:34:44.0 (122250277)|SYSTEM_METHOD_ENTRY|[30]|List<Database.SaveResult>.iterator()
+11:34:44.0 (122363084)|SYSTEM_METHOD_EXIT|[30]|List<Database.SaveResult>.iterator()
+11:34:44.0 (122381981)|SYSTEM_METHOD_ENTRY|[30]|system.ListIterator.hasNext()
+11:34:44.0 (122395495)|HEAP_ALLOCATE|[30]|Bytes:5
+11:34:44.0 (122404522)|SYSTEM_METHOD_EXIT|[30]|system.ListIterator.hasNext()
+11:34:44.0 (122440810)|HEAP_ALLOCATE|[30]|Bytes:4
+11:34:44.0 (122469324)|VARIABLE_SCOPE_BEGIN|[30]|res|Database.SaveResult|true|false
+11:34:44.0 (122494137)|VARIABLE_ASSIGNMENT|[30]|res|{"success":true,"id":"02i1f000000lHUDAA2"}|0x3c6b3684
+11:34:44.0 (122501771)|STATEMENT_EXECUTE|[30]
+11:34:44.0 (122527031)|STATEMENT_EXECUTE|[31]
+11:34:44.0 (122535656)|SYSTEM_METHOD_ENTRY|[30]|system.ListIterator.hasNext()
+11:34:44.0 (122546186)|HEAP_ALLOCATE|[30]|Bytes:5
+11:34:44.0 (122552785)|SYSTEM_METHOD_EXIT|[30]|system.ListIterator.hasNext()
+11:34:44.0 (122562879)|VARIABLE_ASSIGNMENT|[30]|res|null|
+11:34:44.0 (122578876)|CODE_UNIT_FINISHED|C360_handleAssetIndicators
+11:34:44.0 (123509075)|EXECUTION_FINISHED
+11:34:44.124 (124420852)|CUMULATIVE_PROFILING_BEGIN
+11:34:44.124 (124420852)|CUMULATIVE_PROFILING|SOQL operations|
+Class.C360_AssetTriggerHandler.onAfterUpdate: line 23, column 1: [Select Canada_Only__c, Id, Special_Handling__c,GB_OTIP_Indicator__c,Staff_Plan__c,GB_OTIP_Staff_Indicator__c from Account Where ID =: sponsorIdSet]: executed 3 times in 3 ms
+
+11:34:44.124 (124420852)|CUMULATIVE_PROFILING|No profiling information for SOSL operations
+11:34:44.124 (124420852)|CUMULATIVE_PROFILING|DML operations|
+Class.C360_handleAssetIndicators.execute: line 28, column 1: com.salesforce.api.Database.update(List<Asset>, Boolean): executed 1 time in 120 ms
+
+11:34:44.124 (124420852)|CUMULATIVE_PROFILING|method invocations|
+External entry point: global void execute(Database.BatchableContext, List<SObject>): executed 1 time in 122 ms
+Trigger.AssetTrigger: line 11, column 1: public static void triggerHandler(): executed 2 times in 40 ms
+External entry point: public void invoke(): executed 1 time in 22 ms
+Trigger.C360_AssetTrigger: line 2, column 1: global C360_AssetTriggerHandler(): executed 2 times in 17 ms
+External entry point: public void invoke(): executed 1 time in 16 ms
+Class.C360_BaseTriggerHandler.run: line 26, column 1: public void onAfterUpdate(List<SObject>, Map<Id,SObject>, List<SObject>, Map<Id,SObject>): executed 1 time in 10 ms
+Class.C360_BaseTriggerHandler.run: line 6, column 1: private Boolean isTriggerActive(): executed 1 time in 7 ms
+Class.GBI_AssetDomain.triggerHandler: line 16, column 1: private static void handleAfterUpdate(List<Asset>, Map<Id,Asset>): executed 1 time in 7 ms
+Class.C360_BaseTriggerHandler.isTriggerActive: line 38, column 1: public String getTriggerID(): executed 5 times in 6 ms
+Trigger.AssetTrigger: line 5, column 1: public static void handleAfterUpdate(List<Asset>, Map<Id,Asset>): executed 1 time in 5 ms
+Class.GBI_AssetDomain.handleAfterUpdate: line 31, column 1: public static void execute(List<Asset>, Map<Id,Asset>): executed 1 time in 3 ms
+
+11:34:44.124 (124420852)|CUMULATIVE_PROFILING_END

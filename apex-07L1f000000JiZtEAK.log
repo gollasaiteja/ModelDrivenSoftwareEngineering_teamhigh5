@@ -1,0 +1,67 @@
+43.0 APEX_CODE,FINEST;APEX_PROFILING,FINEST;CALLOUT,FINEST;DB,FINEST;NBA,INFO;SYSTEM,FINEST;VALIDATION,FINEST;VISUALFORCE,FINEST;WAVE,INFO;WORKFLOW,FINEST
+11:34:44.0 (107688)|USER_INFO|[EXTERNAL]|0051f000000IdnF|sai_teja_golla@manulife-cdn.com.dev53|Eastern Standard Time|GMT-04:00
+11:34:44.0 (137268)|EXECUTION_STARTED
+11:34:44.0 (142408)|CODE_UNIT_STARTED|[EXTERNAL]|01p1f0000009Hlb|C360_handleAssetIndicators
+11:34:44.0 (3471391)|HEAP_ALLOCATE|[72]|Bytes:3
+11:34:44.0 (3520246)|HEAP_ALLOCATE|[77]|Bytes:152
+11:34:44.0 (3534413)|HEAP_ALLOCATE|[342]|Bytes:408
+11:34:44.0 (3546656)|HEAP_ALLOCATE|[355]|Bytes:408
+11:34:44.0 (3558146)|HEAP_ALLOCATE|[467]|Bytes:48
+11:34:44.0 (3581394)|HEAP_ALLOCATE|[139]|Bytes:6
+11:34:44.0 (4851801)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:256
+11:34:44.0 (8369495)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:11
+11:34:44.0 (8387109)|SYSTEM_METHOD_ENTRY|[15]|BatchableContextImpl.BatchableContextImpl()
+11:34:44.0 (8392834)|STATEMENT_EXECUTE|[15]
+11:34:44.0 (8400767)|SYSTEM_METHOD_EXIT|[15]|BatchableContextImpl
+11:34:44.0 (8409195)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+11:34:44.0 (8413858)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (8417400)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+11:34:44.0 (8423946)|VARIABLE_SCOPE_BEGIN|[31]|this|Database.BatchableContextImpl|true|false
+11:34:44.0 (8480355)|VARIABLE_ASSIGNMENT|[31]|this|{}|0x361ad16f
+11:34:44.0 (8488795)|VARIABLE_SCOPE_BEGIN|[31]|jobId|Id|false|false
+11:34:44.0 (8582159)|VARIABLE_ASSIGNMENT|[31]|jobId|"7071f000000rjx4AAA"
+11:34:44.0 (8589958)|VARIABLE_SCOPE_BEGIN|[31]|childJobId|Id|false|false
+11:34:44.0 (8617213)|VARIABLE_ASSIGNMENT|[31]|childJobId|"7071f000000rjx6AAA"
+11:34:44.0 (18603019)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+11:34:44.186 (186143642)|CUMULATIVE_LIMIT_USAGE
+11:34:44.186 (186143642)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+11:34:44.186 (186143642)|TOTAL_EMAIL_RECIPIENTS_QUEUED|0
+11:34:44.186 (186143642)|CUMULATIVE_LIMIT_USAGE_END
+
+11:34:44.0 (186186341)|CODE_UNIT_FINISHED|C360_handleAssetIndicators
+11:34:44.0 (187275336)|EXECUTION_FINISHED
+11:34:44.203 (203082832)|CUMULATIVE_PROFILING_BEGIN
+11:34:44.203 (203082832)|CUMULATIVE_PROFILING|SOQL operations|
+Class.C360_AssetTriggerHandler.onAfterUpdate: line 23, column 1: [Select Canada_Only__c, Id, Special_Handling__c,GB_OTIP_Indicator__c,Staff_Plan__c,GB_OTIP_Staff_Indicator__c from Account Where ID =: sponsorIdSet]: executed 3 times in 3 ms
+
+11:34:44.203 (203082832)|CUMULATIVE_PROFILING|No profiling information for SOSL operations
+11:34:44.203 (203082832)|CUMULATIVE_PROFILING|DML operations|
+Class.C360_handleAssetIndicators.execute: line 28, column 1: com.salesforce.api.Database.update(List<Asset>, Boolean): executed 1 time in 120 ms
+
+11:34:44.203 (203082832)|CUMULATIVE_PROFILING|method invocations|
+External entry point: global void execute(Database.BatchableContext, List<SObject>): executed 1 time in 122 ms
+Trigger.AssetTrigger: line 11, column 1: public static void triggerHandler(): executed 2 times in 40 ms
+External entry point: public void invoke(): executed 1 time in 22 ms
+Trigger.C360_AssetTrigger: line 2, column 1: global C360_AssetTriggerHandler(): executed 2 times in 17 ms
+External entry point: public void invoke(): executed 1 time in 16 ms
+Class.C360_BaseTriggerHandler.run: line 26, column 1: public void onAfterUpdate(List<SObject>, Map<Id,SObject>, List<SObject>, Map<Id,SObject>): executed 1 time in 10 ms
+Class.C360_BaseTriggerHandler.run: line 6, column 1: private Boolean isTriggerActive(): executed 1 time in 7 ms
+Class.GBI_AssetDomain.triggerHandler: line 16, column 1: private static void handleAfterUpdate(List<Asset>, Map<Id,Asset>): executed 1 time in 7 ms
+Class.C360_BaseTriggerHandler.isTriggerActive: line 38, column 1: public String getTriggerID(): executed 5 times in 6 ms
+Trigger.AssetTrigger: line 5, column 1: public static void handleAfterUpdate(List<Asset>, Map<Id,Asset>): executed 1 time in 5 ms
+Class.GBI_AssetDomain.handleAfterUpdate: line 31, column 1: public static void execute(List<Asset>, Map<Id,Asset>): executed 1 time in 3 ms
+
+11:34:44.203 (203082832)|CUMULATIVE_PROFILING_END
