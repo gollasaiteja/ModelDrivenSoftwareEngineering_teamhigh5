@@ -155,6 +155,7 @@ global class C360_handleAccountIndicators implements Database.Batchable<SObject>
             custAccounts.GB_OTIP_Indicator__c = false;
             custAccounts.Staff_Plan__c = false;
             custAccounts.GB_OTIP_Staff_Indicator__c = false;
+            system.debug('custAccounts.Id=============='+custAccounts.Id+'assetAccountIdMap inside for====================='+assetAccountIdMap.get(custAccounts.Id));
             if(assetAccountIdMap.get(custAccounts.Id) != null){                
                 if(!assetAccountIdMap.get(custAccounts.Id).Canada_Only__c){
                     custAccounts.Canada_Only__c = false;
