@@ -1,0 +1,1252 @@
+@isTest
+private class C360_ServicesTest
+{
+    static final String SAMPLE_PRODUCT_NAME = 'Architect Summit II Guaranteed - Joint Last';
+    static final String ENGLISH = 'en_US';
+
+    @testSetup
+    private static void dataSetup() {
+        CP2_TestUtils.createCustomSettings();
+        /***** Added for GB Production Go Live because of failing ****/
+        CCT_TestDataUtility.createCustomSettingRecord();
+        CCT_Setting__c setting = CCT_Setting__c.getValues('Trigger Updates Alert GB Flags');
+        setting.Boolean_Value__c=true;
+        update setting;
+        insert new Vitality_ContactTriggerAllowedProfiles__c(Name = 'Default', 
+            ProfileNames__c = 'System Administrator,Contact Centre Agent,Contact Centre Leader,Business Administrator');
+
+        insert new Product2(
+            Name = SAMPLE_PRODUCT_NAME,
+            Family = 'UNIVERSAL',
+            ProductCode = '13086',
+            Contact_Center_BU__c = 'BII',
+            External_Id__c = 'MDM13086'
+        );
+
+
+        insert  new Account(
+            Name = 'Sample Test Account',
+            External_Id__c = 'MDM44_27085'
+        );
+
+
+    }
+
+    private static User C360User() {
+        return new User(
+            Alias = 'c360int', 
+            Email='c360integration@manulife.com', 
+            EmailEncodingKey='UTF-8', 
+            LastName='C360 Integration', 
+            LanguageLocaleKey= ENGLISH, 
+            LocaleSidKey= ENGLISH, 
+            ProfileId = [SELECT Id FROM Profile WHERE Name='Integration - Cast Iron'].Id, 
+            TimeZoneSidKey='America/Los_Angeles', 
+            UserName='c360integration@manulife.com'
+        );      
+    }
+
+    private static List<C360.ContactInfoType> sampleContactInfo() {
+        return new List<C360.ContactInfoType>{
+            C360_TestData.buildContactInfo()
+        };
+    }
+
+    private static List<C360.AssetInfoType> sampleAssetInfo() {
+        return new List<C360.AssetInfoType>{
+            C360_TestData.buildAssetInfo()
+        };
+    }
+
+    private static List<C360.Sponsor> sampleSponsor() {
+        return new List<C360.Sponsor>{
+            C360_TestData.buildSponsor()
+        };
+    }
+
+    private static List<C360.ProductInfo> sampleProduct() {
+        return new List<C360.ProductInfo>{
+            C360_TestData.buildProductInfo()
+        };
+    }
+
+    static Date jan28 = Date.newInstance(2000, 1, 28);
+    static Date jan29 = Date.newInstance(2000, 1, 29);
+    static Date jan30 = Date.newInstance(2000, 1, 30);
+    static Date jan31 = Date.newInstance(2000, 1, 31);
+
+    public class TODOException extends Exception{}
+
+    public static List<User> createUsers(integer n, List<Contact> partnerContacts) {
+
+        string profileName;
+        if (partnerContacts==null) {
+            profileName = 'Standard User';
+        } else {
+            profileName = 'Partner Community Login User';
+        }
+        Profile profile = [select id from profile where name=:profileName];
+
+        List<User> users = new List<User>();
+        for (integer i=0; i < n; i++) {
+            User usr = new User(LastName = 'Test' + i,
+                FirstName='Test' + i,
+                Alias = 'test' + i,
+                Email = 'test' + i + '@manulife-cdn.com',
+                Username = 'test' + i + '@manulife-cdn.com.dev33',
+                ProfileId = profile.id,
+                TimeZoneSidKey = 'GMT',
+                LanguageLocaleKey =  ENGLISH,
+                EmailEncodingKey = 'UTF-8',
+                LocaleSidKey =  ENGLISH
+            );
+
+            if (partnerContacts!=null)
+                usr.ContactId = partnerContacts[i].Id;
+
+            users.Add(usr);
+        }
+
+        insert users;
+        return users;
+    }
+
+
+    @isTest //
+    static void merging_two_contacts() {
+
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.ContactInfoType> twoContacts = new List<C360.ContactInfoType>{
+                C360_TestData.buildContactInfo(),
+                C360_TestData.buildContactInfo()
+            }; 
+
+            twoContacts[0].names[0].contactName.lastName = 'AAAA';
+            twoContacts[1].names[0].contactName.lastName = 'BBBB';
+
+            new C360_updateContacts().handle(twoContacts);
+
+            // Create Assets
+            List<C360.AssetInfoType> assets = sampleAssetInfo();
+            new C360_updateAssets().handle(assets);
+            List<Asset> assets2 = [select Id, External_Id__c from asset];
+            system.debug('****Num of test assets: ' + assets2.size());
+            system.debug('****Assets in DB: ' + assets2);
+
+            // Create Asset Contact Roles
+            List<C360.AssetRole> assetRoles = new List<C360.AssetRole>{
+                C360_TestData.buildAssetRole(twoContacts[0],assets[0],assets[0].benefits[0])
+            };
+            system.debug('***' + assetRoles);
+            new C360_updateAssetContactRoles().handle(assetRoles);
+
+            List<Contact> origContacts = [Select Id, LastName, (Select Id From Contact_Communications__r) From Contact];
+            Set<Id> originalIds = new Map<Id, Contact>(origContacts).keyset();
+
+            DateTime past = DateTime.newInstance(1900,1,1);
+            Test.setCreatedDate(origContacts[0].Id, past);
+
+            System.assertEquals(2, originalIds.size());
+            
+            Set<Id> idsToBeDeleted = new Set<Id>();
+            for(sObject o : [Select Id From AssetContactRoles__c        Where Contact__c         in :originalIds]) idsToBeDeleted.add(o.Id); system.assert(idsToBeDeleted.size() > 0,'There are no asset contact roles');
+            for(sObject o : [Select Id From Alert__c                    Where Related_Contact__c in :originalIds]) idsToBeDeleted.add(o.Id);
+            for(sObject o : [Select Id From Source_System_Identifier__c Where Contact__c         in :originalIds]) idsToBeDeleted.add(o.Id);
+            for(sObject o : [Select Id From Contact_Communication__c    Where Contact__c         in :originalIds]) idsToBeDeleted.add(o.Id);
+
+            //System.assert(false, '' + [Select External_Id__c From Contact_Communication__c    Where Contact__c in :originalIds]);
+
+            List<C360.MergeContactsRequest> requests = C360_CheckTestData.sampleMergeContactsRequest();
+            requests[0].sources[0].recordId = twoContacts[0].partyId;
+            requests[0].sources[1].recordId = twoContacts[1].partyId;
+
+            requests[0].target.names[0].contactName.lastName = 'ABAB';
+
+            //////////////////////// ACT
+            Test.startTest();
+            new C360_mergeContacts().handle(requests);
+            Test.stopTest();
+
+            //////////////////////// ASSERT
+            ok();
+            List<Contact> contacts = [Select Id, LastName, (Select Id From Contact_Communications__r) From Contact];
+            System.assertEquals(1, contacts.size(), 'After merge, there should be only one contact');
+
+            System.assertEquals('ABAB', contacts[0].LastName);
+            System.assertEquals(origContacts[0].Id, contacts[0].Id, 'The final merged target id should be equal the id of the first source id (by created date)');
+            System.assertEquals(4, contacts[0].Contact_Communications__r.size());
+
+            DebugContacts('Group 2');
+
+            Set<Id> deletedIds = new Set<Id>();
+            for(sObject o : [Select Id From Alert__c                    Where IsDeleted  = true ALL ROWS]) deletedIds.add(o.Id);
+            for(sObject o : [Select Id From Source_System_Identifier__c Where IsDeleted  = true ALL ROWS]) deletedIds.add(o.Id);
+            for(sObject o : [Select Id From AssetContactRoles__c        Where IsDeleted  = true ALL ROWS]) deletedIds.add(o.Id);
+            for(sObject o : [Select Id From Contact_Communication__c    Where IsDeleted  = true ALL ROWS]) deletedIds.add(o.Id);
+
+            System.assertEquals(idsToBeDeleted.size(), deletedIds.size());
+            System.assert(idsToBeDeleted.equals(deletedIds), 'To Be Deleted:' + idsToBeDeleted + ' | Deleted:' + deletedIds);
+            
+        }
+    } 
+
+    @isTest //
+    static void unmerging_contacts() {
+
+        System.runAs(C360User()) {
+
+            List<C360.ContactInfoType> oneContact = new List<C360.ContactInfoType>{
+                C360_TestData.buildContactInfo()
+            }; 
+
+            new C360_updateContacts().handle(oneContact);
+            
+            ok();
+
+            List<C360.ContactInfoType> twoContacts = new List<C360.ContactInfoType>{
+                C360_TestData.buildContactInfo(),
+                C360_TestData.buildContactInfo()
+            }; 
+
+            C360.UnmergeContactRequest unmergeRequest = new C360.UnmergeContactRequest();
+            unmergeRequest.source = new C360.MergeContactSource();
+            unmergeRequest.source.recordId = oneContact[0].partyId;
+            unmergeRequest.targets = twoContacts;
+            unmergeRequest.targetRoles = null;
+
+            List<Contact> contactsBefore = [Select Id from Contact];
+            Id origId = contactsBefore[0].Id;
+
+            Set<Id> g1ToBeDeleted = new Set<Id>();
+            Set<Id> g2ToBeDeleted = new Set<Id>();
+            Set<Id> g3ToBeDeleted = new Set<Id>();
+            Set<Id> g4ToBeDeleted = new Set<Id>();
+
+            List<String> groups = new List<String> {'AssetContactRoles', 'Alert', 'Source_System_Identifier', 'Contact_Communication'};
+
+            Map<String, Set<Id>> idsToBeDeleted = new Map<String, Set<Id>>();
+            Map<String, Set<Id>> deletedIds = new Map<String, Set<Id>>();
+            for (String grp : groups) {
+                idsToBeDeleted.put(grp, new Set<Id>());
+                deletedIds.put(grp, new Set<Id>());
+            }
+
+            for(sObject o : [Select Id From AssetContactRoles__c        Where Contact__c         = :origId]) idsToBeDeleted.get('AssetContactRoles'       ).add(o.Id);
+            for(sObject o : [Select Id From Alert__c                    Where Related_Contact__c = :origId]) idsToBeDeleted.get('Alert'                   ).add(o.Id);
+            for(sObject o : [Select Id From Source_System_Identifier__c Where Contact__c         = :origId]) idsToBeDeleted.get('Source_System_Identifier').add(o.Id);
+            for(sObject o : [Select Id From Contact_Communication__c    Where Contact__c         = :origId]) idsToBeDeleted.get('Contact_Communication'   ).add(o.Id);
+
+            //////////////////////// ACT
+            new C360_unmergeContacts().handle(new List<C360.UnmergeContactRequest>{unmergeRequest});
+
+            //////////////////////// ASSERT
+            ok();
+
+            for(sObject o : [Select Id From AssetContactRoles__c        Where IsDeleted  = true ALL ROWS]) deletedIds.get('AssetContactRoles'       ).add(o.Id);
+            for(sObject o : [Select Id From Alert__c                    Where IsDeleted  = true ALL ROWS]) deletedIds.get('Alert'                   ).add(o.Id);
+            for(sObject o : [Select Id From Source_System_Identifier__c Where IsDeleted  = true ALL ROWS]) deletedIds.get('Source_System_Identifier').add(o.Id);
+            for(sObject o : [Select Id From Contact_Communication__c    Where IsDeleted  = true ALL ROWS]) deletedIds.get('Contact_Communication'   ).add(o.Id);
+
+            for (String grp : groups) {
+                System.assertEquals(
+                    idsToBeDeleted.get(grp).size(), 
+                    deletedIds.get(grp).size(), 
+                    'Unexpected number of deleted ' + grp);
+            }
+
+            List<Contact> contactsAfter = [Select Id from Contact];
+
+            System.assert(contactsAfter.size() > contactsBefore.size(), 'The number of contacts after unmerge must be larger than before merge.');
+        }
+    }      
+
+    private static void DebugContacts(String groupName) {
+
+        for(Contact c : [Select Id, Name, Account.Name from Contact]) {
+            System.debug('--- ' + groupName + '           cont.Id:' + c.Id);
+            System.debug('--- ' + groupName + '         cont.Name:' + c.Name);
+            System.debug('--- ' + groupName + ' cont.Account.Name:' + c.Account.Name);
+        }
+    }
+
+    //TODO: restore // ----- restore @isTest
+    //todo: test merging two partner users. This test currently does not work, because user.ContactId is readonly field.
+    // think of a different way to test merging two partner users.
+    static void merging_two_partner_users_will_fail() {
+
+        System.runAs(C360User()) {
+        
+            //////////////////////// ARRANGE
+            List<C360.ContactInfoType> twoContacts = new List<C360.ContactInfoType>{
+                C360_TestData.buildContactInfo(),
+                C360_TestData.buildContactInfo()
+            };
+
+            new C360_updateContacts().handle(twoContacts);
+            System.assertEquals(2, [Select Id From Contact].size());
+            
+            List<C360.MergeContactsRequest> requests = C360_CheckTestData.sampleMergeContactsRequest();
+            requests[0].sources[0].recordId = twoContacts[0].sourceSystemIdentifiers[0].recordId;
+            requests[0].sources[1].recordId = twoContacts[1].sourceSystemIdentifiers[0].recordId;
+
+            List<Contact> twoCreatedContacts = [Select Id From Contact];
+            System.assertEquals(2, twoCreatedContacts.size());
+
+
+            List<User> users = createUsers(2, twoCreatedContacts);
+
+            // Make two partner portal users
+            users[0].ContactId = twoCreatedContacts[0].Id;
+            users[1].ContactId = twoCreatedContacts[1].Id;
+            update users;
+
+            //////////////////////// ACT
+            new C360_mergeContacts().handle(requests);
+            
+            //////////////////////// ASSERT
+            ok();
+            System.assertEquals(1, [Select Id From Contact].size());
+        }
+    }
+
+    @isTest 
+    static void creating_single_contact_with_all_children()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.ContactInfoType> param = sampleContactInfo();
+
+            //////////////////////// ACT
+            new C360_updateContacts().handle(param);
+    
+            //////////////////////// ASSERT
+            ok();
+            List<Contact> contacts                 = [Select Id, IsBank_Only_Cust__c, PortalRegistrationID__c, SIN__c, Language_Spoken__c, Language_Witten__c, Language_Written__c, Customer_Since_Date__c, Client_Status__c, Birthdate__c, Marital_Status__c, Deceased_Date__c, IsDeceased__c, Disabled__c, Student__c, OtherStreet, OtherCity, OtherStateCode, OtherCountryCode, OtherPostalCode, MailingStreet, MailingCity, MailingStateCode, MailingCountryCode, MailingPostalCode, HomePhone, OtherPhone, MobilePhone, Phone, Email From Contact LIMIT 10];
+            List<Account> accounts                 = [Select Id, External_ID__c, Name, RecordType.Name, BillingStreet, BillingCity, BillingStateCode, BillingCountryCode, BillingPostalCode From Account Where External_Id__c <> 'MDM44_27085'  LIMIT 10];
+            List<Contact_Communication__c> ccs     = [Select Id From Contact_Communication__c LIMIT 10];
+            List<Source_System_Identifier__c> ssis = [Select Id, External_Id__c From Source_System_Identifier__c  LIMIT 10];
+            List<Alert__c> alerts                  = [Select Id, Title__c, Description__c, Level__c, Valid_From__c, Valid_To__c From Alert__c  LIMIT 10];
+            List<Membership__c> memberships        = [Select Id, RegistrationID__c, External_ID__c, MembershipID__c, Customer_Role__c, CustomerSinceDate__c, Status__c, StatusEffectiveDate__c, Type__c, EntityNo__c, PolicyCardNo__c From Membership__c  LIMIT 10]; 
+
+
+            System.assertEquals(1, contacts.size());
+            System.assertEquals(1, accounts.size());
+            System.assertEquals(4, ccs.size());
+            System.assertEquals(1, ssis.size());
+            System.assertEquals(1, alerts.size());
+            System.assertEquals(1, memberships.size());
+
+            Contact contact = contacts[0];
+            Account account = accounts[0];
+            Contact_Communication__c cc = ccs[0];
+            Source_System_Identifier__c ssi = ssis[0];
+            Alert__c alert = alerts[0];
+            Membership__c membership = memberships[0];
+
+
+            System.assertEquals('English', contact.Language_Spoken__c);
+            System.assertEquals('French', contact.Language_Witten__c);
+            System.assertEquals('111222333', contact.SIN__c);
+            System.assertEquals(jan31, contact.Customer_Since_Date__c);
+            System.assertEquals('Active', contact.Client_Status__c);
+            System.assertEquals('01/31/2000', contact.Birthdate__c);
+            System.assertEquals('Married', contact.Marital_Status__c);
+            System.assertEquals(jan31, contact.Deceased_Date__c);
+            System.assertEquals(true, contact.IsDeceased__c);
+            System.assertEquals(true, contact.Disabled__c);
+            System.assertEquals(true, contact.Student__c);
+            System.assertEquals(true, contact.IsBank_Only_Cust__c);
+            System.assertEquals(null, contact.PortalRegistrationID__c);
+
+            System.assertEquals('Other Address', contact.OtherStreet);
+            System.assertEquals('London', contact.OtherCity);
+            System.assertEquals('ON', contact.OtherStateCode);
+            System.assertEquals('CA', contact.OtherCountryCode);
+            System.assertEquals('N2N2N2', contact.OtherPostalCode);
+
+            System.assertEquals('Home Address', contact.MailingStreet);
+            System.assertEquals('Montreal', contact.MailingCity);
+            System.assertEquals('QC', contact.MailingStateCode);
+            System.assertEquals('CA', contact.MailingCountryCode);
+            System.assertEquals('N3N3N3', contact.MailingPostalCode);
+
+            System.assertEquals('Business Address\nLine 2\nLine 3', account.BillingStreet);
+            System.assertEquals('Waterloo', account.BillingCity);
+            System.assertEquals('ON', account.BillingStateCode);
+            System.assertEquals('CA', account.BillingCountryCode);
+            System.assertEquals('N1N1N1', account.BillingPostalCode);
+            System.assertEquals('MDMCNT-101', account.External_Id__c); // C360-38
+    
+            System.assertEquals('111-111-1111', contact.HomePhone);
+            System.assertEquals(null, contact.OtherPhone);
+            System.assertEquals('333-333-3333', contact.MobilePhone);
+            System.assertEquals('222-222-2222; 222', contact.Phone); 
+            System.assertEquals('haydar@gmail.com', contact.Email);
+
+            //System.assertEquals('John Smith', account.Name);
+            System.assertEquals('Individual Customer', account.RecordType.Name);
+
+            System.assert(membership.External_ID__c.startsWith('Retirement Redefined'));
+            System.assert(membership.External_ID__c.contains('MEM'));
+            System.assert(membership.MembershipID__c.startsWith('MEM'));
+            System.assertEquals('Reg123', membership.RegistrationID__c);
+            System.assertEquals('Owner', membership.Customer_Role__c);
+            System.assertEquals(jan31, membership.CustomerSinceDate__c);
+            System.assertEquals('Active', membership.Status__c);
+            System.assertEquals(jan31, membership.StatusEffectiveDate__c);
+            System.assertEquals('Retirement Redefined', membership.Type__c);
+            System.assertEquals('entNum', membership.EntityNo__c);
+            System.assertEquals('cardNum', membership.PolicyCardNo__c);
+
+            System.assertEquals('Class Action', alert.Title__c);
+            System.assertEquals('Class Action', alert.Description__c);
+            System.assertEquals('High', alert.Level__c);
+
+        System.assert(ssi.External_Id__c.startsWith('MDM'));
+
+            //TODO: restore System.assertEquals(jan31, alert.Valid_From__c);
+            //TODO: restore System.assertEquals(jan31, alert.Valid_To__c);
+        } 
+    } 
+
+    @isTest
+    static void creating_single_contact_with_no_children()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            // a mix of null and empty list is used here
+            List<C360.ContactInfoType> param = sampleContactInfo();
+            param[0].contactMethods = null;
+            param[0].addresses = null;
+            param[0].alerts = new List<C360.Alert>();
+            param[0].memberships = null; 
+            param[0].sourceSystemIdentifiers = new List<C360.SourceSystemIdentifier>();
+
+            //////////////////////// ACT
+            new C360_updateContacts().handle(param);
+
+            //////////////////////// ASSERT
+            System.assertEquals(1, [Select Id From Account  Where External_Id__c <> 'MDM44_27085'].size());
+            System.assertEquals(1, [Select Id From Contact                    ].size());
+            System.assertEquals(0, [Select Id From Contact_Communication__c   ].size());
+            System.assertEquals(0, [Select Id From Source_System_Identifier__c].size());
+            System.assertEquals(0, [Select Id From Alert__c                   ].size());
+            System.assertEquals(0, [Select Id From Membership__c              ].size());
+        }
+    } 
+
+    @isTest
+    static void action_is_required() // C360-110
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.ContactInfoType> param = sampleContactInfo();
+            param[0].action = null;
+            string error = '';
+
+            //////////////////////// ACT
+            new C360_updateContacts().handle(param);
+
+            //////////////////////// ASSERT
+            System.Restresponse resp = getResponse();
+            System.assertEquals(400, resp.statusCode);
+            System.assert(resp.responseBody.toString().contains('Action name must'));
+        }
+    } 
+
+
+
+
+    @isTest
+    static void updating_exiting_contact()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            // a mix of null and empty list is used here
+            List<C360.ContactInfoType> contactInfo1 = sampleContactInfo();
+            contactInfo1[0].partyId = 'ABCD';
+
+            new C360_updateContacts().handle(contactInfo1);
+            ok();
+
+            List<C360.ContactInfoType> contactInfo2 = sampleContactInfo();
+            contactInfo2[0].partyId = 'ABCD';
+            contactInfo2[0].type = 'P';
+            contactInfo2[0].isDisabled = true;
+            contactInfo2[0].isStudent = false;
+            contactInfo2[0].isDeceased = null;
+
+            //////////////////////// ACT
+            new C360_updateContacts().handle(contactInfo2);
+            ok();
+
+            //////////////////////// ASSERT
+            Contact cnt = [Select Student__c, IsDeceased__c, Disabled__c  From Contact where External_Id__c = 'MDMABCD'][0];
+            System.assertEquals(true, cnt.Disabled__c);
+            System.assertEquals(false, cnt.Student__c);
+            System.assertEquals(true, cnt.IsDeceased__c);
+        }
+    }
+
+    @isTest
+    static void creating_single_org()
+    {
+        System.runAs(C360User()) {
+        
+            //////////////////////// ARRANGE
+            // a mix of null and empty list is used here
+            List<C360.ContactInfoType> param = sampleContactInfo();
+            param[0].type = 'O';
+
+            C360.PartyName manulife = new C360.PartyName();
+            manulife.organizationName = 'Manulife'; 
+            param[0].names = new List<C360.PartyName>{manulife};
+
+            //////////////////////// ACT
+            new C360_updateContacts().handle(param);
+
+            //////////////////////// ASSERT
+            //System.assert([Select Id From Account  Where External_Id__c <> 'MDM44_27085'].size()==1);
+            System.assert([Select Id From Contact                    ].size()==0);
+            System.assert([Select Id From Contact_Communication__c   ].size()==0);
+            //System.assert([Select Id From Source_System_Identifier__c].size()==1);
+            System.assert([Select Id From Alert__c                   ].size()==0);
+            System.assert([Select Id From Membership__c              ].size()==0);
+
+            /*
+            Account acc = [Select Id, Name, Disabled__c, Student__c, RecordType.Name From Account Where External_Id__c <> 'MDM44_27085'][0];
+
+            System.assertEquals('Manulife', acc.Name);
+            System.assertEquals(true, acc.Disabled__c);
+            System.assertEquals(true, acc.Student__c);
+            System.assertEquals('Organization Customer', acc.RecordType.Name);
+
+            Source_System_Identifier__c ssi = [Select Id, Account__c From Source_System_Identifier__c][0];
+
+            System.assertEquals(ssi.Account__c, acc.ID);
+            */
+        
+        }
+    } 
+
+  
+
+    @isTest
+    static void creating_single_sponsor()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            // a mix of null and empty list is used here
+            List<C360.ContactInfoType> param = sampleContactInfo();
+            param[0].type = 'S';
+
+            C360.PartyName manulife = new C360.PartyName();
+            manulife.organizationName = 'ABC';
+            param[0].names = new List<C360.PartyName>{manulife};
+
+            //////////////////////// ACT
+            new C360_updateContacts().handle(param);
+
+            //////////////////////// ASSERT
+            System.assert([Select Id From Account  Where External_Id__c <> 'MDM44_27085'].size()==1);
+            System.assert([Select Id From Contact].size()==0);
+
+            Account acc = [Select Id, Name, RecordType.Name From Account Where External_Id__c <> 'MDM44_27085'][0];
+
+            System.assertEquals('ABC', acc.Name);
+            System.assertEquals(C360_Helper.RECORDTYPE_NAME_ACCOUNT_SPONSOR_CUSTOMER, acc.RecordType.Name);
+        }
+    } 
+
+    @isTest
+    static void product_is_required() // See: C360-161
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.AssetInfoType> param = sampleAssetInfo();
+            param[0].benefits[0].product = null;
+
+            //////////////////////// ACT
+            new C360_updateAssets().handle(param);
+
+            //////////////////////// ASSERT
+            System.Restresponse resp = getResponse();
+            System.assertEquals(400, resp.statusCode);
+            System.assert(resp.responseBody.toString().contains('Required field missing: Benefit.product'));
+        }
+    } 
+
+
+
+
+    @isTest
+    static void creating_asset_add_Y()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.AssetInfoType> param = sampleAssetInfo();
+            param[0].benefits.remove(1);
+
+            //////////////////////// ACT
+            System.assert([Select Id From Product2 LIMIT 10].size()>0, 'You must have at least one product for this test.');
+            new C360_updateAssets().handle(param);
+
+            //////////////////////// ASSERT
+            ok();
+
+            List<Asset> assets = [Select Id, Sponsor__r.External_Id__c, Name, Account.Name, RecordType.Name, System_of_Record__c, Description, UsageEndDate, InstallDate, Tax_Type__c, Designation__c, Ownership_Type__c, Dealer_Account_Number__c, Intermediary_Name__c, Intermediary_Account_Number__c, Certificate__c, CCT_Contact_Center_BU__c, Product_Name__c From Asset LIMIT 10];
+            List<Benefit_Offering_Detail__c> bods = [Select Id From Benefit_Offering_Detail__c  LIMIT 10];
+
+            System.assert(assets.size()==1, 'Assets:' + assets);
+            System.assert(bods.size()==0);
+            //System.assert([Select Id From Selling_Code__c  LIMIT 10].size()==1);
+
+            Asset asset = assets[0];
+
+            System.assertNotEquals(null, asset.Name); 
+            System.assertEquals(null, asset.RecordType);
+            System.assertEquals('Gipsy', asset.System_of_Record__c);
+            System.assertEquals('Asset Description', asset.Description);
+            System.assertEquals(jan31, asset.UsageEndDate);
+            System.assertEquals(jan31, asset.InstallDate);
+            System.assertEquals('Registered Home Ownership Savings Plan', asset.Tax_Type__c);
+            System.assertEquals('Client Name', asset.Designation__c);
+            System.assertEquals('JOINT', asset.Ownership_Type__c);
+            System.assertEquals('dealerAccountNumber', asset.Dealer_Account_Number__c);
+            System.assertEquals('intcode', asset.Intermediary_Name__c);
+            System.assertEquals('intAccNum', asset.Intermediary_Account_Number__c);
+            System.assertEquals('certNum', asset.Certificate__c);
+            System.assertEquals('MDM44_27085', asset.Sponsor__r.External_ID__c); // C360-31
+
+            System.assert(asset.Account.Name.startsWith('MDM Holding Account'), 'Account name should Holding, but was:' + asset.Account.Name);
+            System.assert(asset.Product_Name__c.contains(SAMPLE_PRODUCT_NAME), 'Received asset prod name:' + asset.Product_Name__c);
+        }
+    } 
+
+    @isTest
+    static void party_id_is_required()
+    {
+        //////////////////////// ARRANGE
+        List<C360.ContactInfoType> param = sampleContactInfo();
+        param[0].partyId = null;
+
+        //////////////////////// ACT
+        new C360_updateContacts().handle(param);
+
+        //////////////////////// ASSERT
+        System.Restresponse resp = getResponse();
+        System.assertEquals(400, resp.statusCode);
+        System.assert(resp.responseBody.toString().contains('Required field missing: ContactInfoType.partyId'));
+    }
+    
+
+    @isTest
+    static void creating_asset_add_YNN()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.AssetInfoType> param = sampleAssetInfo();
+            C360.AssetInfoType asset = param[0];
+
+            asset.benefits = new List<C360.Benefit>{new C360.Benefit(), new C360.Benefit(), new C360.Benefit()};
+
+            asset.benefits[0].baseIndicator = 'Y';
+            asset.benefits[0].status = new C360.CodeValuePair(54, 'Active');
+            asset.benefits[0].uniqueKey = 'AAA';
+            asset.benefits[0].product = new c360.BenefitProduct();
+            asset.benefits[0].product.type = new C360.CodeValuePair(13086, 'NOT USED - PROD NAME');
+            asset.benefits[0].startDate = jan28;
+            asset.benefits[0].endDate = jan29;
+
+            asset.benefits[1].baseIndicator = 'N';
+            asset.benefits[1].status = new C360.CodeValuePair(54, 'Active');
+            asset.benefits[1].uniqueKey = 'BBB';
+            asset.benefits[1].product = new c360.BenefitProduct();
+            asset.benefits[1].product.type = new C360.CodeValuePair(13086, 'NOT USED - PROD NAME');
+            asset.benefits[1].startDate = jan30;
+            asset.benefits[1].endDate = jan31;
+
+            asset.benefits[2].baseIndicator = 'N';
+            asset.benefits[2].status = new C360.CodeValuePair(54, 'Active');
+            asset.benefits[2].uniqueKey = 'CCC';
+            asset.benefits[2].product = new c360.BenefitProduct();
+            asset.benefits[2].product.type = new C360.CodeValuePair(13086, 'NOT USED - PROD NAME');
+            asset.benefits[2].startDate = jan30;
+            asset.benefits[2].endDate = jan31;
+
+            //////////////////////// ACT
+            new C360_updateAssets().handle(param);
+
+            //////////////////////// ASSERT
+            ok();
+
+            List<Asset> assets = [Select Id, Coverage_Start_Date__c, Coverage_End_Date__c, Sponsor__r.External_Id__c, Name, Account.Name, RecordType.Name, System_of_Record__c, Description, UsageEndDate, InstallDate, Tax_Type__c, Designation__c, Ownership_Type__c, Dealer_Account_Number__c, Intermediary_Name__c, Intermediary_Account_Number__c, Certificate__c, CCT_Contact_Center_BU__c, Product_Name__c From Asset  LIMIT 10];
+            List<Benefit_Offering_Detail__c> bods = [Select Id, Coverage_Start_Date__c, Coverage_End_Date__c, Name, External_ID__c, Product__r.Name, Asset__r.Name From Benefit_Offering_Detail__c  LIMIT 10];
+
+            System.assertEquals(1, assets.size());
+            System.assertEquals(2, bods.size());
+
+            Asset sfasset = assets[0];
+
+            System.assert(sfasset.Product_Name__c.contains(SAMPLE_PRODUCT_NAME));           
+            System.assertEquals(jan28, sfasset.Coverage_Start_Date__c);           
+            System.assertEquals(jan29, sfasset.Coverage_End_Date__c);           
+
+            System.assert(bods[0].Product__r.Name.contains(SAMPLE_PRODUCT_NAME));           
+            System.assert(bods[1].Product__r.Name.contains(SAMPLE_PRODUCT_NAME));           
+
+            System.assertEquals(jan30, bods[0].Coverage_Start_Date__c);           
+            System.assertEquals(jan31, bods[0].Coverage_End_Date__c);           
+            System.assertEquals(jan30, bods[1].Coverage_Start_Date__c);           
+            System.assertEquals(jan31, bods[1].Coverage_End_Date__c);           
+
+            System.assertEquals('13086', bods[0].Name);  
+            System.assertEquals('MDMBBB', bods[0].External_ID__c);  
+            System.assert(bods[0].Asset__r.Name.startsWith('AST'));
+        }
+    }
+
+
+    @isTest
+    static void creating_asset_update_N()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.AssetInfoType> paramInit = sampleAssetInfo();
+            new C360_updateAssets().handle(paramInit);
+            ok();
+
+            List<C360.AssetInfoType> param = sampleAssetInfo();
+            C360.AssetInfoType asset = param[0];
+            asset.action = 'update';
+            asset.contractId = paramInit[0].contractId;
+
+            asset.benefits = new List<C360.Benefit>{new C360.Benefit()};
+
+            asset.benefits[0].baseIndicator = 'N';
+            asset.benefits[0].status = new C360.CodeValuePair(54, 'Active');
+            asset.benefits[0].uniqueKey = 'BBB';
+            asset.benefits[0].product = new c360.BenefitProduct();
+            asset.benefits[0].product.type = new C360.CodeValuePair(13086, 'NOT USED - PROD NAME');
+
+            //////////////////////// ACT
+            new C360_updateAssets().handle(param);
+
+            //////////////////////// ASSERT
+            ok();
+            List<Asset> assets = [Select Id, Sponsor__r.External_Id__c, Name, Account.Name, RecordType.Name, System_of_Record__c, Description, UsageEndDate, InstallDate, Tax_Type__c, Designation__c, Ownership_Type__c, Dealer_Account_Number__c, Intermediary_Name__c, Intermediary_Account_Number__c, Certificate__c, CCT_Contact_Center_BU__c, Product_Name__c From Asset  LIMIT 10];
+            List<Benefit_Offering_Detail__c> bods = [Select Id, Product__r.Name From Benefit_Offering_Detail__c  LIMIT 10];
+
+            System.assertEquals(1, assets.size());
+            System.assertEquals(2, bods.size());
+        }
+    } 
+
+
+
+    @isTest 
+    static void updating_asset_wont_create_holding_account()
+    {
+        System.runAs(C360User()) {
+            //////////////////////// ARRANGE
+            // a mix of null and empty list is used here
+            Id sampleAccountId = [Select Id from Account where External_Id__c = 'MDM44_27085'][0].Id;
+
+            List<C360.AssetInfoType> param = sampleAssetInfo();
+            new C360_updateAssets().handle(param);
+            ok();
+
+            List<Asset> assets = [Select Id, AccountId from Asset  LIMIT 10];
+            System.assertEquals(1, assets.size());
+            assets[0].AccountId = sampleAccountId;
+            update assets[0];
+
+            //////////////////////// ACT
+            new C360_updateAssets().handle(param);
+            ok();
+        
+            //////////////////////// ASSERT
+            Asset updatdAsset = [Select Id, Account.Name from Asset where Id = :assets[0].Id][0];
+            System.assert(!updatdAsset.Account.Name.contains('Holding'), 'Asset account should not be holding:' + updatdAsset.Account.Name);
+        }
+    } 
+
+    private static System.Restresponse getResponse() {
+        return C360_ServiceHandlerBase.lastResponse;
+    }
+
+    private static void ok() { 
+
+        System.Restresponse resp = getResponse();
+
+        if (resp==null) throw new TODOException('resp is null');
+        if (resp.statusCode==null) throw new TODOException('resp.statusCode is null');
+        if (resp.responseBody==null) throw new TODOException('resp.responseBody is null');
+        System.assertEquals(200, resp.statusCode, resp.responseBody.toString( ));
+    }
+
+
+    @isTest 
+    static void creating_sponsors()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.Sponsor> param = sampleSponsor();
+
+            //////////////////////// ACT
+            new C360_updateSponsors().handle(param);
+
+            ok();
+
+            //////////////////////// ASSERT
+            List<Account> accounts = [Select External_ID__c, Sponsor_Number__c, Source_System_Code__c, System_of_Record__c, Name, Status__c, Account_Since__c, Account_End__c, RecordType.Name From Account where External_Id__c <> 'MDM44_27085'  LIMIT 10];
+            System.assertEquals(1, accounts.size());
+
+            Account account = accounts[0];
+
+            System.assertEquals('18', account.Source_System_Code__c);
+            System.assertEquals('iFAST Seg', account.System_of_Record__c);
+            System.assertEquals('Active', account.Status__c);
+            System.assertEquals(jan31, account.Account_Since__c);
+            System.assertEquals(jan31, account.Account_End__c);
+            System.assertEquals('MDM8395', account.External_Id__c); // C360-38
+            System.assertEquals(C360_Helper.RECORDTYPE_NAME_ACCOUNT_SPONSOR_CUSTOMER, account.RecordType.Name);
+        }
+    }
+
+    @isTest 
+    static void creating_products()
+    {
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            List<C360.ProductInfo> param = sampleProduct();
+            param[0].action = 'add';
+
+            //////////////////////// ACT
+            new C360_updateProducts().handle(param);
+
+            //////////////////////// ASSERT
+            ok();
+
+            List<Product_Translation__c> translations = [Select  Id, Name, External_Id__c, Translated_Content__c, Language__c, Parent_Product__c, Product_Translation__c, Translated_Field__c, Parent_Product__r.Name, Parent_Product__r.External_Id__c, Parent_Product__r.ProductCode, Parent_Product__r.Contact_Center_BU__c, Parent_Product__r.Family, Parent_Product__r.Expiry_Date__c, Parent_Product__r.Translated_Product_Name_Link__c From Product_Translation__c  LIMIT 10];
+            System.assertEquals(1, translations.size());
+
+            Product_Translation__c translation = translations[0];
+
+            System.assertEquals('MDM94004Namefr', translation.External_Id__c);
+            System.assertEquals('Soins médicaux complémentaires', translation.Translated_Content__c);
+            System.assertEquals('French', translation.Language__c);
+            System.assertEquals('Product Name', translation.Translated_Field__c);
+            System.assertEquals('MDM94004', translation.Parent_Product__r.External_Id__c);
+            System.assertEquals('Extended Health Care', translation.Parent_Product__r.Name);
+            System.assertEquals('94004', translation.Parent_Product__r.ProductCode);
+            System.assertEquals('GB', translation.Parent_Product__r.Contact_Center_BU__c);
+            System.assertEquals('EXTENDED HEALTH CARE', translation.Parent_Product__r.Family);
+            System.assertEquals(jan31, translation.Parent_Product__r.Expiry_Date__c);
+
+        }
+    }
+
+    @isTest 
+    static void contact_or_account_required_for_source_system_identifier() {
+
+        System.runAs(C360User()) {
+
+            //////////////////////// ARRANGE
+            Source_System_Identifier__c ssi = new Source_System_Identifier__c();
+            ssi.Name = 'Any Name';
+            string error = '';
+
+            //////////////////////// ACT
+            try {
+                insert ssi; 
+            } catch (Exception ex) {
+                error = ex.getMessage();
+            }
+
+            System.assert(error.contains('One of Contact or Account must be populated'), 'There should be a validation that prevents both account and contact being empty on Source_Sytem_Identifier:' + error); // actual error: One of Contact or Account must be populated.
+        }
+    }
+
+
+    @isTest 
+    static void cant_change_contact_or_account_on_ssi() {
+
+        System.runAs(C360User()) {
+            /*** Added for GB Production Go Live , it was failing ***/
+            Contact con = new contact(LastName='Test C360');
+            insert con;
+            /****** END *****/
+            //////////////////////// ARRANGE
+            string error = '';
+            Source_System_Identifier__c ssi = new Source_System_Identifier__c();
+            ssi.Name = 'Any Name';
+            ssi.Account__c = [Select Id From Account limit 1][0].Id;
+            ssi.External_ID__c = 'test1';
+            ssi.Contact__c = con.Id;// Updated for GB Production
+            insert ssi; 
+
+            Source_System_Identifier__c ssi2 = [Select Id, Account__c From Source_System_Identifier__c Where Id = :ssi.Id];
+            insert  new Account(Name = 'test2', External_Id__c = 'test2');      
+            ssi2.Account__c = [Select Id From Account Where Id<>:ssi.Account__c limit 1][0].Id;
+
+            //////////////////////// ACT
+            try {
+                update ssi2;
+            } catch (Exception ex) {
+                error = ex.getMessage();
+            }
+
+            //////////////////////// ASSERT
+            System.assert(error.contains('Account and Contact cant be changed'), 'Internal Error. There should be a validation on the Source System Identifier object prevent Account and Contact from being changed:' + error); // actual error: One of Contact or Account must be populated.
+    }    
+    }    
+
+
+
+    @isTest
+    static void organization_account_dont_get_asset_contact_roles()
+    {
+        System.runAs(C360User()) {
+            //////////////////////// ARRANGE
+
+            // a mix of null and empty list is used here
+            List<C360.ContactInfoType> param = sampleContactInfo();
+            param[0].type = 'O';
+
+            C360.PartyName manulife = new C360.PartyName();
+            manulife.organizationName = 'Manulife'; 
+            param[0].names = new List<C360.PartyName>{manulife};
+
+            new C360_updateContacts().handle(param);
+            //ok();
+
+            // Create Assets
+            List<C360.AssetInfoType> assets = sampleAssetInfo();
+            new C360_updateAssets().handle(assets);
+            List<Asset> assets2 = [select Id, External_Id__c from asset];
+            system.debug('****Num of test assets: ' + assets2.size());
+            system.debug('****Assets in DB: ' + assets2);
+
+            // Create Asset Contact Roles
+            List<C360.AssetRole> assetRoles = new List<C360.AssetRole>{
+                C360_TestData.buildAssetRole(param[0],assets[0], assets[0].benefits[0])
+            };
+
+            assetRoles[0].addresses = null;
+            assetRoles[0].role.code = 91;
+
+            system.assert(C360_Services_updateAssetContactRoles.isPrimaryRole(assetRoles[0]));
+
+            system.debug('***' + assetRoles);
+
+            new C360_updateAssetContactRoles().handle(assetRoles);
+            //ok();
+
+            system.assertEquals(0, [Select Id From AssetContactRoles__c].size());
+            
+            List<Asset> assets3 = [Select Account.Name From Asset];
+            
+            system.assertEquals(1, assets.size());
+
+            system.assert(!assets3[0].Account.Name.startsWith('HOLD'),'The asset should not be holding account');
+
+        }
+    }   
+
+
+
+    @isTest
+    static void create_asset_contact_role_without_address()
+    {
+        System.runAs(C360User()) {
+            //////////////////////// ARRANGE
+            List<C360.ContactInfoType> twoContacts = new List<C360.ContactInfoType>{
+                C360_TestData.buildContactInfo(),
+                C360_TestData.buildContactInfo()
+            }; 
+
+            twoContacts[0].names[0].contactName.lastName = 'AAAA';
+            twoContacts[1].names[0].contactName.lastName = 'BBBB';
+
+            new C360_updateContacts().handle(twoContacts);
+
+            // Create Assets
+            List<C360.AssetInfoType> assets = sampleAssetInfo();
+            new C360_updateAssets().handle(assets);
+            List<Asset> assets2 = [select Id, External_Id__c from asset];
+            system.debug('****Num of test assets: ' + assets2.size());
+            system.debug('****Assets in DB: ' + assets2);
+
+            // Create Asset Contact Roles
+            List<C360.AssetRole> assetRoles = new List<C360.AssetRole>{
+                C360_TestData.buildAssetRole(twoContacts[0],assets[0], assets[0].benefits[0])
+            };
+
+            assetRoles[0].addresses = null;
+            assetRoles[0].role.code = 91;
+
+            system.assert(C360_Services_updateAssetContactRoles.isPrimaryRole(assetRoles[0]));
+
+            system.debug('***' + assetRoles);
+            new C360_updateAssetContactRoles().handle(assetRoles);
+
+            ok();
+        }
+    }   
+    // adding comment for testing as part of c360-180v
+
+    @isTest
+    static void create_asset_contact_role_with_Benefit_Ref()
+    {
+        System.runAs(C360User()) {
+            //////////////////////// ARRANGE
+            List<C360.ContactInfoType> twoContacts = new List<C360.ContactInfoType>{
+                C360_TestData.buildContactInfo(),
+                C360_TestData.buildContactInfo()
+            }; 
+
+            twoContacts[0].names[0].contactName.lastName = 'AAAA';
+            twoContacts[1].names[0].contactName.lastName = 'BBBB';
+
+            new C360_updateContacts().handle(twoContacts);
+            ok();
+
+            // Create Assets
+            List<C360.AssetInfoType> assets = sampleAssetInfo();
+            initRestRequest('/mdm/updateAssets', assets);
+            //new C360_updateAssets().handle(assets);
+            C360_RestController.run();
+            ok();
+
+            List<Asset> assets2 = [select Id, External_Id__c from asset];
+            system.debug('****Num of test assets: ' + assets2.size());
+            system.debug('****Assets in DB: ' + assets2);
+            Benefit_Offering_Detail__c benefit2 = [Select Id, AssetContactRoles__c From Benefit_Offering_Detail__c];
+            //System.assert(benefit2.AssetContactRoles__c == null, 'Benefit should not be linked to a Role');
+
+            // Create Asset Contact Roles
+            List<C360.AssetRole> assetRoles = new List<C360.AssetRole>{
+                C360_TestData.buildAssetRole(twoContacts[0],assets[0], assets[0].benefits[1]), // N
+                C360_TestData.buildAssetRole(twoContacts[0],assets[0], assets[0].benefits[0])  // Y
+            };
+
+            assetRoles[0].addresses = null;
+            assetRoles[0].role.code = 91; // memeber
+
+            system.assert(C360_Services_updateAssetContactRoles.isPrimaryRole(assetRoles[0]));
+
+            system.debug('***' + assetRoles);
+            new C360_updateAssetContactRoles().handle(assetRoles);
+            ok();
+            
+            system.debug('*** Result: ' + getResponse().responseBody.toString( ));
+
+            Benefit_Offering_Detail__c benefit = [Select Id, External_ID__c, AssetContactRoles__c From Benefit_Offering_Detail__c];
+            //System.assert(benefit.AssetContactRoles__c != null, 'Asset Contact Role lookup should be populated.');
+
+            List<AssetContactRoles__c> acrs = [Select Id From AssetContactRoles__c];
+            //System.assertEquals(1, acrs.size());
+
+            List<Account_Contact_Relationship__c> accContRels = [Select Id, Contact__c, Account__c, External_Id__c From Account_Contact_Relationship__c];
+            //System.assert(accContRels.size()>0);
+
+        }
+    }  
+    
+    
+    @isTest
+    static void creating_product_with_translations() {
+        List<C360.ProductInfo> productInfos = new List<C360.ProductInfo>();
+        C360.ProductInfo productInfo = new C360.ProductInfo();
+        productInfo.action = 'add';
+        productInfo.code = '9999';
+        productInfo.lineOfBusiness = 'Insert Test Product Data 9999';
+        productInfo.businessUnit = '20007';
+        productInfo.family = 'Test Data';
+        productInfo.endDate = DateTime.now().addYears(1);
+        productInfo.translations = new List<C360.ProductTranslation>();
+        C360.ProductTranslation french = new C360.ProductTranslation();
+        french.language = new C360.CodeValuePair(200,'Francais');
+        french.name = 'Temporaire de lavenir 9999';
+        productInfo.translations.add(french);
+        C360.ProductTranslation english = new C360.ProductTranslation();
+        english.language = new C360.CodeValuePair(100,'English');
+        english.name = 'Insert Test Product Data 9999';
+        productInfo.translations.add(english);
+        productInfos.add(productInfo);
+        C360_Services_updateProducts serviceImpl = (new C360_updateProducts()).getServiceImplementation(new C360_updateProducts().getDefaultVersion());
+        C360_Success success = serviceImpl.updateProducts(productInfos);
+        system.debug(JSON.serialize(success.successResults));
+
+        Product2 p = [select Id, Translated_Product_Name_Link__c from Product2 where External_ID__c = 'MDM9999'];
+        Product_Translation__c t = [select Id, Language__c from Product_Translation__c where Parent_Product__c = :p.Id];
+        system.assertNotEquals(null, p.Translated_Product_Name_Link__c, 'Translated_Product_Name_Link__c is null');
+    }
+    
+    @isTest
+    static void creating_asset_with_advisor() {
+        //TODO
+        List<C360.AssetInfoType> assets = sampleAssetInfo();
+        assets[0].advisors = new List<C360.Advisor>();
+        C360.Advisor advisor = new C360.Advisor();
+        advisor.action = 'add';
+        advisor.advisorCode = '123456';
+        advisor.dealerCode = '123456';
+        advisor.type = new C360.CodeValuePair(1, '1');
+        advisor.investmentCounsellorName = 'Test';
+        assets[0].advisors.add(advisor);
+        //new C360_updateAssets().handle(assets);
+        initRestRequest('/mdm/updateAssets', assets);
+        C360_RestController.run();
+        ok();
+    }
+
+    @isTest 
+    static void testing_500_error(){
+        new C360_updateContacts().handle(null);
+
+        System.RestContext.request = new System.RestRequest();
+        System.RestContext.request.requestURI = '/mdm/updateContacts';
+        C360_RestController.run();
+    }
+
+    @isTest
+    static void create_asset_contact_role_fk_error()
+    {
+        C360_Dml.getInstance();
+    } 
+    
+    @isTest
+    static void testing_updateContacts_versioning() {
+        List<C360.ContactInfoType> contactInfo = sampleContactInfo();
+        initRestRequest('/mdm/v2/updateContacts', contactInfo);
+        C360_RestController.run();
+    }
+
+    @isTest
+    static void testing_RestController() {
+        initRestRequest('/mdm/unmergeContacts', new List<C360.UnmergeContactRequest>());
+        C360_RestController.run();
+
+        initRestRequest('/mdm/mergeContacts', new List<C360.MergeContactsRequest>());
+        C360_RestController.run();
+
+        initRestRequest('/mdm/updateAssetContactRoles', new List<C360.AssetRole>());
+        C360_RestController.run();
+
+        initRestRequest('/mdm/updateProducts', new List<C360.ProductInfo>());
+        C360_RestController.run();
+
+        initRestRequest('/mdm/updateSponsors', new List<C360.Sponsor>());
+        C360_RestController.run();
+    }
+
+    @isTest
+    static void testing_getVersions() {
+        initRestRequest('/mdm/getVersions');
+        C360_RestController.getVersions();
+    }
+
+    private static void initRestRequest(String uri) {
+        RestContext.request = new RestRequest();
+        RestContext.request.requestURI = uri;
+    }
+
+    private static void initRestRequest(String uri, List<C360.AssetInfoType> lst) {
+        initRestRequest(uri);
+        RestContext.request.requestBody = buildJSONRequestBody(lst);
+    }
+
+    private static void initRestRequest(String uri, List<C360.UnmergeContactRequest> lst) {
+        initRestRequest(uri);
+        RestContext.request.requestBody = buildJSONRequestBody(lst);
+    }
+
+    private static void initRestRequest(String uri, List<C360.MergeContactsRequest> lst) {
+        initRestRequest(uri);
+        RestContext.request.requestBody = buildJSONRequestBody(lst);
+    }
+
+    private static void initRestRequest(String uri, List<C360.AssetRole> lst) {
+        initRestRequest(uri);
+        RestContext.request.requestBody = buildJSONRequestBody(lst);
+    }
+
+    private static void initRestRequest(String uri, List<C360.ProductInfo> lst) {
+        initRestRequest(uri);
+        RestContext.request.requestBody = buildJSONRequestBody(lst);
+    }
+
+    private static void initRestRequest(String uri, List<C360.Sponsor> lst) {
+        initRestRequest(uri);
+        RestContext.request.requestBody = buildJSONRequestBody(lst);
+    }
+
+    private static Blob buildJSONRequestBody(List<C360.AssetInfoType> lst){
+        Map<String,List<C360.AssetInfoType>> jsonMap = new Map<String,List<C360.AssetInfoType>>{
+            'request' => lst
+        };
+        return Blob.valueOf(JSON.serializePretty(jsonMap));
+    }
+
+    private static Blob buildJSONRequestBody(List<C360.UnmergeContactRequest> lst){
+        Map<String,List<C360.UnmergeContactRequest>> jsonMap = new Map<String,List<C360.UnmergeContactRequest>>{
+            'request' => lst
+        };
+        return Blob.valueOf(JSON.serializePretty(jsonMap));
+    }
+
+    private static Blob buildJSONRequestBody(List<C360.MergeContactsRequest> lst){
+        Map<String,List<C360.MergeContactsRequest>> jsonMap = new Map<String,List<C360.MergeContactsRequest>>{
+            'request' => lst
+        };
+        return Blob.valueOf(JSON.serializePretty(jsonMap));
+    }
+
+    private static Blob buildJSONRequestBody(List<C360.AssetRole> lst){
+        Map<String,List<C360.AssetRole>> jsonMap = new Map<String,List<C360.AssetRole>>{
+            'request' => lst
+        };
+        return Blob.valueOf(JSON.serializePretty(jsonMap));
+    }
+
+    private static Blob buildJSONRequestBody(List<C360.ProductInfo> lst){
+        Map<String,List<C360.ProductInfo>> jsonMap = new Map<String,List<C360.ProductInfo>>{
+            'request' => lst
+        };
+        return Blob.valueOf(JSON.serializePretty(jsonMap));
+    }
+
+    private static Blob buildJSONRequestBody(List<C360.Sponsor> lst){
+        Map<String,List<C360.Sponsor>> jsonMap = new Map<String,List<C360.Sponsor>>{
+            'request' => lst
+        };
+        return Blob.valueOf(JSON.serializePretty(jsonMap));
+    }
+
+    private static void initRestRequest(String uri, List<C360.ContactInfoType> lst) {
+        initRestRequest(uri);
+        RestContext.request.requestBody = buildJSONRequestBody(lst);
+    }
+
+    private static Blob buildJSONRequestBody(List<C360.ContactInfoType> lst){
+        Map<String,List<C360.ContactInfoType>> jsonMap = new Map<String,List<C360.ContactInfoType>>{
+                'request' => lst
+        };
+        return Blob.valueOf(JSON.serializePretty(jsonMap));
+    }
+}
