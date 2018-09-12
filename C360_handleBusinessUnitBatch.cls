@@ -27,8 +27,38 @@ global class C360_handleBusinessUnitBatch implements Database.Batchable<SObject>
         for(Asset asst : assetList){
            custAccntIdSet.add(asst.AccountId);
           // assetAccntMap.put(asst.Id,asst.AccountId);
+        }        
+        asstCntctRoleList = C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet);
+        for(AssetContactRoles__c acr : asstCntctRoleList){
+            contactIdSet.add(acr.Contact__c);
         }
-        custAccntList = C360_SponsorIndicatorsUtil.findRelatedCustomerAccountsList(custAccntIdSet);
+        contactList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet);
+        for(Contact cnt : contactList){
+            custAccntIdSet.add(cnt.AccountId);
+			for(Asset ast : assetList){
+                if(ast.CCT_Contact_Center_BU__c == 'IIC'){
+                    cnt.IIC__c = true;
+                }
+                else if(ast.CCT_Contact_Center_BU__c == 'GB'){
+                    cnt.GB__c = true;
+                }   
+                else if(ast.CCT_Contact_Center_BU__c == 'MI'){
+                    cnt.MI__c = true;
+                }
+                else if(ast.CCT_Contact_Center_BU__c == 'MLB'){
+                    cnt.MLB__c = true;
+                }
+                else if(ast.CCT_Contact_Center_BU__c == 'MMF'){
+                    cnt.MMF__c = true;
+                }
+                else if(ast.CCT_Contact_Center_BU__c == 'MS'){
+                    cnt.MS__c = true;
+                }
+                contactUpdList.add(cnt);
+            }
+        }
+		
+		custAccntList = C360_SponsorIndicatorsUtil.findRelatedCustomerAccountsList(custAccntIdSet);
         for(Account acnt : custAccntList){
             for(Asset ast : assetList){
                 if(ast.CCT_Contact_Center_BU__c == 'IIC'){
@@ -50,34 +80,6 @@ global class C360_handleBusinessUnitBatch implements Database.Batchable<SObject>
                     acnt.MS__c = true;
                 }
                 custAccntUpdList.add(acnt);
-            }
-        }
-        asstCntctRoleList = C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles(assetIdSet);
-        for(AssetContactRoles__c acr : asstCntctRoleList){
-            contactIdSet.add(acr.Contact__c);
-        }
-        contactList = C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds(contactIdSet);
-        for(Contact cnt : contactList){
-            for(Asset ast : assetList){
-                if(ast.CCT_Contact_Center_BU__c == 'IIC'){
-                    cnt.IIC__c = true;
-                }
-                else if(ast.CCT_Contact_Center_BU__c == 'GB'){
-                    cnt.GB__c = true;
-                }   
-                else if(ast.CCT_Contact_Center_BU__c == 'MI'){
-                    cnt.MI__c = true;
-                }
-                else if(ast.CCT_Contact_Center_BU__c == 'MLB'){
-                    cnt.MLB__c = true;
-                }
-                else if(ast.CCT_Contact_Center_BU__c == 'MMF'){
-                    cnt.MMF__c = true;
-                }
-                else if(ast.CCT_Contact_Center_BU__c == 'MS'){
-                    cnt.MS__c = true;
-                }
-                contactUpdList.add(cnt);
             }
         }
         
