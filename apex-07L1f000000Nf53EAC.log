@@ -1,0 +1,108 @@
+44.0 APEX_CODE,FINEST;APEX_PROFILING,FINEST;CALLOUT,FINEST;DB,FINEST;NBA,INFO;SYSTEM,FINEST;VALIDATION,FINEST;VISUALFORCE,FINEST;WAVE,INFO;WORKFLOW,FINEST
+14:58:25.0 (141634)|USER_INFO|[EXTERNAL]|0051f000000IdnF|sai_teja_golla@manulife-cdn.com.dev53|Eastern Standard Time|GMT-04:00
+14:58:25.0 (192937)|EXECUTION_STARTED
+14:58:25.0 (201328)|CODE_UNIT_STARTED|[EXTERNAL]|01p1f0000009d5K|C360_handleBusinessUnitBatch
+14:58:25.0 (4059278)|HEAP_ALLOCATE|[72]|Bytes:3
+14:58:25.0 (4126171)|HEAP_ALLOCATE|[77]|Bytes:152
+14:58:25.0 (4150235)|HEAP_ALLOCATE|[342]|Bytes:408
+14:58:25.0 (4174562)|HEAP_ALLOCATE|[355]|Bytes:408
+14:58:25.0 (4197154)|HEAP_ALLOCATE|[467]|Bytes:48
+14:58:25.0 (4236129)|HEAP_ALLOCATE|[139]|Bytes:6
+14:58:25.0 (5387548)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:116
+14:58:25.0 (8615410)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:11
+14:58:25.0 (8642089)|SYSTEM_METHOD_ENTRY|[15]|BatchableContextImpl.BatchableContextImpl()
+14:58:25.0 (8669581)|STATEMENT_EXECUTE|[15]
+14:58:25.0 (8683884)|SYSTEM_METHOD_EXIT|[15]|BatchableContextImpl
+14:58:25.0 (8695926)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:12
+14:58:25.0 (8703681)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+14:58:25.0 (8708598)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:4
+14:58:25.0 (8716873)|VARIABLE_SCOPE_BEGIN|[31]|this|Database.BatchableContextImpl|true|false
+14:58:25.0 (8780564)|VARIABLE_ASSIGNMENT|[31]|this|{}|0x4f65127f
+14:58:25.0 (8791420)|VARIABLE_SCOPE_BEGIN|[31]|jobId|Id|false|false
+14:58:25.0 (8949840)|VARIABLE_ASSIGNMENT|[31]|jobId|"7071f000001A5kKAAS"
+14:58:25.0 (8962442)|VARIABLE_SCOPE_BEGIN|[31]|childJobId|Id|false|false
+14:58:25.0 (9018960)|VARIABLE_ASSIGNMENT|[31]|childJobId|"7071f000001A5rsAAC"
+14:58:25.0 (17076890)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:8
+14:58:25.627 (627389536)|CUMULATIVE_LIMIT_USAGE
+14:58:25.627 (627389536)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 200
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 60000
+  Maximum heap size: 0 out of 12000000
+  Number of callouts: 0 out of 0
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 0
+  Number of queueable jobs added to the queue: 0 out of 1
+  Number of Mobile Apex push calls: 0 out of 10
+
+14:58:25.627 (627389536)|TOTAL_EMAIL_RECIPIENTS_QUEUED|0
+14:58:25.627 (627389536)|CUMULATIVE_LIMIT_USAGE_END
+
+14:58:25.0 (627462772)|CODE_UNIT_FINISHED|C360_handleBusinessUnitBatch
+14:58:25.0 (628477792)|EXECUTION_FINISHED
+14:58:25.647 (647453521)|CUMULATIVE_PROFILING_BEGIN
+14:58:25.647 (647453521)|CUMULATIVE_PROFILING|SOQL operations|
+Class.CRMfusionDBR101.DB_Scenario.loadScenarioRows: line 1058, column 1: [SELECT id, Name, Scenario_Type__c, Deployed__c,
+                Match_on_Insert_Action__c, Match_on_Insert_Result__c,
+                Match_on_Update_Action__c, Match_on_Update_Result__c, Scenario_Number__c,
+                Duplicates_Blocked__c, Duplicates_Merged__c,
+                Bypass_Security__c, Allow_Block_Bypass__c, Error_Message__c,
+                Create_Task__c, OwnerId, Hash_Key_Bits__c, Disable_Hash_Calculation__c,
+                Rebuild_Needed__c, Person_Account_Scenario__c,
+                Enable_Dual_Filters__c, Max_Blocks_Shown__c,
+                Block_Related_Matches__c, VisualForce_Handler__c,
+                Apex_Handler__c,
+                (SELECT Match_Field__c, Field_Name__c, Related_Field_Name__c, Scenario__c,
+                Field_Display_Value__c, Related_Field_Display_Value__c,
+                AlphaClean__c, English_Fuzzy__c, Mapping_Type__c,
+                Match_Blank__c, Transpose__c, First_Xx_Letters__c, First_XX_Words__c, Regex__c
+                FROM Scenario_Rules__r ORDER BY Name ASC),
+                (SELECT Object__c, Field_Name__c, Operator__c, Data_Type__c,
+                Calculated_Value__c, Values__c, Date_Criteria__c, Datetime_Criteria__c,
+                Display__c, Field_Display_Value__c,
+                Not__c FROM Scenario_Filters__r ORDER BY Object__c ASC),
+                (SELECT Object__c, Field_Name__c, Operator__c, Data_Type__c,
+                Calculated_Value__c, Values__c, Date_Criteria__c, Datetime_Criteria__c,
+                Display__c, Field_Display_Value__c,
+                Not__c FROM Scenario_Target_Filters__r ORDER BY Object__c ASC)
+                FROM Scenario__c WHERE Scenario_Type__c IN :types
+                ORDER BY Scenario_Number__c]: executed 2 times in 19 ms
+Class.CSP_Utility.contactRecordTypeId: line 70, column 1: [SELECT Id, Name, DeveloperName 
+                            FROM RecordType 
+                            WHERE DeveloperName =: recTypeDevName AND Sobjecttype = 'Contact']: executed 2 times in 9 ms
+Class.C360_SponsorIndicatorsUtil.findRelatedContactsByContactIds: line 45, column 1: [Select Id,AccountId, Account.RecordType.Name,IIC__c, GB__c, MI__c, MLB__c, MMF__c, MS__c from Contact where Id =: contactIds]: executed 1 time in 8 ms
+Class.C360_SponsorIndicatorsUtil.findRelatedAssetContactRoles: line 41, column 1: [Select Id, Asset__c, Contact__c,End_Date__c, Asset__r.Coverage_End_Date__c from AssetContactRoles__c WHERE Asset__c =: assetIds]: executed 1 time in 6 ms
+Class.Vitality_ContactTriggerHandler.checkDuplicateMems: line 48, column 1: [Select Id, Name From Profile Where Name = :Label.CP2_CI_Integration_User Limit 1]: executed 1 time in 5 ms
+Class.CSP_ContactTriggerHandler.createUserOnUpdate: line 33, column 1: [SELECT DeveloperName,Name 
+                                     FROM RecordType 
+                                     WHERE developername='Distributor' and SobjectType  = 'Contact']: executed 1 time in 4 ms
+Class.C360_SponsorIndicatorsUtil.findRelatedCustomerAccountsList: line 37, column 1: [Select Canada_Only__c, Id, Special_Handling__c,GB_OTIP_Indicator__c,Staff_Plan__c,GB_OTIP_Staff_Indicator__c, IIC__c, GB__c, MI__c, MLB__c, MMF__c, MS__c from Account WHERE Id =: custAccountIdSet]: executed 1 time in 4 ms
+Class.CSP_ContactTriggerHandler.createUserOnUpdate: line 27, column 1: [Select Id, Name 
+                                       FROM Profile 
+                                       WHERE Name = 'Cross Sell Data Analyst' Limit 1]: executed 1 time in 3 ms
+Class.CSP_ContactTriggerHandler.createUserOnUpdate: line 30, column 1: [SELECT Id 
+                                          FROM Profile 
+                                          WHERE Name = 'Cross Sell Portal User']: executed 1 time in 3 ms
+
+14:58:25.647 (647453521)|CUMULATIVE_PROFILING|No profiling information for SOSL operations
+14:58:25.647 (647453521)|CUMULATIVE_PROFILING|DML operations|
+Class.C360_handleBusinessUnitBatch.execute: line 89, column 1: Update: List<Account>: executed 1 time in 297 ms
+Class.C360_handleBusinessUnitBatch.execute: line 93, column 1: Update: List<Contact>: executed 1 time in 202 ms
+
+14:58:25.647 (647453521)|CUMULATIVE_PROFILING|method invocations|
+External entry point: global void execute(Database.BatchableContext, List<SObject>): executed 1 time in 523 ms
+External entry point: public void invoke(): executed 1 time in 116 ms
+Trigger.C360_AccountTrigger: line 5, column 1: global C360_AccountTriggerHandler(): executed 2 times in 116 ms
+Class.C360_BaseTriggerHandler.run: line 26, column 1: public void onAfterUpdate(List<SObject>, Map<Id,SObject>, List<SObject>, Map<Id,SObject>): executed 1 time in 109 ms
+Class.C360_AccountTriggerHandler.onAfterUpdate: line 13, column 1: public static Id RecordType(String, String): executed 1 time in 95 ms
+Class.C360_Helper.RecordType: line 178, column 1: global public static Map<String,Schema.SObjectType> getGlobalDescribe(): executed 3 times in 91 ms
+Trigger.ContactTrigger: line 20, column 1: public static void onBeforeUpdate(List<Contact>, Map<Id,Contact>): executed 1 time in 48 ms
+Class.Vitality_ContactTriggerHandler.onBeforeUpdate: line 89, column 1: public static void checkDuplicateMems(List<Contact>): executed 1 time in 31 ms
+External entry point: public void invoke(): executed 1 time in 28 ms
+External entry point: public void invoke(): executed 1 time in 14 ms
+Trigger.ContactTrigger: line 43, column 1: public static void createUserOnUpdate(List<Contact>, Map<Id,Contact>): executed 1 time in 14 ms
+
+14:58:25.647 (647453521)|CUMULATIVE_PROFILING_END
