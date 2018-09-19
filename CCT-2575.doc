@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[#CCT-2575] shield - all alert records must be classified to their relevant business unit in order to compare user authorizations when viewing alert records (outside of the Alert widget)</title>
+    <meta http-equiv="Content-Type" Content="application/vnd.ms-word; charset=UTF-8">
+        <style type="text/css">
+
+.tableBorder, .grid
+{
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableBorder td, .grid td
+{
+    vertical-align: top;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.noPadding
+{
+    padding: 0 !important;
+}
+
+h3 .subText
+{
+    font-size: 60%;
+    font-weight: normal;
+}
+
+.tabLabel
+{
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-bottom:none;
+    padding: 2px;
+    display: inline;
+}
+
+td.blank
+{
+    padding: 0;
+    margin: 0;
+}
+
+.blank td
+{
+    border: none;
+}
+
+#descriptionArea
+{
+    margin: 0;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+hr
+{
+    border-top:1px solid #aaa;
+}
+
+hr.fullcontent
+{
+  height: 15px;
+  padding: 10px 0;
+  background: #fff url('https://dsjira.manulife.com:8443/images/icons/hr.gif') no-repeat scroll center;
+}
+
+</style>
+
+</head>
+<body>
+
+<table class="tableBorder" cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#f0f0f0" width="100%" colspan="2" valign="top">
+                            <h3 class="formtitle">
+                        [CCT-2575]&nbsp;<a href="https://dsjira.manulife.com:8443/browse/CCT-2575">shield - all alert records must be classified to their relevant business unit in order to compare user authorizations when viewing alert records (outside of the Alert widget)</a>
+            <span class="subText">
+               Created: 06/Sep/18                   &nbsp;Updated: 18/Sep/18
+
+                                            </span>
+            </h3>
+        </td>
+    </tr>
+    <tr>
+        <td width="20%"><b>Status:</b></td>
+        <td width="80%">Development</td>
+    </tr>
+    <tr>
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="https://dsjira.manulife.com:8443/secure/BrowseProject.jspa?id=10102">Contact Centre Service Squad</a></td>
+    </tr>
+
+        <tr>
+            <td><b>Component/s:</b></td>
+            <td>
+                                        <a title="Shield - Shield Project - Event Monitoring"
+                href="https://dsjira.manulife.com:8443/issues/?jql=project%3D10102%20AND%20%22component%22%3D11934%20ORDER%20BY%20priority%20ASC"
+            >Shield</a>                        </td>
+    </tr>
+    
+
+        <tr>
+            <td><b>Affects Version/s:</b></td>
+            <td>
+                            None
+                </td>
+    </tr>
+    
+
+        <tr>
+            <td><b>Fix Version/s:</b></td>
+            <td>
+                            None
+                </td>
+    </tr>
+    
+    </table>
+
+<br />
+<table class="grid" cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type:</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top"  width="30%" >
+            Story
+        </td>
+
+                    <td bgcolor="#f0f0f0">
+                <b>Priority:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" nowrap>
+                Medium
+            </td>
+            </tr>
+    <tr>
+                        <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top"  width="30%" >
+                                            <a class="user-hover" rel="ditneam" id="word_reporter_ditneam" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=ditneam">Amanda Ditner</a>
+                            </td>
+        
+                    <td bgcolor="#f0f0f0" width="20%">
+                <b>Assignee:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" nowrap  width="30%" >
+                                            <a class="user-hover" rel="gollasa" id="word_assignee_gollasa" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=gollasa">Sai Teja Golla</a>
+                            </td>
+            </tr>
+    	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution:</b>
+		</td>
+		<td bgcolor="#ffffff" valign="top" width="30%" nowrap>
+            				Unresolved
+                    </td>
+                    <td bgcolor="#f0f0f0" width="20%">
+                <b>Votes:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%" nowrap>
+                0
+            </td>
+        
+    </tr>
+    
+        <tr>
+        <td bgcolor="#f0f0f0" width="20%">
+            <b>Labels:</b>
+        </td>
+        <td id="labels-121950-value" class="value" bgcolor="#ffffff" valign="top" colspan="3" nowrap>
+                            None
+                    </td>
+    </tr>
+    
+    	<tr>
+        		<td bgcolor="#f0f0f0" width="20%"><b>Remaining Estimate:</b></td>
+        <td bgcolor="#ffffff" valign="top" nowrap width="80%" colspan="3">
+                            Not Specified
+            		</td>
+    </tr>
+    <tr>
+                <td bgcolor="#f0f0f0" width="20%"><b>Time Spent:</b></td>
+		<td bgcolor="#ffffff" valign="top" nowrap width="80%" colspan="3">
+                            Not Specified
+            		</td>
+	</tr>
+    <tr>
+                <td bgcolor="#f0f0f0" width="20%"><b>Original Estimate:</b></td>
+		<td bgcolor="#ffffff" valign="top" nowrap width="80%" colspan="3">
+                            Not Specified
+            		</td>
+    </tr>
+    
+    </table>
+
+
+
+    <br />
+
+    	<table class="grid" cellpadding="0" cellspacing="0" border="0" width="100%">
+            
+
+        
+            <tr>
+            <td bgcolor="#f0f0f0" width="20%" valign="top">
+                <b>Issue Links:</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" class="noPadding">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="blank">
+                                            <tr>
+                            <td colspan="4" bgcolor="#f0f0f0">
+                                <b>Duplicate</b><br/>
+                            </td>
+                        </tr>
+                                    <tr>
+            <td>
+                duplicates
+            </td>
+            <td>
+                <a href="https://dsjira.manulife.com:8443/browse/CCT-2510">
+                     CCT-2510                 </a>
+            </td>
+            <td>
+                Add an Alert Line of Business Field t...
+            </td>
+            <td>
+                To Do
+            </td>
+        </tr>
+                                                                    </table>
+            </td>
+        </tr>
+    
+
+
+
+                        <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Epic Link:</b></td>
+                <td id="customfield_10002-121950-value" class="value" bgcolor="#ffffff" width="80%">
+    <a class="aui-label ghx-label-1" href="https://dsjira.manulife.com:8443/browse/CCT-1317">
+        Salesforce Data
+    </a>
+</td>
+            </tr>
+                                <tr>
+                <td bgcolor="#f0f0f0" width="20%" valign="top"><b>Sprint:</b></td>
+                <td id="customfield_10001-121950-value" class="value" bgcolor="#ffffff" width="80%">Salesforce Development Sprint</td>
+            </tr>
+            </table>
+
+    <br/>
+
+    <table cellpadding="2" cellspacing="0" border="0" width="100%" align="center">
+    <tr>
+        <td bgcolor="#bbbbbb" width="1%" nowrap align="center">
+            &nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td id="descriptionArea">
+            <p>The following is a list of the types of alerts that can be created in SF Agent Desktop:</p>
+
+<ul>
+	<li>Global</li>
+	<li>Business Unit</li>
+	<li>Account</li>
+	<li>Contact</li>
+	<li>Asset</li>
+</ul>
+
+
+<p>These alerts can contain sensitive information that should only be viewed when needed, and only by users who are authorized for the line of business to which the alert is related. For example, an alert that is created that is related to a contact, and the contact is a MLB and IIC contact, the alert should only be viewed by users who are authorized for those business units.</p>
+
+<p>When an alert is <b>created</b> or <b>edited</b>, the Alert Business Unit fields must be populated as follows:</p>
+
+<p>1. Global Alert: When the Alert has IsGlobal__c = True then update ALL Alert Business Unit fields to True:</p>
+<ul>
+	<li>Alert.IIC__c = True</li>
+	<li>Alert.GB__c = True</li>
+	<li>Alert.MI__c = True</li>
+	<li>Alert.MLB__c = True</li>
+	<li>Alert.MMF__c = True</li>
+	<li>Alert.MS__c = True</li>
+</ul>
+
+
+<p>2. Business Unit Alert: When the Alert has Contact_Center_BU_<em>c &lt;&gt; null then the Alert Contact_Center_BU</em><em>c field picklist field value must be used to map to the checkbox fields as follows (Contact_Center_BU</em>_c/LOB field):<br/>
+IIC = Alert.IIC__c = True<br/>
+MI = Alert.MI__c = True<br/>
+GB = Alert. GB__c = True<br/>
+MMF = Alert.MMF__c = True<br/>
+MS = Alert.MS__c = True<br/>
+MLB = Alert.MLB__c = True </p>
+
+<p>3. Account Alert: When the Alert has a Related_Account_<em>c &lt;&gt; null then retrieve the related Account record's LOB field assignment (Account.IIC</em><em>c, Account.GB</em><em>c, Account.MI</em><em>c, Account.MLB</em><em>c, Account.MMF</em><em>c, Account.MS</em>_c) and propagate to the LOB fields on the Alert as follows (Account LOB/Alert LOB):<br/>
+Account.IIC_<em>c = True then Alert.IIC</em>_c = True<br/>
+Account.GB_<em>c = True then Alert.GB</em>_c = True<br/>
+Account.MI_<em>c = True then Alert.MI</em>_c = True<br/>
+Account.MLB_<em>c = True then Alert.MLB</em>_c = True<br/>
+Account.MMF_<em>c = True then Alert.MMF</em>_c = True<br/>
+Account.MS_<em>c = True then Alert.MS</em>_c = True</p>
+
+<p>4. Contact Alert: When the Alert has a Related_Contact_<em>c &lt;&gt; null then retrieve the related Contact record's LOB field assignment (Contact.IIC</em><em>c, Contact.GB</em><em>c, Contact.MI</em><em>c, Contact.MLB</em><em>c, Contact.MMF</em><em>c, Contact.MS</em>_c) and propagate to the LOB fields on the Alert as follows (Contact LOB/Alert LOB):<br/>
+Contact.IIC_<em>c = True then Alert.IIC</em>_c = True<br/>
+Contact.GB_<em>c = True then Alert.GB</em>_c = True<br/>
+Contact.MI_<em>c = True then Alert.MI</em>_c = True<br/>
+Contact.MLB_<em>c = True then Alert.MLB</em>_c = True<br/>
+Contact.MMF_<em>c = True then Alert.MMF</em>_c = True<br/>
+Contact.MS_<em>c = True then Alert.MS</em>_c = True</p>
+
+<p>5. Asset Alert: When the Alert has a Related_Asset_<em>c &lt;&gt; null then retrieve the related Asset record's LOB field assignment (Asset.IIC</em><em>c, Asset.GB</em><em>c, Asset.MI</em><em>c, Asset.MLB</em><em>c, Asset.MMF</em><em>c, Asset.MS</em>_c) and propagate to the LOB fields on the Alert as follows (Asset LOB/Alert LOB):<br/>
+Asset.IIC_<em>c = True then Alert.IIC</em>_c = True<br/>
+Asset.GB_<em>c = True then Alert.GB</em>_c = True<br/>
+Asset.MI_<em>c = True then Alert.MI</em>_c = True<br/>
+Asset.MLB_<em>c = True then Alert.MLB</em>_c = True<br/>
+Asset.MMF_<em>c = True then Alert.MMF</em>_c = True<br/>
+Asset.MS_<em>c = True then Alert.MS</em>_c = True</p>
+
+
+<p>*Important Note: The alert record can only have ONE type of Alert. It can be Global OR Business Unit OR Account OR Contact OR Asset. This is controlled by a custom validation rule Validate_BU_Contact_Asset_Global. Because of this, finding the type of Alert can be done by checking if the fields IsGlobal_<em>c, Contact_Center_BU</em><em>c, Related_Account</em><em>c, Related_Contact</em><em>c, Related_Asset</em>_c are populated.</p>
+            <br/>
+        </td>
+    </tr>
+    </table>
+
+    <br/>
+
+    <table cellpadding="2" cellspacing="0" border="0" width="100%" align="center">
+    <tr>
+        <td bgcolor="#bbbbbb" width="1%" nowrap align="center">
+            &nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="grid" style="margin: 0;">
+                <tr id="comment-header-152857"><td bgcolor="#f0f0f0">
+            Comment by  
+                                                        <a class="user-hover" rel="ditneam" id="word_commented_ditneam" href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=ditneam">Amanda Ditner</a>
+                                        <font size="-2">
+            [
+                <font color="#336699">06/Sep/18</font>
+
+                            ]
+            </font>
+
+        </td></tr>
+        <tr id="comment-body-152857"><td bgcolor="#ffffff">
+            <p><a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=raswaga" class="user-hover" rel="raswaga">Swagata Ray</a>, <a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=ghosnir" class="user-hover" rel="ghosnir">Nirmallya Ghosh</a></p>
+
+<p>Thanks for reviewing this with me today. I have added a spec to this story. Please let me know if you need any clarification.</p>
+
+<p><a href="https://dsjira.manulife.com:8443/secure/ViewProfile.jspa?name=walljef" class="user-hover" rel="walljef">Jeffrey Wall</a> - I will sync with you on this one tomorrow.</p>
+        </td></tr>
+            </table>
+Generated at Tue Sep 18 22:18:11 EDT 2018 by Sai Teja Golla using JIRA 7.1.7#71011-sha1:2526d7c13af2ab43673b0a163ceecff6fe735c9c.
+
+</body>
+</html>

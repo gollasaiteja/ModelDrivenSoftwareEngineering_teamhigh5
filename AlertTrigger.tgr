@@ -1,0 +1,10 @@
+trigger AlertTrigger on Alert__c (before insert) {
+    if(Trigger.isBefore)
+    {
+        if(Trigger.isInsert)
+        {    
+            CCT_AlertTriggerHandler.onBeforeInsert(Trigger.new);
+        }
+    }
+
+}
