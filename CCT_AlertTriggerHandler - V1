@@ -1,0 +1,76 @@
+public with sharing class CCT_AlertTriggerHandler
+{
+    public static void onBeforeInsert(List<Alert__c> newAlertList)
+    {
+        if(CCT_Setting__c.getValues('Trigger Updates Alert GB Flags').Boolean_Value__c) // On/Off this functionality using the flag in custom setting
+        {
+            CCT_AlertTriggerHandlerWithoutSharing.updateCanadaOnlySpecialHandlingStaffPlan(newAlertList);
+        }
+		Set<Id> accntIdSet = new Set<Id>();
+		Set<Id> cntctIdSet = new Set<Id>();
+		Set<Id> asstIdSet = new Set<Id>();
+		List<Account> accntLst = new List<Account>();
+		List<Contact> cntctLst = new List<Contact>();
+		List<Asset> asstLst = new List<Asset>();
+		for(Alert__c alrt : newAlertList){
+			if(alrt.IsGlobal__c){
+				alrt.IIC__c = true;
+				alrt.GB__c = true;
+				alrt.MI__c = true;
+				alrt.MLB__c = true;
+				alrt.MMF__c = true;
+				alrt.MS__c = true;
+			}
+			else if(alrt.Contact_Center_BU__c != null){
+				List<String> BUValuesLst = new List<String>();
+				for(String val : alrt.Contact_Center_BU__c.split(';')){
+					BUValuesLst.add(val);
+				}
+				system.debug('BUValuesLst==='+BUValuesLst);
+				if(BUValuesLst.contains('IIC')){
+					alrt.IIC__c = true;
+				}
+				if(BUValuesLst.contains('MI')){
+					alrt.MI__c = true;
+				}
+				if(BUValuesLst.contains('GB')){
+					alrt.GB__c = true;
+				}
+				if(BUValuesLst.contains('MMF')){
+					alrt.MMF__c = true;
+				}
+				if(BUValuesLst.contains('MS')){
+					alrt.MS__c = true;
+				}
+				if(BUValuesLst.contains('MLB')){
+					alrt.MLB__c = true;
+				}
+			}
+			else if(alrt.Related_Account__c != null){
+				accntIdSet.add(Related_Account__c);
+			}
+			else if(alrt.Related_Contact__c != null){
+				cntctIdSet.add(Related_Contact__c)
+			}
+			else if(alrt.Related_Asset__c != null){
+				asstIdSet.add(Related_Asset__c)
+			}
+		}
+		if(accntIdSet != null && !accntIdSet.isEmpty()){
+			//accntLst = [Select Id, IIC__c,MI__c, MLB__c, GB__c, MMF__c, MS__c from Account where ID =: accntIdSet];
+			Map<Id,Account> accntMap = new Map<Id,Account>([Select Id, IIC__c,MI__c, MLB__c, GB__c, MMF__c, MS__c from Account where ID =: accntIdSet]);
+			system.debug('accntMap====='+accntMap);
+			if(!accntMap.isEmpty() && accntMap != null){
+				for(Alert__c alrt : newAlertList){
+					alrt.IIC__c = accntMap.get(alrt.Related_Account__c).IIC__c;
+					alrt.GB__c = accntMap.get(alrt.Related_Account__c).GB__c;
+					alrt.MI__c = accntMap.get(alrt.Related_Account__c).MI__c;
+					alrt.MLB__c = accntMap.get(alrt.Related_Account__c).MLB__c;
+					alrt.MMF__c = accntMap.get(alrt.Related_Account__c).MMF__c;
+					alrt.MS__c = accntMap.get(alrt.Related_Account__c).MS__c;
+				}
+			}
+		}
+		
+    }
+}
