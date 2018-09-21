@@ -1,0 +1,38 @@
+@isTest
+public class C360_AssetTriggerHandlerTest{
+    static testMethod void testAsset(){
+        C360_AssetTriggerHandler handlerCls = new C360_AssetTriggerHandler();
+        handlerCls.getTriggerID();
+        Map<Id,Asset> newAssetMap = new Map<Id,Asset>();
+        Map<Id,Asset> oldAssetMap = new Map<Id,Asset>();
+        List<Account> newAccount = C360_UtilTest.createAccountData();
+        List<Account> oldAccount = C360_UtilTest.createAccountData();
+        List<Asset> oldAsset = C360_UtilTest.createAssetData(oldAccount[0].Id,oldAccount[0].Id);
+        List<Asset> newAsset = C360_UtilTest.createAssetData(newAccount[0].Id,newAccount[0].Id);
+        newAsset[0].Coverage_End_Date__c = system.today();
+        newAsset[0].Sponsor__c = oldAccount[0].Id;		
+        update newAsset[0];
+        
+        oldAssetMap.put(oldAsset[0].Id,oldAsset[0]);
+        newAssetMap.put(newAsset[0].Id,newAsset[0]);
+        handlerCls.onAfterUpdate(newAsset,newAssetMap,oldAsset,oldAssetMap);
+        Test.StartTest();
+        database.ExecuteBatch(new C360_handleAssetIndicators(newAccountMap),200);
+        Test.StopTest();
+		newAsset[0].Coverage_End_Date__c = null;
+        newAsset[0].End_Date__c = null;
+        update newAsset[0];
+		database.ExecuteBatch(new C360_handleAssetIndicators(newAccountMap),200);
+    }
+	
+	static testMethod void testAssetBU(){
+		List<Account> newAccount = C360_UtilTest.createAccountData();
+        List<Account> oldAccount = C360_UtilTest.createAccountData();
+        List<Asset> oldAsset = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'IIC');
+		List<Asset> oldAsset1 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'GB');
+		List<Asset> oldAsset2 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MI');
+		List<Asset> oldAsset3 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MLB');
+		List<Asset> oldAsset4 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MMF');
+		List<Asset> oldAsset5 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MS');
+	}
+}
