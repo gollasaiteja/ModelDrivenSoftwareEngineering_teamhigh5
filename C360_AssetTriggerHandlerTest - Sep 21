@@ -28,11 +28,17 @@ public class C360_AssetTriggerHandlerTest{
 	static testMethod void testAssetBU(){
 		List<Account> newAccount = C360_UtilTest.createAccountData();
         List<Account> oldAccount = C360_UtilTest.createAccountData();
-        List<Asset> oldAsset = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'IIC');
-		List<Asset> oldAsset1 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'GB');
-		List<Asset> oldAsset2 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MI');
-		List<Asset> oldAsset3 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MLB');
-		List<Asset> oldAsset4 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MMF');
-		List<Asset> oldAsset5 = C360_UtilTest.createAssetWithBU(oldAccount[0].Id,oldAccount[0].Id,'MS');
+		Product2 prod = C360_UtilTest.createProduct('IIC');
+        List<Asset> oldAsset = C360_UtilTest.createAssetData(oldAccount[0].Id,oldAccount[0].Id);
+		Product2 prod1 = C360_UtilTest.createProduct('GB');
+		List<Asset> oldAsset1 = C360_UtilTest.createAssetData(oldAccount[0].Id,oldAccount[0].Id);
+		Product2 prod2 = C360_UtilTest.createProduct('MI');
+		List<Asset> oldAsset2 = C360_UtilTest.createAssetData(oldAccount[0].Id,oldAccount[0].Id);
+		Product2 prod3 = C360_UtilTest.createProduct('MLB');
+		List<Asset> oldAsset3 = C360_UtilTest.createAssetData(oldAccount[0].Id,oldAccount[0].Id);
+		Product2 prod4 = C360_UtilTest.createProduct('MMF');
+		List<Asset> oldAsset4 = C360_UtilTest.createAssetData(oldAccount[0].Id,oldAccount[0].Id);
+		Product2 prod5 = C360_UtilTest.createProduct('MS');
+		List<Asset> oldAsset5 = C360_UtilTest.createAssetData(oldAccount[0].Id,oldAccount[0].Id);
 	}
 }
