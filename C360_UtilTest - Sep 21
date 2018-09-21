@@ -57,22 +57,14 @@ public class C360_UtilTest{
         assetContactRoleLst.add(assetContactRole);
         return assetContactRoleLst;
     }
-	
-	public static List<Asset> createAssetWithBU(Id sponsorId, Id accountId, String contactCenterBU){
-        List<Asset> assetDataList = new List<Asset>();
-        Asset assetData = new Asset(); 
-        assetData.name = 'Test Asset';
-        assetData.Sponsor__c = sponsorId;
-        assetData.AccountId = accountId;
-        assetData.Canada_Only__c = true;
-        assetData.Special_Handling__c = true;
-        assetData.GB_OTIP_Indicator__c = true;
-        assetData.GB_OTIP_Staff_Indicator__c = false;
-        assetData.Staff_Plan__c = false;
-		assetData.CCT_Contact_Center_BU__c = contactCenterBU;
-        assetDataList.add(assetData);
-        insert assetDataList;
-        return assetDataList;
-    }
+		
+	public static Product2 createProduct(String contactCenterBU){
+		Product2 prod = new Product2();
+		prod.name = 'Test';
+		prod.Family = 'Test family';
+		prod.Contact_Center_BU__c = contactCenterBU;
+		insert prod;
+		return prod;
+	}
     
 }
