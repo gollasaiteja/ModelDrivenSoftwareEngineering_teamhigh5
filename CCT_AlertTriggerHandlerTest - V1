@@ -1,0 +1,39 @@
+@isTest
+public static CCT_AlertTriggerHandlerTest(){
+	static testMethod void testGlobalAlert(){
+		List<Alert__c> alertList = new List<Alert__c>();
+		alertList = C360_UtilTest.createAlert(null,null,null,null,true);		
+	}
+	
+	static testMethod void testBUAlert(){
+		List<Alert__c> alertList = new List<Alert__c>();
+		alertList = C360_UtilTest.createAlert('IIC;MI;GB;MMF;MS;MLB',null,null,null,false);		
+	}
+	
+	static testMethod void testAccntAlert(){
+		List<Alert__c> alertList = new List<Alert__c>();
+		List<Account> accountList = new List<Account>();
+		accountList = C360_UtilTest.createAccountData();
+		alertList = C360_UtilTest.createAlert(null,null,accountList[0].Id,null,false);		
+	}
+	
+	static testMethod void testCntctAlert(){
+		List<Alert__c> alertList = new List<Alert__c>();
+		List<Account> accountList = new List<Account>();
+		List<Contact> contactList = new List<Contact>();
+		accountList = C360_UtilTest.createAccountData();
+		contactList = C360_UtilTest.createContactData(accountList[0].Id);
+		alertList = C360_UtilTest.createAlert(null,contactList[0].Id,null,null,false);		
+	}
+	
+	static testMethod void testAsstAlert(){
+		List<Alert__c> alertList = new List<Alert__c>();
+		List<Account> accountList = new List<Account>();
+		List<Contact> contactList = new List<Contact>();
+		List<Asset> assetList = new List<Asset>();
+		accountList = C360_UtilTest.createAccountData();
+		contactList = C360_UtilTest.createContactData(accountList[0].Id);
+		assetList = C360_UtilTest.createAssetData(accountList[0].Id,accountList[0].Id);
+		alertList = C360_UtilTest.createAlert(null,null,null,assetList[0].Id,false);		
+	}
+}
