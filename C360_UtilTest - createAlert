@@ -1,0 +1,12 @@
+public static List<Alert__c> createAlert(string contactCenterBU, Id contactId, Id accountId, Id assetId, Boolean isGlobal){
+		List<Alert__c> alertLst = nwe List<Alert__c>();
+		Alert__c alertData = new Alert__c();
+		alertData.Contact_Center_BU__c = contactCenterBU;
+		alertData.IsGlobal__c = isGlobal;
+		alertData.Related_Account__c = accountId;
+		alertData.Related_Contact__c = contactId;
+		alertData.Related_Asset__c = assetId;
+		alertLst.add(alertData);
+		insert alertLst;
+		return alertLst;
+	}
