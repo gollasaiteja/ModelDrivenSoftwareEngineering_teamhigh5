@@ -1,0 +1,40 @@
+Account Trigger:
+1. Events - After Update
+2. Condition - 
+Record type = Sponsor Customer
+Changes in fields - Canada_Only__c, Special_Handling__c, GB_OTIP_Indicator__c, GB_OTIP_Staff_Indicator__c, Staff_Plan__c
+Get the account Ids and send those to batch class
+3. In Batch Class - 
+	a. C360_handleAssetIndicators - Query assets using Account Ids from trigger
+
+Asset Contact Roles Trigger:
+1. Events - After Insert
+2. Condition - External Id starts with 'MDM'
+3. In Batch Class - 
+	a. C360_handleAccountIndicators - Query assets using Asset Ids from trigger
+	b. C360_handleBusinessUnitBatch - Query assets using Asset Ids from trigger
+
+Asset Trigger:
+1. Events - After Update
+2. Condition - Sponsor is changed
+3. In Batch Class - 
+	a. C360_handleAssetIndicators - Query assets using Account Ids from trigger
+
+C360_handleAssetIndicators:
+From finish method of this batch invoke C360_handleAccountIndicators class by passing sponsor account ids
+
+
+SUMMARY:
+
+1. C360_handleAssetIndicators invoked in below scenarios:
+	a. Changes on sponsor account
+	b. Changes on asset
+
+2. C360_handleAccountIndicators invoked in below scenarios:
+	a. Insertion of Asset Contact Role
+	b. Finnish method of C360_handleAssetIndicators batch
+		i) Changes on sponsor account
+		ii) Changes on asset
+
+3. C360_handleBusinessUnitBatch invoked in below scenarios:
+	a. Insertion of Asset Contact Role
