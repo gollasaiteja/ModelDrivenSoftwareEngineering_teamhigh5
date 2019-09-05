@@ -52,6 +52,10 @@ global with sharing class CCT_CaseCreateService1 {
     @HttpPost
     global static CCT_CaseCreateServiceOutput createCase(CCT_CaseCreateServiceInput InputParams) {
         
+        RestRequest req = RestContext.request;
+        String jSONParser = req.requestBody.toString(); 
+        CCT_CaseCreateServiceInput InputParams = (CCT_CaseCreateServiceInput)JSON.Deserialize(jSONParser, CCT_CaseCreateServiceInput.class);
+        System.debug('InputParams======'+InputParams); 
         logWebserviceRequest(InputParams);
 
         String caseNumber = '';
