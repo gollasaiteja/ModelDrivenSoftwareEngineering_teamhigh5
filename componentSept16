@@ -1,0 +1,31 @@
+<aura:component implements="flexiPage:availableForAllPageTypes" controller="CCT_EPresentmentPreferences" >
+    <aura:attribute type="Id" name="contactId" default=""/>
+    <aura:attribute type = "CCT_EPresentmentPreferences.PatternsAndFrameworksResponse[]" name="frameworkResponseClass" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.onPageLoad}"/>
+    
+    <div class="slds">
+        
+        Check the box to save paper by signing up for electronic delivery for all your document.
+        <!-- checkbox logic -->
+        <br/>
+        or Customize the default settings by document type below.
+        <br/>
+        Check the boxes to get your documents electronically or uncheck the boxes to get your documents by mail.
+        
+        <div>
+            <aura:if isTrue="{!not(empty(v.frameworkResponseClass))}">
+                <aura:iteration items ="{!v.frameworkResponseClass}" var="item">                    
+                    <lightning:accordion aura:id="accordionId">
+                        <lightning:accordionSection name="{!item.productName}" label="{!'Manulife ' + item.productName}">
+                            {!item.preferenceType}=={!item.patternId}
+                        </lightning:accordionSection>
+                    </lightning:accordion>
+                </aura:iteration>
+            </aura:if>
+        </div>
+        
+        
+        
+    </div>
+</aura:component>
