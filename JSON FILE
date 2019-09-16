@@ -1,0 +1,37 @@
+[
+    {
+        "preferenceType": "global",
+        "productName": "all",
+        "preferenceDelivery": "electronic",
+        "preferenceIsChangeAllowed": true,
+        "_id": "5d7a88b07401e0006812ee90"
+    },
+    {
+        "productName": "securities",
+        "preferenceIsChangeAllowed": true,
+        "_id": "5d1658d4783ee100627c1aa9",
+        "preferenceType": "confirmations",
+        "preferenceDelivery": "paper"
+    },
+    {
+        "productName": "securities",
+        "preferenceIsChangeAllowed": true,
+        "_id": "5d138f9ed99a77005f70d044",
+        "preferenceType": "statements",
+        "preferenceDelivery": "paper"
+    },
+    {
+        "productName": "securities",
+        "preferenceIsChangeAllowed": true,
+        "_id": "5d1658d3783ee100627c1aa6",
+        "preferenceType": "taxreporting",
+        "preferenceDelivery": "paper"
+    },
+    {
+        "productName": "investments",
+        "preferenceIsChangeAllowed": false,
+        "_id": "5d408b56ec76bd005db93a74",
+        "preferenceType": "statements",
+        "preferenceDelivery": "paper"
+    }
+]
