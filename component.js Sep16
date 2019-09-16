@@ -1,0 +1,31 @@
+({
+    onPageLoad : function(component, event, helper) {
+        var contactId = component.get("v.contactId"); 
+        var frameworkRes = component.get("v.frameworkResponseClass");
+        var params = {"cntctId":contactId};
+        //console.log('params====='+JSON.stringify(params));
+        var action = component.get("c.onInitMethod");
+        action.setParams(params);
+        action.setCallback(this,function(response){
+            var state = response.getState();
+            //alert(state);
+            if(state == "SUCCESS"){
+                //alert(response.getReturnValue());
+                var res = JSON.parse(response.getReturnValue());
+                //alert(frameworkRes);
+                component.set("v.frameworkResponseClass",res);
+                //alert(component.get("v.frameworkResponseClass"));
+                /*var redirectEvent = $A.get("e.c:CCT_RedirectToUrl");
+                alert(redirectEvent);
+                redirectEvent.setParams({"redirectRecId":contactId,"SObject":"Contact"});
+                redirectEvent.fire();*/
+            }
+            else{
+                alert('Unexpected error');
+            }
+        });
+        $A.enqueueAction(action);       
+        
+    },    
+    
+})
