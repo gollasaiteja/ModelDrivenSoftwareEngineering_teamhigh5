@@ -12,8 +12,18 @@
             if(state == "SUCCESS"){
                 //alert(response.getReturnValue());
                 var res = JSON.parse(response.getReturnValue());
+                let group = res.reduce((r, a) => {
+                 r[a.productName] = [...r[a.productName] || [], a];
+                 return r;
+                }, {});
+
+
+                //$('#msg').html(data.message)
+
+                console.log(group)
+
                 //alert(frameworkRes);
-                component.set("v.frameworkResponseClass",res);
+                component.set("v.frameworkResponseClass",group);
                 //alert(component.get("v.frameworkResponseClass"));
                 /*var redirectEvent = $A.get("e.c:CCT_RedirectToUrl");
                 alert(redirectEvent);
