@@ -1,0 +1,92 @@
+<aura:component implements="flexiPage:availableForAllPageTypes" controller="CCT_EPresentmentPreferences" >
+    <!--<ltng:require styles="{! $Resource.footprint.SLDS090 + '/assets/styles/salesforce-lightning-design-system.css'}"/>-->
+    <aura:attribute type="Id" name="contactId" default=""/>
+    <aura:attribute type = "CCT_EPresentmentPreferences.PatternsAndFrameworksResponse[]" name="frameworkResponseClass" />
+    <aura:attribute type="Boolean" name="isElectronic" default="false"/>
+    <aura:attribute type="object[]" name="uniqueProdNames" />
+    <aura:attribute type="Boolean" name="isDisabled" />
+    <aura:attribute type="Boolean" name="isNotSelected" default="false"/>
+    <aura:attribute type="Boolean" name="customizeCheckbox" />
+    <aura:attribute type = "CCT_EPresentmentPreferences.PatternsAndFrameworksPUTRequest[]" name="frameworkRequestClass" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.onPageLoad}"/>
+    
+    <div class="slds">
+        
+        
+        <div>
+            <aura:if isTrue="{!not(empty(v.frameworkResponseClass))}">
+                <aura:iteration items ="{!v.uniqueProdNames}" var="pName"> 
+                    <aura:if isTrue="{!pName == 'all'}">
+                        <br/>
+                        {!$Label.c.lbl_CCT_ePresentment_ScreenText1}
+                        <div>
+                            <br/>
+                            <lightning:input type="checkbox" aura:id="electronicId" checked = "{!v.isElectronic}" label = "{!$Label.c.lbl_CCT_ePresentment_ScreenText2}" />
+                        </div>
+                        <br/>
+                        <lightning:input type="checkbox" aura:id="customizeId" checked = "{!v.isNotSelected}" label = "{!$Label.c.lbl_CCT_ePresentment_ScreenText3}"/>
+                        
+                        <br/>
+                        <br/>
+                        {!$Label.c.lbl_CCT_ePresentment_ScreenText4}
+                        <br/>
+                        <aura:set attribute="else">
+                            <lightning:accordion aura:id="accordionId">
+                                
+                                <lightning:accordionSection name="{!pName}" label="{!'Manulife ' + pName}">
+                                    <div>
+                                        {!$Label.c.Framework_Accordion_Heading}&nbsp;{!pName}&nbsp;{!$Label.c.Framework_Accordion_Heading1}
+                                    </div>
+                                    <br/>
+                                    <div>
+                                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                            <thead>
+                                                <tr class="slds-line-height_reset">
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate" title="Document Type">Document Type</div>
+                                                    </th>
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate" title="Electronic-only Delivery">Electronic-only Delivery</div>
+                                                    </th>                                                   
+                                                </tr>
+                                            </thead>
+                                            <aura:iteration items="{!v.frameworkResponseClass}" var="item"> 
+                                                <aura:if isTrue="{!item.productName == pName}">                                           
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="slds" >{!item.preferenceType}</div>
+                                                            </td>
+                                                            <td>
+                                                                <lightning:input value="{!item.preferenceType+'-'+item.productName}" disabled="{!v.isDisabled}" type="checkbox" aura:id="preferenceTypeId" checked="{!v.preferenceDelivery == 'electronic'}"/>
+                                                            </td>                                                          
+                                                        </tr>                                                       
+                                                    </tbody>                                            
+                                                    
+                                                </aura:if>  
+                                                
+                                            </aura:iteration>
+                                        </table>
+                                    </div>
+                                </lightning:accordionSection>
+                                
+                            </lightning:accordion>
+                        </aura:set>
+                    </aura:if>
+                </aura:iteration>
+                <br/>
+                {!$Label.c.lbl_CCT_ePresentment_ScreenText5}
+                <div>
+                    <br/>
+                    <lightning:input type="checkbox" label = "{!$Label.c.lbl_CCT_ePresentment_ScreenText6}"/>
+                </div>
+                <br/>
+                <lightning:button label="Update my preferences"
+                                  variant="brand"
+                                  class="slds-m-top_medium" 
+                                  onclick="{!c.onSave}" />
+            </aura:if>
+        </div>
+    </div>
+</aura:component>
