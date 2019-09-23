@@ -61,8 +61,15 @@
     },
     onSave: function(component, event, helper) {
         var items = component.find("preferenceTypeId");
-        var inputParams = [];
+        //var inputParams = [];
+        var prefList = [];
         var action = component.get("c.sendUpdateRequest");
+        for(var i=0; i<=items.length; i++){
+            prefList.add(items[i].get("v.value"));
+        }
+        var params = {"cntactId":component.get("v.contactId"),
+                     "preferenceTypeList":prefList}
+        /*
         var reqClass = component.get("v.frameworkRequestClass");
         for(var i=0; i<=items.length; i++){
             //alert(items[i].get("v.checked"));
@@ -91,7 +98,8 @@
                       'preferenceDelivery':'electronic',
                       'preferenceIsChangeAllowed':true,
                       'patternId':'hjhj',
-                                                  'defaultVal':true}])}//{"inputData":reqClass};
+                                                  'defaultVal':true}])}*/
+                                                  //{"inputData":reqClass};
         action.setParams(params);
         action.setCallback(this,function(response){
             var state = response.getState();
@@ -113,3 +121,19 @@
     },
     
 })
+
+
+Contact contactData = [Select firstName, LastName, MDM_EnterpriseId__c from Contact Where Id =: cntactId limit 1];
+//frameworkRequestClassList = new 
+//frameworkRequestClass = new 
+frameworkRequestClass.user = contactData.firstName +' '+ contactData.LastName;
+frameworkRequestClass.enterpriseId = contactData.MDM_EnterpriseId__c;
+for(String item : preferenceTypeList){
+    frameworkRequestClass.preferenceType = item.split('-')[0];
+    frameworkRequestClass.productName = item.split('-')[1];
+    frameworkRequestClass.preferenceSubType = ;
+    frameworkRequestClass.preferenceDelivery = ;
+    frameworkRequestClass.preferenceIsChangeAllowed = ;
+    frameworkRequestClass.patternId = ; 
+    frameworkRequestClassList.add(frameworkRequestClass);
+}
